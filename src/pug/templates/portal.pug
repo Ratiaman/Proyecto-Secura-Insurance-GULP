@@ -1,0 +1,30 @@
+doctype
+html(lang="es")
+	head
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		link(href="css/lib/jquery-ui.min.css" rel="stylesheet" media="all")
+		link(href="css/lib/bootstrap-grid.min.css" rel="stylesheet" media="all")
+		link(href="css/main.min.css" rel="stylesheet" media="all")
+		link(rel="icon" href="images/favicon.png" sizes="32x32" type="image/png")
+		block head
+
+	body
+
+		block vars
+
+		- var mainClass = "main-content";
+
+		if (pageClass)
+			- var mainClass = mainClass + ' ' + pageClass;
+
+		header(id="header" class='header')
+			include header.pug
+
+		main(id="main-content", class=mainClass)
+			block content
+
+		footer(id="footer" class="footer")
+			include footer.pug
+
+		script(src="js/main.js")

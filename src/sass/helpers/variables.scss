@@ -1,0 +1,121 @@
+/* COLORS */
+/* Primary */
+$primary500: #002E4B;
+$primary400: #004D7F;
+$primary300: #006DB3;
+$primary200: #8ABCDC;
+$primary100: #B0D2E7;
+$primary50: #E6F0F7;
+
+/* Secondary */
+$secondary500: #470E19;
+$secondary400: #79182B;
+$secondary300: #AA223C;
+$secondary200: #D899A5;
+$secondary100: #E5BAC3;
+$secondary50: #F7E9EC;
+
+/* Neutral */
+$neutral500: #1F2937;
+$neutral400: #374151;
+$neutral300: #6B7280;
+$neutral200: #9CA3AF;
+$neutral100: #D1D5DB;
+$neutral50: #E8EAED;
+$neutral10: #F5F5F5;
+
+/* Generic */
+$black: #000;
+$white: #fff;
+$alert: #FDEDB5;
+
+/* States */
+$stateSuccess: #12B76A;
+$stateWarning: #F7C309;
+$stateError: #F04438;
+
+/* Labels */
+$laberlGreen50: #D1FADF;
+$labelGreen100: #054F31;
+$labelRed50: #FEE4E2;
+$labelRed100: #7A271A;
+$labelOrange50: #FFEAD5;
+$labelOrange100: #7E2410;
+$labelBlue50: #D1E9FF;
+$labelBlue100: #194185;
+$labelYellow50: #FEF0C7;
+$labelYellow100: #7A2E0E;
+$labelIndigo50: #E0EAFF;
+$labelIndigo100: #292BA3;
+$labelPurple50: #EBE9FE;
+$labelPurple100: #3E1C96;
+$labelRose50: #FFE4E8;
+$labelRose100: #89123E;
+$labelPink50: #FCE7F6;
+$labelPink100: #851651;
+$labelBlueDark50: #E6EDF7;
+$labelBlueDark100: #001F48;
+
+/* Special */
+$special50: #DD5143;
+$biblio: #AB263E;
+
+/* Gradient */
+$gradient: linear-gradient(133deg, #002B47 33.55%, #006DB3 81.08%);
+
+/* Background opacity */
+$blue20: rgba(68, 125, 165, 0.2);
+$coral20: rgba(216, 104, 81, 0.2);
+$lavender20: rgba(119, 116, 113, 0.2);
+$white20: rgba(255, 255, 255, 0.2);
+
+/* Shadow */
+$shadow-xsmall: 0px 1px 4px 0px rgba(0, 0, 0, 0.04);
+$shadow-small: 0px 2px 6px 0px rgba(0, 0, 0, 0.06);
+$shadow-medium: 0px 6px 15px -2px rgba(0, 0, 0, 0.08);
+$shadow-large: 0px 8px 24px -3px rgba(0, 0, 0, 0.10), 0px 8px 24px -3px rgba(0, 0, 0, 0.05);
+
+/* FONTS */
+$fontReg: "Inter Regular";
+$fontMed: "Inter Medium";
+$fontBold: "Inter Bold";
+$fontSemiBold: "Inter SemiBold";
+
+
+/* MEDIA QUERIES */
+$mobile: 390px;
+$mobileMax: 479px;
+
+$mobilemd: 480px;
+$mobileemdMax: 575px;
+
+$mobilexl: 576px;
+$mobilexlMax: 767px;
+
+$tablet: 768px;
+$tabletMax: 991px;
+
+$tabletmd: 992px;
+$tabletmdMax: 1023px;
+
+$tabletxl: 1024px;
+$tabletxlMax: 1199px;
+
+$desktopsm: 1200px;
+$desktopmd: 1279px;
+
+$desktop: 1280px;
+$desktopMax: 1439px;
+
+$desktopxl: 1440px;
+$desktopxlMax: 1919px;
+
+$fullHd: 1920px;
+
+/* Spacing */
+$spacing-5xl: 54px;
+$spacing-4xl: 48px;
+$spacing-3xl: 32px;
+$spacing-2xl: 24px;
+$spacing-xl: 16px;
+$spacing-m: 12px;

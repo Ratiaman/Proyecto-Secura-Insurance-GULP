@@ -1,0 +1,22 @@
+/** CSS LIBS **/ 
+
+/** HELPERS **/
+@use "helpers/variables";
+@use "helpers/icons-variables";
+@use "helpers/mixins";
+@use "helpers/custom";
+
+/** BASE **/
+@use "base/normalize";
+@use "base/fonts";
+@use "base/base";
+@use "base/base-clases";
+
+/** LAYOUT **/
+@use "layout/header";
+@use "layout/navigation";
+@use "layout/footer";
+
+/** FRAGMENTS **/
+
+/** COMPONENTS **/

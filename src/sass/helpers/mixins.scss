@@ -1,0 +1,6 @@
+/* Convert px to rem 
+    - example of usage: @include toRem(font-size, 20px);
+*/
+@mixin toRem($property, $value, $base: 16px) {
+    #{$property}: #{$value / $base}rem;
+}
