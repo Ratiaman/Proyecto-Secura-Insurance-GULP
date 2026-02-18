@@ -4,3 +4,10 @@
 @mixin toRem($property, $value, $base: 16px) {
     #{$property}: #{$value / $base}rem;
 }
+
+@mixin font-h1 {
+  font-family: $font-primary;
+  font-weight: bold;
+  font-size: 64px;
+  letter-spacing: 0;
+}

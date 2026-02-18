@@ -1,2 +1,21 @@
-.header__container 
-    
+.header__container.container
+  .header__logo
+    a(href="/")
+      img(src="images/iconos/secura-insurance_logo-1.svg" 
+      alt="Logo" class="header__logo-img")
+
+  nav.header__nav
+    ul.header__menu
+      li.header__item
+        a.header__link(href="#") Inicio
+      li.header__item
+        a.header__link(href="#") Próximas renovaciones
+      li.header__item.header__profile
+        a.header__profile-link(href="#")
+          i.icon-user.header__icon
+          span.header__profile-text Mi perfil
+          i.icon-arrow-dropdown.header__icon
+      li.header__item.header__language
+        a.header__language-link(href="#")
+          span.header__language-text Español
+          i.icon-arrow-dropdown.header__icon

@@ -1,19 +1,20 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?lcy0zb');
-  src:  url('fonts/icomoon.eot?lcy0zb#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?lcy0zb') format('truetype'),
-    url('fonts/icomoon.woff?lcy0zb') format('woff'),
-    url('fonts/icomoon.svg?lcy0zb#icomoon') format('svg');
+  src:  url('../images/iconos/icomoon.eot?sya08f');
+  src:  url('../images/iconos/icomoon.eot?sya08f#iefix') format('embedded-opentype'),
+        url('../images/iconos/icomoon.ttf?sya08f') format('truetype'),
+        url('../images/iconos/icomoon.woff?sya08f') format('woff'),
+        url('../images/iconos/icomoon.svg?sya08f#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
+
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
-  //speak: never;  COMENTO ESTO PORQUE ESTA OBSOLETO Y DA ERROR
+  //speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -25,6 +26,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-lock:before {
+  content: "\e900";
+  color: #4b98d9;
+}
+.icon-phone:before {
+  content: "\e905";
+  color: #4b98d9;
+}
+.icon-power-off:before {
+  content: "\e906";
+  color: #4b98d9;
+}
 .icon-arrow-dropdown:before {
   content: "\e901";
   color: #4b98d9;

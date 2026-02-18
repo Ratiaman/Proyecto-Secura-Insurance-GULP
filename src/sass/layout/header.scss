@@ -1,0 +1,73 @@
+@use "../helpers/variables";
+@use "../helpers/mixins";
+
+.header {
+  background-color: variables.$white; // fondo blanco
+  border-bottom: 2px solid variables.$primary200; // línea profesional
+  padding: variables.$spacing-2xl variables.$spacing-4xl;
+
+  &__container {
+    display: flex;
+    justify-content: space-between; // logo izquierda, nav derecha
+    align-items: center;
+  }
+
+  &__logo-img {
+    height: 64px;
+    display: block;
+  }
+
+  &__menu {
+    display: flex;
+    gap: variables.$spacing-xl; // espacio entre links
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link,
+  &__profile-link,
+  &__language-link {
+    display: flex;
+    align-items: center;
+    font-family: variables.$fontBold;
+    font-weight: bold;
+    @include mixins.toRem(font-size, 19px); // altura de letra profesional
+    color: variables.$black;
+    text-decoration: none;
+    gap: 0.5rem; // espacio entre icono y texto
+
+    &:hover {
+      color: variables.$primary500;
+    }
+  }
+
+  &__icon {
+    font-family: 'icomoon';
+    font-size: 1.2rem;
+    color: variables.$black;
+    line-height: 1;
+  }
+
+  &__profile,
+  &__language {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; // espacio entre icono y texto
+  }
+
+  &__profile-text,
+  &__language-text {
+    @include mixins.toRem(font-size, 19px);
+    font-family: variables.$fontBold;
+    font-weight: bold;
+    color: variables.$black;
+  }
+}
+
+
+
+
+
+
+
