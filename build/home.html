@@ -11,17 +11,38 @@
   </head>
   <body>
     <header class="header" id="header">
-      <div class="header__container container">
-        <div class="header__logo"><a href="/"><img class="header__logo-img" src="images/iconos/secura-insurance_logo-1.svg" alt="Logo"></a></div>
-        <nav class="header__nav">
-          <ul class="header__menu">
-            <li class="header__item"><a class="header__link" href="#">Inicio</a></li>
-            <li class="header__item"><a class="header__link" href="#">Próximas renovaciones</a></li>
-            <li class="header__item header__profile"><a class="header__profile-link" href="#"><i class="icon-user header__icon"></i><span class="header__profile-text">Mi perfil</span><i class="icon-arrow-dropdown header__icon"></i></a></li>
-            <li class="header__item header__language"><a class="header__language-link" href="#"><span class="header__language-text">Español</span><i class="icon-arrow-dropdown header__icon"></i></a></li>
-          </ul>
-        </nav>
-      </div>
+      <header class="header">
+        <div class="container">
+          <div class="row align-items-center">
+            <!-- 2/12-->
+            <div class="col-2">
+              <div class="header__logo"><a href="/"><img src="/images/secura-insurance_logo-1.svg" alt="Logo" style="height: 64px; display: block;"></a></div>
+            </div>
+            <!-- 6/12-->
+            <div class="col-6">
+              <nav class="header__nav">
+                <ul class="header__menu d-flex align-items-center list-unstyled mb-0" style="gap: 50px;">
+                  <li class="header__item"><a class="header__link" href="#" style="font-weight: bold; text-decoration: none; white-space: nowrap;">Inicio</a></li>
+                  <li class="header__item"><a class="header__link" href="#" style="font-weight: bold; text-decoration: none; white-space: nowrap;">Próximas renovaciones</a></li>
+                </ul>
+              </nav>
+            </div>
+            <!-- 4/12-->
+            <div class="col-4 d-flex justify-content-end align-items-center">
+              <div class="header__actions d-flex align-items-center" style="gap: 40px;">
+                <!-- Perfil-->
+                <div class="header__profile d-flex align-items-center" style="gap: 10px;"><i class="icon-user header__icon"></i><a class="header__profile-link" href="#" style="text-decoration: none; color: black;">Mi perfil</a>
+                  <button class="header__arrow-btn" type="button" style="border: none; background: none; padding: 0;"><i class="icon-arrow-dropdown header__icon"></i></button>
+                </div>
+                <!-- Idioma-->
+                <div class="header__language d-flex align-items-center" style="gap: 10px;"><i class="icon-globe header__icon"></i><a class="header__language-link" href="#" style="text-decoration: none; color: black;">Español</a>
+                  <button class="header__arrow-btn" type="button" style="border: none; background: none; padding: 0;"><i class="icon-arrow-dropdown header__icon"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
     </header>
     <main class="main-content" id="main-content">
       <div class="container"> 

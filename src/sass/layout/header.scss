@@ -1,69 +1,73 @@
 @use "../helpers/variables";
 @use "../helpers/mixins";
-
+@use "../base/fonts";
 .header {
-  background-color: variables.$white; // fondo blanco
-  border-bottom: 2px solid variables.$primary200; // línea profesional
-  padding: variables.$spacing-2xl variables.$spacing-4xl;
-
-  &__container {
-    display: flex;
-    justify-content: space-between; // logo izquierda, nav derecha
-    align-items: center;
-  }
-
-  &__logo-img {
-    height: 64px;
-    display: block;
-  }
+  background-color: #ffffff;
+  border-bottom: 2px solid #e9ecef;
+  padding: 20px 0;
+  width: 100%;
 
   &__menu {
     display: flex;
-    gap: variables.$spacing-xl; // espacio entre links
-    list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
+    list-style: none; 
+
+    .header__item {
+      list-style: none; 
+      
+      
+      & + .header__item {
+        margin-left: 10px;
+      }
+    }
   }
 
-  &__link,
+  &__link {
+    color: #405258;
+    font-size: 19px;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+    display: inline-block;
+    
+    &:hover {
+      color: #0056b3; // O tu variable primary500
+    }
+  }
+
   &__profile-link,
   &__language-link {
-    display: flex;
-    align-items: center;
-    font-family: variables.$fontBold;
-    font-weight: bold;
-    @include mixins.toRem(font-size, 19px); // altura de letra profesional
-    color: variables.$black;
+    color: #000000;
+    font-size: 19px;
+    font-weight: normal;
     text-decoration: none;
-    gap: 0.5rem; // espacio entre icono y texto
+    margin: 0 10px;
+    white-space: nowrap;
 
     &:hover {
-      color: variables.$primary500;
+        text-decoration: none;
+        color: #0056b3;
     }
   }
 
   &__icon {
-    font-family: 'icomoon';
-    font-size: 1.2rem;
-    color: variables.$black;
-    line-height: 1;
-  }
-
-  &__profile,
-  &__language {
+    font-size: 22px;
+    color: #0056b3;
     display: flex;
     align-items: center;
-    gap: 0.5rem; // espacio entre icono y texto
   }
 
-  &__profile-text,
-  &__language-text {
-    @include mixins.toRem(font-size, 19px);
-    font-family: variables.$fontBold;
-    font-weight: bold;
-    color: variables.$black;
+  &__arrow-btn {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 }
+
 
 
 
