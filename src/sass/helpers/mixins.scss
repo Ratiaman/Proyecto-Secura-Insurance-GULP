@@ -1,13 +1,64 @@
 /* Convert px to rem 
     - example of usage: @include toRem(font-size, 20px);
 */
+@use '../helpers/variables';
+
 @mixin toRem($property, $value, $base: 16px) {
     #{$property}: #{$value / $base}rem;
 }
 
-@mixin font-h1 {
-  font-family: $font-primary;
-  font-weight: bold;
+@mixin text-h1 {
+  font-family: $font-family-base;
+  font-weight: $weight-bold;
   font-size: 64px;
+  letter-spacing: 0;
+}
+
+@mixin text-h2 {
+  font-family: $font-family-base;
+  font-weight: $weight-bold;
+  font-size: 40px;
+  letter-spacing: 0;
+}
+
+@mixin text-h3 {
+  font-family: $font-family-base;
+  font-weight: $weight-semibold;
+  font-size: 24px;
+  letter-spacing: 0;
+}
+
+@mixin text-subtitle {
+  font-family: $font-family-base;
+  font-weight: $weight-regular;
+  font-size: 24px;
+  letter-spacing: 0;
+}
+
+@mixin text-body {
+  font-family: $font-family-base;
+  font-weight: $weight-regular;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+@mixin text-body-bold {
+  font-family: $font-family-base;
+  font-weight: $weight-bold;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+@mixin text-small {
+  font-family: $font-family-base;
+  font-weight: $weight-medium;
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+@mixin text-small-title {
+  font-family: $font-family-base;
+  font-weight: $weight-bold;
+  font-size: 10px;
   letter-spacing: 0;
 }

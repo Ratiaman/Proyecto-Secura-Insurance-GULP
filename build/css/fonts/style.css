@@ -1,5 +1,3 @@
-@use '../helpers/icons-variables';
-@use '../helpers/variables';
 @font-face {
   font-family: 'icomoon';
   src:  url('fonts/icomoon.eot?wg6xgh');
@@ -28,8 +26,8 @@
 }
 
 .icon-arrow-dropdown:before {
-  content: icons-variables.$icon-arrow-dropdown;
-  color: variables.$color-primary;
+  content: "\e900";
+  color: #4b98d9;
 }
 .icon-arrow-right:before {
   content: "\e901";
