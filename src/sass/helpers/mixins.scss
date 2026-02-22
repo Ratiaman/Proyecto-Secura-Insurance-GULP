@@ -3,9 +3,25 @@
 */
 @use '../helpers/variables';
 
+//PROBLEMAS CON LA VERSION DE ESTE MIXIN !!!!!!
 @mixin toRem($property, $value, $base: 16px) {
-    #{$property}: #{$value / $base}rem;
+    #{$property}: ($value / $base) * 1rem;
 }
+
+@mixin text-style($family, $size, $weight, $line-height, $letter-spacing) {
+  font-family: $family;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+
+
+
 
 @mixin text-h1 {
   font-family: $font-family-base;

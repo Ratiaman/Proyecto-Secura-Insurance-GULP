@@ -12,37 +12,29 @@
   <body>
     <header class="header" id="header">
       <header class="header">
-        <div class="container">
-          <div class="row align-items-center">
-            <!-- 2/12-->
-            <div class="col-2">
-              <div class="header__logo"><a href="/"><img src="/images/secura-insurance_logo-1.svg" alt="Logo" style="height: 64px; display: block;"></a></div>
-            </div>
-            <!-- 6/12-->
-            <div class="col-6">
-              <nav class="header__nav">
-                <ul class="header__menu d-flex align-items-center list-unstyled mb-0" style="gap: 50px;">
-                  <li class="header__item"><a class="header__link" href="#" style="font-weight: bold; text-decoration: none; white-space: nowrap;">Inicio</a></li>
-                  <li class="header__item"><a class="header__link" href="#" style="font-weight: bold; text-decoration: none; white-space: nowrap;">Próximas renovaciones</a></li>
-                </ul>
-              </nav>
-            </div>
-            <!-- 4/12-->
-            <div class="col-4 d-flex justify-content-end align-items-center">
-              <div class="header__actions d-flex align-items-center" style="gap: 40px;">
-                <!-- Perfil-->
-                <div class="header__profile d-flex align-items-center" style="gap: 10px;"><i class="icon-user header__icon"></i><a class="header__profile-link" href="#" style="text-decoration: none; color: black;">Mi perfil</a>
-                  <button class="header__arrow-btn" type="button" style="border: none; background: none; padding: 0;"><i class="icon-arrow-dropdown header__icon"></i></button>
-                </div>
-                <!-- Idioma-->
-                <div class="header__language d-flex align-items-center" style="gap: 10px;"><i class="icon-globe header__icon"></i><a class="header__language-link" href="#" style="text-decoration: none; color: black;">Español</a>
-                  <button class="header__arrow-btn" type="button" style="border: none; background: none; padding: 0;"><i class="icon-arrow-dropdown header__icon"></i></button>
-                </div>
-              </div>
-            </div>
+        <div class="header__container">
+          <div class="header__left"><a class="header__logo" href="/"><img src="/images/secura-insurance_logo-1.svg" alt="Logo"></a>
+            <nav class="header__nav"><a class="header__link" href="#">Inicio</a><a class="header__link" href="#">Próximas renovaciones</a></nav>
+          </div>
+          <div class="header__right">
+            <div class="header__group header__group--user"><i class="icon-user"></i><span class="header__text">Mi perfil</span><i class="icon-arrow-dropdown"></i></div>
+            <div class="header__group header__group--language"><i class="icon-globe"></i><span class="header__text">Español</span><i class="icon-arrow-dropdown"></i></div><i class="icon-burger_menu header__burger"></i>
           </div>
         </div>
       </header>
+      <div class="dropdown-user-preview">
+        <div class="dropdown-user">
+          <div class="dropdown-user__item"><span>Mi perfil</span><span>En este espacio puedes acceder, modificar, gestionar y consultar todo lo relacionado con tus servicios de energía. Fácil y rápido. </span><i class="icon-user"> </i><span>Mis datos personales</span></div>
+          <div class="dropdown-user__item"><i class="icon-lock"> </i><span>Mi contraseña</span></div>
+          <div class="dropdown-user__item"><i class="icon-phone"></i><span>Contacto</span></div>
+          <div class="dropdown-user__item"><i class="icon-power-off"></i><span>Cerrar sesion</span></div>
+        </div>
+      </div>
+      <div class="dropdown-preview">
+        <div class="header__dropdown">
+          <div class="header__dropdown-list"><span class="header__dropdown-item">Español</span><span class="header__dropdown-item">English</span><span class="header__dropdown-item">Catalán</span><span class="header__dropdown-item">Gallego</span><span class="header__dropdown-item">Euskera</span></div>
+        </div>
+      </div>
     </header>
     <main class="main-content" id="main-content">
       <div class="container"> 

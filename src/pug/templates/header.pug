@@ -1,34 +1,29 @@
 header.header
-  .container
-    .row.align-items-center
-      // 2/12
-      .col-2
-        .header__logo
-          a(href="/")
-            img(src="/images/secura-insurance_logo-1.svg", alt="Logo", style="height: 64px; display: block;")
+  .header__container
+    .header__left
+      a.header__logo(href="/")
+        img(src="/images/secura-insurance_logo-1.svg", alt="Logo")
       
-      // 6/12
-      .col-6
-        nav.header__nav
-          ul.header__menu.d-flex.align-items-center.list-unstyled.mb-0(style="gap: 50px;")
-            li.header__item
-              a.header__link(href="#", style="font-weight: bold; text-decoration: none; white-space: nowrap;") Inicio
-            li.header__item
-              a.header__link(href="#", style="font-weight: bold; text-decoration: none; white-space: nowrap;") Próximas renovaciones
+      nav.header__nav
+        a.header__link(href="#") Inicio
+        a.header__link(href="#") Próximas renovaciones
 
-      // 4/12
-      .col-4.d-flex.justify-content-end.align-items-center
-        .header__actions.d-flex.align-items-center(style="gap: 40px;")
-          // Perfil
-          .header__profile.d-flex.align-items-center(style="gap: 10px;")
-            i.icon-user.header__icon
-            a.header__profile-link(href="#", style="text-decoration: none; color: black;") Mi perfil
-            button.header__arrow-btn(type="button", style="border: none; background: none; padding: 0;")
-              i.icon-arrow-dropdown.header__icon
+    .header__right
+      .header__group.header__group--user
+        i.icon-user
+        span.header__text Mi perfil
+        i.icon-arrow-dropdown
+      
+      .header__group.header__group--language
+        i.icon-globe
+        span.header__text Español
+        i.icon-arrow-dropdown
+      
+      i.icon-burger_menu.header__burger
 
-          // Idioma
-          .header__language.d-flex.align-items-center(style="gap: 10px;")
-            i.icon-globe.header__icon
-            a.header__language-link(href="#", style="text-decoration: none; color: black;") Español
-            button.header__arrow-btn(type="button", style="border: none; background: none; padding: 0;")
-              i.icon-arrow-dropdown.header__icon
+//- CAJA DE PREVISUALIZACIÓN
+
+.dropdown-user-preview
+  include ../templates/dropdown-perfil.pug
+.dropdown-preview
+  include ../templates/dropdown-idiomas.pug
