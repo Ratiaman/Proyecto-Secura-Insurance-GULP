@@ -2,9 +2,9 @@
 @use "../helpers/mixins" as *;
 @use "../base/fonts";
 
-// ==========================================
-// 1. ESTILOS DEL HEADER (Desktop)
-// ==========================================
+
+// HEADER (Desktop)
+
 .header {
   background-color: #ffffff;
   border-bottom: 1px solid #e9ecef;
@@ -60,9 +60,9 @@
   }
 }
 
-// ==========================================
-// 2. CAJA IDIOMAS (Previsualización)
-// ==========================================
+
+//CAJA IDIOMAS (Previsualización)
+
 .dropdown-preview {
   position: absolute;
   top: 96px; 
@@ -93,9 +93,9 @@
   }
 }
 
-// ==========================================
-// 3. DROPDOWN PERFIL (Ajuste de alineación interna)
-// ==========================================
+
+//  CAJA PERFIL
+
 .dropdown-user-preview {
   position: absolute;
   top: 96px;
@@ -127,12 +127,12 @@
       // TRATAMIENTO PARA EL PRIMER ITEM
       &:first-child {
         cursor: default;
-        display: block; // Cambiamos a block para controlar los hijos manualmente
+        display: block; 
         border-bottom: 1px solid #e9ecef;
         margin-bottom: 8px;
         padding-bottom: 16px;
 
-        // Título "Mi perfil"
+        // "Mi perfil"
         span:first-of-type { 
           display: block;
           font-size: 18px; 
@@ -141,7 +141,7 @@
           margin-bottom: 8px; 
         }
 
-        // Texto descriptivo largo
+        //Texto
         span:nth-of-type(2) { 
           display: block;
           font-size: 13px; 
@@ -151,7 +151,7 @@
           margin-bottom: 16px; 
         }
 
-        // EL TRUCO: Forzamos que el icono y el último span se alineen
+        
         i {
           display: inline-block;
           vertical-align: middle;
@@ -174,9 +174,9 @@
   }
 }
 
-// ==========================================
-// 4. RESPONSIVE MOBILE (Restaurado)
-// ==========================================
+
+// 4. RESPONSIVE MOBILE
+
 @media (max-width: 1024px) {
   .header {
     &__container {
@@ -184,7 +184,7 @@
       height: 80px; 
       padding: 8px 16px; 
       margin: 0 auto;
-      max-width: 100%; // Asegura que no rompa en pantallas menores de 375
+      max-width: 100%; 
     }
 
     &__left {
@@ -208,7 +208,7 @@
     }
   }
 
-  // Ocultamos las previsualizaciones para que el móvil esté limpio
+  // Ocultar las previsualizaciones
   .dropdown-preview, .dropdown-user-preview {
     display: none !important;
   }
