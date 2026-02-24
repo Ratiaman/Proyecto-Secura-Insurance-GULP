@@ -1,80 +1,31 @@
 /* Convert px to rem 
     - example of usage: @include toRem(font-size, 20px);
 */
-@use '../helpers/variables';
+@use '../helpers/variables' as *;
 
 //PROBLEMAS CON LA VERSION DE ESTE MIXIN !!!!!!
 @mixin toRem($property, $value, $base: 16px) {
     #{$property}: ($value / $base) * 1rem;
 }
 
-@mixin text-style($family, $size, $weight, $line-height, $letter-spacing) {
-  font-family: $family;
-  font-size: $size;
-  font-weight: $weight;
+
+@function rem($pixel) {
+  // Dividir por 1px elimina la unidad "px"
+  @return ($pixel / 1px / 16) * 1rem;
+}
+
+
+@mixin text-style($font-size, $font-weight: $weight-regular, $line-height: normal, $letter-spacing: 0, $font-family: $font-family-roboto) {
+  font-family: $font-family;
+  font-size: rem($font-size);
+  font-weight: $font-weight;
   line-height: $line-height;
   letter-spacing: $letter-spacing;
+}
+
+@mixin flex-center($justify: flex-start, $gap: 0) {
   display: flex;
-  align-items: center;
-  justify-content: center; 
-}
-
-
-
-
-
-@mixin text-h1 {
-  font-family: $font-family-base;
-  font-weight: $weight-bold;
-  font-size: 64px;
-  letter-spacing: 0;
-}
-
-@mixin text-h2 {
-  font-family: $font-family-base;
-  font-weight: $weight-bold;
-  font-size: 40px;
-  letter-spacing: 0;
-}
-
-@mixin text-h3 {
-  font-family: $font-family-base;
-  font-weight: $weight-semibold;
-  font-size: 24px;
-  letter-spacing: 0;
-}
-
-@mixin text-subtitle {
-  font-family: $font-family-base;
-  font-weight: $weight-regular;
-  font-size: 24px;
-  letter-spacing: 0;
-}
-
-@mixin text-body {
-  font-family: $font-family-base;
-  font-weight: $weight-regular;
-  font-size: 16px;
-  letter-spacing: 0;
-}
-
-@mixin text-body-bold {
-  font-family: $font-family-base;
-  font-weight: $weight-bold;
-  font-size: 16px;
-  letter-spacing: 0;
-}
-
-@mixin text-small {
-  font-family: $font-family-base;
-  font-weight: $weight-medium;
-  font-size: 10px;
-  letter-spacing: 0;
-}
-
-@mixin text-small-title {
-  font-family: $font-family-base;
-  font-weight: $weight-bold;
-  font-size: 10px;
-  letter-spacing: 0;
+  align-items: center; 
+  justify-content: $justify;
+  gap: rem($gap);
 }

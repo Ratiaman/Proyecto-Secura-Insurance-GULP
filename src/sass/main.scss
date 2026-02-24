@@ -1,9 +1,9 @@
 /** CSS LIBS **/ 
 
 /** HELPERS **/
-@use "helpers/variables";
+@use "helpers/mixins" as *;    
+@use "helpers/variables" as *;
 @use "helpers/icons-variables";
-@use "helpers/mixins";
 @use "helpers/custom";
 
 /** BASE **/

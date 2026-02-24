@@ -128,12 +128,27 @@ $color-primary: #4b98d9;
 $color-secondary: #a7b8bf;
 $color-success: #45944d;
 $color-dark: #405258;
+$color-icon: #0056b3;
+
+$header-height: 96px;
+$header-max-width: 1440px;
+$header-bg: $white;
+$header-border: #e9ecef;
+
+$hover-bg: #f8f9fa;
+$text-link: #405258;  
+$text-muted: #6c757d;    
+
 
 //Variables de Tipografía
-$font-family-base: 'Roboto', sans-serif;
+$font-family-roboto: 'Roboto', sans-serif;
+
 
 // Weights
 $weight-bold: 700;
 $weight-semibold: 600;
 $weight-medium: 500;
 $weight-regular: 400;
+
+
+$dropdown-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
