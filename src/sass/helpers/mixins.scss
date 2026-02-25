@@ -29,3 +29,9 @@
   justify-content: $justify;
   gap: rem($gap);
 }
+
+@mixin position-dropdown {
+  position: absolute;
+  top: rem($header-height);
+  z-index: 9999;
+}

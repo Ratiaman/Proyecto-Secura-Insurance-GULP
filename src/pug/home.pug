@@ -2,15 +2,10 @@ extends layouts/layout-home
 
 block vars
     - var pageTitle = "Homepage";
+    - var pageClass = "home-page";
 
-block header
-    title Homepage
-    
 block content
-    .container 
-        .row
-            .col-3 
-                h1 Homepage
-            .col-9 
-                p Este proyecto utiliza Gulp con Bootstrap 5.
-                p Se incluyen únicamente los estilos para el grid de Bootstrap. El resto de estilos se han eliminado para reducir el peso del proyecto.
+    //- Esta sección será la que lleve el fondo
+    section.hero-home
+        .hero-home__wrapper
+            //- Aquí irán tus futuros divs con texto El resto de estilos se han eliminado para reducir el peso del proyecto.

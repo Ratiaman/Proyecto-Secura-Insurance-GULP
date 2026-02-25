@@ -2,51 +2,18 @@
 @use "../helpers/mixins" as *;
 @use "../base/fonts";
 
-// HEADER
 
+
+
+// 2. HEADER 
 .header {
   background-color: $header-bg;
   border-bottom: rem(1px) solid $header-border;
   width: 100%;
   display: flex;
   justify-content: center;
-  font-family: $font-family-roboto; 
-
-  @media (max-width: $mobilexlMax) {
-    .header__container {
-      height: rem(80px); 
-      padding: rem(8px) rem($spacing-xl); 
-      max-width: 100%; 
-    }
-
-    .header__left {
-      .header__logo img {
-        width: rem(87px); 
-        height: rem(46px); 
-        margin-top: rem(6px); 
-        margin-left: rem(-4px);
-      }
-      .header__nav { display: none; }
-    }
-
-    .header__right {
-      width: rem(80px); 
-      height: rem(32px); 
-      gap: rem($spacing-2xl); 
-      justify-content: flex-end;
-
-      .header__group--language, 
-      .header__group--user .header__text, 
-      .header__group--user i.icon-arrow-dropdown {
-        display: none;
-      }
-    }
-
-    .header__burger { display: block; }
-  }
+  font-family: $font-family-roboto;
 }
-
-/* --- ESTILOS BASE (Desktop y Tablet) --- */
 
 .header__container {
   display: flex;
@@ -56,30 +23,12 @@
   max-width: rem($header-max-width);
   height: rem($header-height);
   padding: 0 rem(88px);
-  box-sizing: border-box;
 }
 
-.header__left {
-  display: flex;
-  align-items: center;
-  gap: rem($spacing-3xl);
-
-  .header__logo img {
-    height: rem(64px);
-    width: auto;
-    display: block;
-  }
-
-  .header__nav {
-    display: flex;
-    gap: rem($spacing-3xl);
-  }
-}
-
-.header__right {
-  display: flex;
-  align-items: center;
-  gap: rem($spacing-2xl);
+.header__left, .header__nav { 
+  display: flex; 
+  align-items: center; 
+  gap: rem($spacing-3xl); 
 }
 
 .header__link {
@@ -89,155 +38,194 @@
   font-weight: $weight-bold;
 }
 
+.header__logo img { 
+  height: rem(64px); 
+  width: auto; 
+  display: block; 
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: rem($spacing-3xl);
+}
+
 .header__group {
   display: flex;
   align-items: center;
   gap: rem(8px);
-
-  i {
-    font-size: rem(20px);
-    color: $color-icon;
-  }
-
-  .header__text {
-    font-size: rem($spacing-xl);
-    color: $black;
-  }
+  cursor: pointer;
+  position: relative;
 }
 
-.header__burger {
-  display: none;
-  font-size: rem(24px);
-  color: $color-icon;
+.header__group i { font-size: rem(20px); color: $color-icon; }
+.header__group .header__text { font-size: rem($spacing-xl); color: $black; }
+
+.header__burger { 
+  display: none; 
+  font-size: rem(24px); 
+  color: $color-icon; 
+  cursor: pointer;
 }
 
-// DROPDOWNS
-
-.dropdown-preview {
+// 3. NAV-USER
+.nav-user {
   position: absolute;
-  top: rem($header-height); 
-  right: rem(320px); 
-  z-index: 9999;
-  width: rem(130px);
-  background-color: $white;
-  border: rem(1px) solid $header-border;
-  border-radius: rem(12px);
-  box-shadow: $dropdown-shadow;
-  padding: rem(10px) 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-
-  .header__dropdown-item {
-    display: block;
-    width: 100%;
-    padding: rem(10px) rem($spacing-xl);
-    font-size: rem(14px);
-    color: $text-link;
-    text-align: left;
-    white-space: nowrap;
-    cursor: pointer;
-    &:hover { background-color: $hover-bg; color: $color-icon; }
-  }
-}
-
-.dropdown-user-preview {
-  position: absolute;
-  top: rem($header-height);
-  right: rem(470px);
+  top: 100%;
+  right: 0;
   z-index: 9999;
   width: rem(375px);
   background-color: $white;
-  border: rem(1px) solid $header-border;
-  border-radius: rem(12px);
-  box-shadow: $dropdown-shadow;
-  padding: rem($spacing-xl) 0;
-  box-sizing: border-box;
-
-  .dropdown-user {
-    display: flex;
-    flex-direction: column;
-  }
+  margin-top: rem(12px);
+  box-shadow: $shadow-custom-menu;
+  border: 1px solid #e0e0e0;
+  border-radius: rem(12px); 
+  overflow: hidden;
+  padding: 0;
 }
 
-.dropdown-user__item {
-  display: flex;
+.nav-user .nav-user__info {
+  display: block;
+  padding: rem(24px) rem(24px) rem(22px);
+  border-bottom: 1px solid #ddd;
+  cursor: default;
+}
+
+.nav-user .nav-user__title {
+  display: block;
+  margin-bottom: rem(16px);
+  font-size: rem(16px);
+  font-weight: 700;
+  color: $black;
+}
+
+.nav-user .nav-user__description {
+  display: block;
+  font-size: rem(14px);
+  color: $text-muted;
+  line-height: 1.4;
+}
+
+.nav-user .nav-user__item {
+  display: grid;
+  grid-template-columns: rem(24px) 1fr; 
   align-items: center;
   gap: rem($spacing-m);
-  padding: rem(12px) rem(20px);
+  height: 61px;
+  padding: 0 rem(20px);
+  cursor: pointer;
+  position: relative;
+  border-bottom: 1px solid #ddd;
+  background-color: $white;
+  text-decoration: none;
+}
+
+// BARRA AZUL PRIMARY EN HOVER
+.nav-user .nav-user__item::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: $primary300;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.nav-user .nav-user__item:hover {
+  background-color: $hover-bg;
+}
+
+.nav-user .nav-user__item:hover::before {
+  opacity: 1;
+}
+
+.nav-user .nav-user__item i { 
+  font-size: rem(20px); 
+  color: $color-icon; 
+  text-align: center; 
+}
+
+.nav-user .nav-user__item span { 
+  font-size: rem(14px); 
+  color: $text-link; 
+  font-weight: $weight-medium; 
+}
+
+.nav-user .nav-user__item:last-child {
+  border-bottom: none;
+}
+
+// 4. NAV IDIOMAS
+.nav-lang {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 9999;
+  width: rem(140px);
+  padding: rem(10px) 0;
+  background-color: $white;
+  border: 1px solid #ccc;
+  border-radius: rem(12px);
+  box-shadow: $shadow-large;
+  margin-top: rem(12px);
+  cursor: default;
+  overflow: hidden;
+}
+
+.nav-lang .nav-lang__item {
+  padding: rem(10px) rem($spacing-xl);
+  font-size: rem(14px);
+  color: $text-link;
+  display: block;
+  border-bottom: 1px solid #ddd;
   cursor: pointer;
   text-decoration: none;
-
-  i {
-    font-size: rem(20px);
-    color: $color-icon;
-    width: rem(24px);
-    text-align: center;
-  }
-
-  span {
-    font-size: rem(14px);
-    color: $text-link;
-    font-weight: $weight-medium;
-  }
-
-  &:hover {
-    background-color: $hover-bg;
-    span { color: $color-icon; }
-  }
 }
 
-/* PRIMER ITEM (Perfil especial) */
-.dropdown-user__item:first-child {
-  cursor: default;
-  display: block; 
-  border-bottom: rem(1px) solid $header-border;
-  margin-bottom: rem(8px);
-  padding: 0; 
-
-  span:first-of-type { 
-    display: block;
-    padding: rem(16px) rem(20px) 0 rem(20px);
-    font-size: rem(18px); 
-    font-weight: $weight-bold; 
-    color: $black; 
-    margin-bottom: rem(8px); 
-  }
-
-  span:nth-of-type(2) { 
-    display: block;
-    padding: 0 rem(20px) rem(16px) rem(20px);
-    font-size: rem(13px); 
-    font-weight: $weight-regular; 
-    line-height: 1.4; 
-    color: $text-muted; 
-    border-bottom: rem(1px) solid $header-border;
-  }
-
-  i, span:last-child {
-    display: inline-block;
-    vertical-align: middle;
-    padding: rem(12px) 0;
-    cursor: pointer;
-  }
-
-  i {
-    margin-left: rem(20px);
-    margin-right: rem($spacing-m);
-  }
-
-  span:last-child {
-    font-size: rem(14px);
-    color: $text-link;
-    font-weight: $weight-medium;
-  }
-
-  &:hover {
-    background-color: transparent; 
-    span:last-child { color: $color-icon; }
-  }
+.nav-lang .nav-lang__item:last-child { 
+  border-bottom: none; 
 }
 
+.nav-lang .nav-lang__item:hover { 
+  background-color: $hover-bg; 
+  color: $color-icon; 
+}
+
+// 5. MEDIA QUERIES
 @media (max-width: $mobilexlMax) {
-  .dropdown-preview, .dropdown-user-preview { display: none; }
+  .header__container {
+    height: rem(80px);
+    padding: 0 rem($spacing-xl);
+  }
+
+  .header__left .header__nav { 
+    display: none; 
+  }
+
+  .header__group--language { 
+    display: none; 
+  }
+
+  .header__group--user .header__text, 
+  .header__group--user .icon-arrow-dropdown { 
+    display: none; 
+  }
+
+  .header__burger { 
+    display: block; 
+  }
+
+  .nav-user {
+    width: 90vw;
+    max-width: rem(375px);
+    position: fixed;
+    top: rem(80px);
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    margin-top: rem(10px);
+    border-radius: rem(12px);
+  }
 }

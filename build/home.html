@@ -7,45 +7,31 @@
     <link href="css/lib/bootstrap-grid.min.css" rel="stylesheet" media="all">
     <link href="css/main.min.css" rel="stylesheet" media="all">
     <link rel="icon" href="images/favicon.png" sizes="32x32" type="image/png">
-    <title>Homepage</title>
   </head>
   <body>
     <header class="header" id="header">
       <header class="header">
         <div class="header__container">
-          <div class="header__left"><a class="header__logo" href="/"><img src="/images/secura-insurance_logo-1.svg" alt="Logo"></a>
+          <div class="header__left"><a class="header__logo" href="/"><img src="/images/secura-insurance_logo.svg" alt="Logo"></a>
             <nav class="header__nav"><a class="header__link" href="#">Inicio</a><a class="header__link" href="#">Próximas renovaciones</a></nav>
           </div>
           <div class="header__right">
-            <div class="header__group header__group--user"><i class="icon-user"></i><span class="header__text">Mi perfil</span><i class="icon-arrow-dropdown"></i></div>
-            <div class="header__group header__group--language"><i class="icon-globe"></i><span class="header__text">Español</span><i class="icon-arrow-dropdown"></i></div><i class="icon-burger_menu header__burger"></i>
+            <div class="header__group header__group--user"><i class="icon-user"></i><span class="header__text">Mi perfil</span><i class="icon-arrow-dropdown"></i>
+              <div class="nav-user">
+                <div class="nav-user__info"><span class="nav-user__title">Mi perfil</span><span class="nav-user__description">En este espacio puedes acceder, modificar, gestionar y consultar todo lo relacionado con tus servicios de energía. Fácil y rápido. </span></div><a class="nav-user__item" href="#"><i class="icon-user"> </i><span>Mis datos personales</span></a><a class="nav-user__item" href="#"><i class="icon-lock"> </i><span>Mi contraseña</span></a><a class="nav-user__item" href="#"><i class="icon-phone"></i><span>Contacto</span></a><a class="nav-user__item" href="#"><i class="icon-power-off"></i><span>Cerrar sesión</span></a>
+              </div>
+            </div>
+            <div class="header__group header__group--language"><i class="icon-globe"></i><span class="header__text">Español</span><i class="icon-arrow-dropdown"></i>
+              <div class="nav-lang"><span class="nav-lang__item">Español</span><span class="nav-lang__item">English</span><span class="nav-lang__item">Catalán</span><span class="nav-lang__item">Gallego</span><span class="nav-lang__item">Euskera</span></div>
+            </div><i class="icon-burger_menu header__burger"></i>
           </div>
         </div>
       </header>
-      <div class="dropdown-user-preview">
-        <div class="dropdown-user">
-          <div class="dropdown-user__item"><span>Mi perfil</span><span>En este espacio puedes acceder, modificar, gestionar y consultar todo lo relacionado con tus servicios de energía. Fácil y rápido. </span><i class="icon-user"> </i><span>Mis datos personales</span></div>
-          <div class="dropdown-user__item"><i class="icon-lock"> </i><span>Mi contraseña</span></div>
-          <div class="dropdown-user__item"><i class="icon-phone"></i><span>Contacto</span></div>
-          <div class="dropdown-user__item"><i class="icon-power-off"></i><span>Cerrar sesion</span></div>
-        </div>
-      </div>
-      <div class="dropdown-preview">
-        <div class="header__dropdown-idiomas"><span class="header__dropdown-item">Español</span><span class="header__dropdown-item">English</span><span class="header__dropdown-item">Catalán</span><span class="header__dropdown-item">Gallego</span><span class="header__dropdown-item">Euskera</span></div>
-      </div>
     </header>
-    <main class="main-content" id="main-content">
-      <div class="container"> 
-        <div class="row">
-          <div class="col-3"> 
-            <h1>Homepage</h1>
-          </div>
-          <div class="col-9"> 
-            <p>Este proyecto utiliza Gulp con Bootstrap 5.</p>
-            <p>Se incluyen únicamente los estilos para el grid de Bootstrap. El resto de estilos se han eliminado para reducir el peso del proyecto.</p>
-          </div>
-        </div>
-      </div>
+    <main class="main-content home-page" id="main-content">
+      <section class="hero-home">
+        <div class="hero-home__wrapper"></div>
+      </section>
     </main>
     <footer class="footer" id="footer">
       <div class="footer__container"></div>

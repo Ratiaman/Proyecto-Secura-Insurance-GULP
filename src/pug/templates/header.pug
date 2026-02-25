@@ -2,28 +2,27 @@ header.header
   .header__container
     .header__left
       a.header__logo(href="/")
-        img(src="/images/secura-insurance_logo-1.svg", alt="Logo")
+        img(src="/images/secura-insurance_logo.svg", alt="Logo")
       
       nav.header__nav
         a.header__link(href="#") Inicio
         a.header__link(href="#") Próximas renovaciones
 
     .header__right
+      
       .header__group.header__group--user
         i.icon-user
         span.header__text Mi perfil
         i.icon-arrow-dropdown
+       
+        include ../templates/dropdown-perfil.pug
       
+     
       .header__group.header__group--language
         i.icon-globe
         span.header__text Español
         i.icon-arrow-dropdown
+       
+        include ../templates/dropdown-idiomas.pug
       
       i.icon-burger_menu.header__burger
-
-//- PREVISUALIZACION DE LOS DROPDOWNS
-
-.dropdown-user-preview
-  include ../templates/dropdown-perfil.pug
-.dropdown-preview
-  include ../templates/dropdown-idiomas.pug

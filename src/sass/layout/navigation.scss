@@ -1,0 +1,24 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *; 
+
+.hero-home {
+  width: 100%;
+  min-height: 80vh; 
+  
+  background-image: url('../images/background.svg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-home__wrapper {
+  width: 100%;
+  
+  max-width: rem($header-max-width); 
+  padding: 0 rem(88px); 
+}

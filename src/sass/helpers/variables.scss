@@ -142,7 +142,8 @@ $text-muted: #6c757d;
 
 //Variables de Tipografía
 $font-family-roboto: 'Roboto', sans-serif;
-
+$letter-spacing: 0;
+$line-height: normal;
 
 // Weights
 $weight-bold: 700;
@@ -151,4 +152,8 @@ $weight-medium: 500;
 $weight-regular: 400;
 
 
-$dropdown-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+$nav-width-lang: 130px;
+$nav-width-user: 375px;
+
+$border-separator: 1px solid $neutral50;
+$shadow-custom-menu: -6px 8px 20px 0px rgba(0, 0, 0, 0.15);
