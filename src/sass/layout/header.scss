@@ -5,7 +5,7 @@
 
 
 
-// 2. HEADER 
+// 1. HEADER 
 .header {
   background-color: $header-bg;
   border-bottom: rem(1px) solid $header-border;
@@ -50,6 +50,7 @@
   gap: rem($spacing-3xl);
 }
 
+//iconos
 .header__group {
   display: flex;
   align-items: center;
@@ -58,8 +59,12 @@
   position: relative;
 }
 
-.header__group i { font-size: rem(20px); color: $color-icon; }
+.header__group i { font-size: rem(24px); color: $color-icon; }
 .header__group .header__text { font-size: rem($spacing-xl); color: $black; }
+
+.header__group .icon-arrow-dropdown { 
+  font-size: rem(16px); 
+}
 
 .header__burger { 
   display: none; 
@@ -68,7 +73,7 @@
   cursor: pointer;
 }
 
-// 3. NAV-USER
+// 2. MENÚ USUARIO
 .nav-user {
   position: absolute;
   top: 100%;
@@ -115,12 +120,11 @@
   padding: 0 rem(20px);
   cursor: pointer;
   position: relative;
-  border-bottom: 1px solid #ddd;
   background-color: $white;
   text-decoration: none;
 }
 
-// BARRA AZUL PRIMARY EN HOVER
+// BARRA AZUL EN HOVER
 .nav-user .nav-user__item::before {
   content: '';
   position: absolute;
@@ -157,7 +161,7 @@
   border-bottom: none;
 }
 
-// 4. NAV IDIOMAS
+// 3. MENÚ IDIOMAS
 .nav-lang {
   position: absolute;
   top: 100%;
@@ -179,7 +183,6 @@
   font-size: rem(14px);
   color: $text-link;
   display: block;
-  border-bottom: 1px solid #ddd;
   cursor: pointer;
   text-decoration: none;
 }
@@ -190,10 +193,11 @@
 
 .nav-lang .nav-lang__item:hover { 
   background-color: $hover-bg; 
-  color: $color-icon; 
+  font-weight: $weight-bold;
+  color: $text-link;         
 }
 
-// 5. MEDIA QUERIES
+// 4. MEDIA QUERIES
 @media (max-width: $mobilexlMax) {
   .header__container {
     height: rem(80px);
