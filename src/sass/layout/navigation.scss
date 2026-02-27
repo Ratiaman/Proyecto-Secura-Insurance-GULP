@@ -91,3 +91,151 @@
     text-align: center;
   }
 }
+
+//TABLA RENOVACIONES
+
+section.renovaciones {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: rem(40px) 0;
+  background-color: transparent;
+}
+
+div.renovaciones__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: rem(1392px);
+  gap: rem(24px);
+  padding: 0 rem(16px);
+}
+
+h3.renovaciones__title {
+  font-family: $font-family-roboto;
+  font-size: rem(24px);
+  font-weight: 600;
+  line-height: 1;
+  color: $black;
+  margin: 0;
+}
+
+div.renovaciones__container {
+  width: 100%;
+}
+
+// TABLA
+table.tabla-renovaciones {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: $font-family-roboto;
+}
+
+thead.tabla-renovaciones__head tr {
+  border-bottom: rem(1px) solid #D1D5DB;
+}
+
+thead.tabla-renovaciones__head th {
+  height: rem(34px);
+  padding: rem(5px) rem(16px);
+  text-align: left;
+  font-size: rem(14px);
+  font-weight: 600;
+  color: #6B7280;
+}
+
+tbody.tabla-renovaciones__body tr.tabla-renovaciones__row {
+  border-bottom: rem(1px) solid #F3F4F6;
+}
+
+tbody.tabla-renovaciones__body td {
+  padding: rem(16px);
+  font-size: rem(15px);
+  color: #111827;
+}
+
+// RESPONSIVE CON GRID
+@media (max-width: $mobilexlMax) {
+  thead.tabla-renovaciones__head {
+    display: none;
+  }
+
+  tbody.tabla-renovaciones__body tr.tabla-renovaciones__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: rem(24px);
+    border: rem(1px) solid #E5E7EB;
+    border-radius: rem(8px);
+    padding: rem(16px);
+    background-color: $white;
+  }
+
+  tbody.tabla-renovaciones__body td {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    align-items: center;
+    padding: rem(10px) 0;
+    border-bottom: rem(1px) solid #F3F4F6;
+  }
+
+  tbody.tabla-renovaciones__body td:last-child {
+    border-bottom: none;
+  }
+
+  tbody.tabla-renovaciones__body td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: rem(12px);
+    color: #6B7280;
+    text-align: left;
+    text-transform: uppercase;
+  }
+}
+
+// BADGES Y TUS ICONOS
+span.badge-estado {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(8px);
+  padding: rem(4px) rem(12px);
+  border-radius: rem(20px);
+  font-size: rem(12px);
+  font-weight: 500;
+}
+
+// Selectores específicos para tus clases de iconos
+i.icon-check, 
+i.icon-clock {
+  font-size: rem(16px);
+  display: inline-block;
+  line-height: 1;
+}
+
+span.badge-estado--pendiente {
+  background-color: #FEF3C7;
+  color: #92400E;
+}
+
+span.badge-estado--pagada {
+  background-color: #DEF7EC;
+  color: #03543F;
+}
+
+// Forzamos que el texto y el icono hereden el color del badge padre
+span.badge-estado--pendiente i.icon-clock {
+  color: #92400E;
+}
+
+span.badge-estado--pagada i.icon-check {
+  color: #03543F;
+}
+
+span.badge-estado__text {
+  white-space: nowrap;
+}
+
+@media (max-width: $mobilexlMax) {
+  span.badge-estado {
+    justify-self: end; // Alinea el badge a la derecha en el grid de móvil
+  }
+}

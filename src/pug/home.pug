@@ -5,9 +5,49 @@ block vars
     - var pageClass = "home-page";
 
 block content
-    //- Esta sección será la que lleve el fondo
+    //- Sección Hero
     section.hero-home
-        hero-home__wrapper
-            hero-home__content
+        .hero-home__wrapper
+            .hero-home__content
                 h1.hero-home__title Bienvenido a tu área personal
                 p.hero-home__subtitle Gracias a ti más personas pueden disfrutar de una vida más segura
+
+    //- Sección Renovaciones
+    section.renovaciones
+        .renovaciones__wrapper
+            h3.renovaciones__title Próximas renovaciones
+
+            -
+                const itemsRenovaciones = [
+                    { poliza: '75846843', riesgo: 'Hyundai Ioniq', contrato: '01/12/2022', vencimiento: '01/12/2023', importe: '30.203,76€', estado: 'Pendiente' },
+                    { poliza: '75846843', riesgo: 'Hyundai Ioniq', contrato: '01/12/2022', vencimiento: '01/12/2023', importe: '30.203,76€', estado: 'Pagada' },
+                    { poliza: '75846843', riesgo: 'Hyundai Ioniq', contrato: '01/12/2022', vencimiento: '01/12/2023', importe: '30.203,76€', estado: 'Pagada' }
+                ]
+
+            .renovaciones__container
+                table.tabla-renovaciones
+                    thead.tabla-renovaciones__head
+                        tr.tabla-renovaciones__head-row
+                            th.tabla-renovaciones__head-cell No. de póliza
+                            th.tabla-renovaciones__head-cell Nombre del riesgo
+                            th.tabla-renovaciones__head-cell Fecha de contrato
+                            th.tabla-renovaciones__head-cell Fecha de vencimiento
+                            th.tabla-renovaciones__head-cell Importe
+                            th.tabla-renovaciones__head-cell Estado de la póliza
+                    tbody.tabla-renovaciones__body
+                        each item in itemsRenovaciones
+                            tr.tabla-renovaciones__row
+                                td.tabla-renovaciones__cell(data-label="No. de póliza")= item.poliza
+                                td.tabla-renovaciones__cell(data-label="Nombre del riesgo")= item.riesgo
+                                td.tabla-renovaciones__cell(data-label="Fecha de contrato")= item.contrato
+                                td.tabla-renovaciones__cell(data-label="Fecha de vencimiento")= item.vencimiento
+                                td.tabla-renovaciones__cell(data-label="Importe")= item.importe
+                                td.tabla-renovaciones__cell(data-label="Estado de la póliza")
+                                    if item.estado == 'Pagada'
+                                        span.badge-estado.badge-estado--pagada
+                                            i.icon-check
+                                            |  #{item.estado}
+                                    else
+                                        span.badge-estado.badge-estado--pendiente
+                                            i.icon-clock
+                                            |  #{item.estado}
