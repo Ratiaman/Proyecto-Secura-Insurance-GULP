@@ -2,7 +2,7 @@
 @use "../helpers/mixins" as *;
 @use "../base/fonts";
 
-// hero
+// SECCIÓN HERO
 .hero-home {
   display: flex;
   justify-content: center;
@@ -16,7 +16,6 @@
   position: relative;
 }
 
-// Wrapper
 .hero-home__wrapper {
   display: flex;
   flex-direction: column;
@@ -27,7 +26,6 @@
   height: rem(496px);
 }
 
-// Contenedor de los textos
 .hero-home__content {
   display: flex;
   flex-direction: column;
@@ -36,7 +34,6 @@
   width: 100%;
 }
 
-// Título 
 .hero-home__title {
   width: rem(695px);
   height: rem(150px);
@@ -52,7 +49,6 @@
   justify-content: center;
 }
 
-// Subtítulo
 .hero-home__subtitle {
   width: rem(718px);
   height: rem(28px);
@@ -66,34 +62,29 @@
   white-space: nowrap; 
 }
 
-// Mobile
 @media (max-width: $mobilexlMax) {
   .hero-home {
     height: auto;
     min-height: rem(500px);
   }
-
   .hero-home__title {
     width: rem(358px);
     height: rem(94px);
     font-size: rem(40px); 
-    
   }
-
   .hero-home__subtitle {
-    width: rem(284px); // Ancho Figma
-    height: rem(84px);  // Altura Figma
-    font-size: rem(24px); // Fuente Figma (Igual que en Desktop)
+    width: rem(284px);
+    height: rem(84px);
+    font-size: rem(24px);
     font-weight: 400;
     color: $white;
     margin: rem(24px) auto 0;
-    white-space: normal; // Permitimos que rompa en 3 líneas
+    white-space: normal;
     text-align: center;
   }
 }
 
-//TABLA RENOVACIONES
-
+// SECCIÓN RENOVACIONES
 section.renovaciones {
   display: flex;
   justify-content: center;
@@ -112,116 +103,138 @@ div.renovaciones__wrapper {
 }
 
 h3.renovaciones__title {
+  width: fit-content; // Ajustado para que no rompa en dos líneas
+  min-width: rem(252px);
+  height: rem(28px);
   font-family: $font-family-roboto;
   font-size: rem(24px);
   font-weight: 600;
-  line-height: 1;
-  color: $black;
+  line-height: 1; 
+  letter-spacing: 0;
+  color: #353535;
   margin: 0;
+  white-space: nowrap; // Fuerza a que esté en una sola línea
 }
 
 div.renovaciones__container {
   width: 100%;
 }
 
-// TABLA
 table.tabla-renovaciones {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate; 
+  border-spacing: 0 rem(24px); 
   font-family: $font-family-roboto;
+  margin-top: rem(-24px); 
 }
 
-thead.tabla-renovaciones__head tr {
-  border-bottom: rem(1px) solid #D1D5DB;
-}
-
-thead.tabla-renovaciones__head th {
+th.tabla-renovaciones__head-cell {
   height: rem(34px);
   padding: rem(5px) rem(16px);
   text-align: left;
-  font-size: rem(14px);
-  font-weight: 600;
-  color: #6B7280;
+  font-family: $font-family-roboto;
+  font-size: rem(16px);
+  font-weight: 400;
+  line-height: 1;
+  color: #405258;
+  border-bottom: rem(1px) solid #A7B8BF;
 }
 
-tbody.tabla-renovaciones__body tr.tabla-renovaciones__row {
-  border-bottom: rem(1px) solid #F3F4F6;
+tr.tabla-renovaciones__row {
+  height: rem(76px);
+  background-color: $white;
+  box-shadow: 0 rem(8px) rem(20px) 0 rgba(55, 70, 73, 0.5);
 }
 
-tbody.tabla-renovaciones__body td {
-  padding: rem(16px);
-  font-size: rem(15px);
+td.tabla-renovaciones__cell {
+  padding: rem(24px) rem(16px);
+  font-family: $font-family-roboto;
+  font-size: rem(16px);
   color: #111827;
+  line-height: 1;
+  vertical-align: middle;
 }
 
-// RESPONSIVE CON GRID
+td.tabla-renovaciones__cell:first-child {
+  border-top-left-radius: rem(8px);
+  border-bottom-left-radius: rem(8px);
+}
+
+td.tabla-renovaciones__cell:last-child {
+  border-top-right-radius: rem(8px);
+  border-bottom-right-radius: rem(8px);
+}
+
+td.tabla-renovaciones__cell.tabla-renovaciones__cell--importe {
+  font-weight: 700;
+  font-size: rem(16px);
+  letter-spacing: 0;
+}
+
 @media (max-width: $mobilexlMax) {
+  table.tabla-renovaciones {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
   thead.tabla-renovaciones__head {
     display: none;
   }
 
-  tbody.tabla-renovaciones__body tr.tabla-renovaciones__row {
+  tr.tabla-renovaciones__row {
     display: grid;
     grid-template-columns: 1fr;
+    height: auto;
     margin-bottom: rem(24px);
-    border: rem(1px) solid #E5E7EB;
+    border: rem(1px) solid #A7B8BF;
     border-radius: rem(8px);
     padding: rem(16px);
     background-color: $white;
+    box-shadow: 0 rem(4px) rem(8px) 0 rgba(55, 70, 73, 0.2);
   }
 
-  tbody.tabla-renovaciones__body td {
+  td.tabla-renovaciones__cell {
     display: grid;
     grid-template-columns: 140px 1fr;
-    align-items: center;
     padding: rem(10px) 0;
     border-bottom: rem(1px) solid #F3F4F6;
   }
 
-  tbody.tabla-renovaciones__body td:last-child {
-    border-bottom: none;
+  td.tabla-renovaciones__cell:first-child,
+  td.tabla-renovaciones__cell:last-child {
+    border-radius: 0;
   }
 
-  tbody.tabla-renovaciones__body td::before {
+  td.tabla-renovaciones__cell::before {
     content: attr(data-label);
     font-weight: 600;
-    font-size: rem(12px);
+    font-size: rem(16px);
     color: #6B7280;
-    text-align: left;
     text-transform: uppercase;
   }
 }
 
-// BADGES Y TUS ICONOS
+// SECCIÓN BADGES
 span.badge-estado {
   display: inline-flex;
   align-items: center;
   gap: rem(8px);
   padding: rem(4px) rem(12px);
   border-radius: rem(20px);
-  font-size: rem(12px);
+  font-size: rem(16px);
   font-weight: 500;
 }
 
-// Selectores específicos para tus clases de iconos
-i.icon-check, 
-i.icon-clock {
-  font-size: rem(16px);
-  display: inline-block;
-  line-height: 1;
+span.badge-estado.badge-estado--pendiente {
+  background-color: #FFE74F66;
+  color: #405258;
 }
 
-span.badge-estado--pendiente {
-  background-color: #FEF3C7;
-  color: #92400E;
-}
-
-span.badge-estado--pagada {
-  background-color: #DEF7EC;
+span.badge-estado.badge-estado--pagada {
+  background-color: rgba(87, 174, 96, 0.15); 
   color: #03543F;
 }
 
-// Forzamos que el texto y el icono hereden el color del badge padre
 span.badge-estado--pendiente i.icon-clock {
   color: #92400E;
 }
@@ -230,12 +243,8 @@ span.badge-estado--pagada i.icon-check {
   color: #03543F;
 }
 
-span.badge-estado__text {
-  white-space: nowrap;
-}
-
 @media (max-width: $mobilexlMax) {
   span.badge-estado {
-    justify-self: end; // Alinea el badge a la derecha en el grid de móvil
+    justify-self: end;
   }
 }

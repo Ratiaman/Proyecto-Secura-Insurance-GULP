@@ -41,7 +41,7 @@ block content
                                 td.tabla-renovaciones__cell(data-label="Nombre del riesgo")= item.riesgo
                                 td.tabla-renovaciones__cell(data-label="Fecha de contrato")= item.contrato
                                 td.tabla-renovaciones__cell(data-label="Fecha de vencimiento")= item.vencimiento
-                                td.tabla-renovaciones__cell(data-label="Importe")= item.importe
+                                td.tabla-renovaciones__cell.tabla-renovaciones__cell--importe(data-label="Importe")= item.importe
                                 td.tabla-renovaciones__cell(data-label="Estado de la póliza")
                                     if item.estado == 'Pagada'
                                         span.badge-estado.badge-estado--pagada
