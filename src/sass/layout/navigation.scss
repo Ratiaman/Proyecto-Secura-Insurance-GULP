@@ -195,10 +195,10 @@ td.tabla-renovaciones__cell.tabla-renovaciones__cell--importe {
   }
 
   td.tabla-renovaciones__cell {
-    display: grid;
-    grid-template-columns: 140px 1fr;
+    display: block;          // each cell becomes a block so label can sit above
     padding: rem(10px) 0;
     border-bottom: rem(1px) solid #F3F4F6;
+    margin-bottom: rem(4px);  // small gap between cells
   }
 
   td.tabla-renovaciones__cell:first-child,
@@ -208,12 +208,48 @@ td.tabla-renovaciones__cell.tabla-renovaciones__cell--importe {
 
   td.tabla-renovaciones__cell::before {
     content: attr(data-label);
+    display: block;          // make the header line span full width
+    margin-bottom: rem(4px);
     font-weight: 600;
     font-size: rem(16px);
     color: #6B7280;
     text-transform: uppercase;
   }
+
+  // mobile gap between table and button
+  .renovaciones__actions {
+    margin-top: rem(24px);
+  }
 }
+
+// Actions below renovations table
+.renovaciones__actions {
+  margin-top: rem(40px); // desktop gap
+  text-align: left;     // flow horizontal, keeps left
+
+  .boton-ver-todas {
+    display: inline-block;
+    box-sizing: border-box;
+    width: rem(100px);      // adjusted width
+    height: rem(39px);      // adjusted height
+    border-radius: rem(8px);
+    background-color: #CFE1F1;
+    color: #191C3D;         // text color
+    /* wrapper provides 16px padding, so add 8px left margin for total 24px */
+    margin: rem(10px) rem(16px) rem(10px) rem(8px);
+    line-height: rem(39px); // vertical centering
+    text-align: center;
+    font-family: $font-family-roboto;
+    font-weight: 400;
+    font-size: rem(16px);
+    line-height: 1;         // 100%
+    letter-spacing: 0;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
 
 // SECCIÓN BADGES
 span.badge-estado {
