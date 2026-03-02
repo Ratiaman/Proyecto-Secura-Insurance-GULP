@@ -5,10 +5,18 @@
 // Ocultar/Mostrar Nav
 #user-menu-toggle:checked ~ .nav-user,
 #lang-menu-toggle:checked ~ .nav-lang {
-  display: block !important;
+  display: block;
 }
 
-
+// mostrar menú principal móvil disparado por burger (sólo en móvil)
+@media (max-width: $mobilexlMax) {
+  #burger-menu-toggle:checked ~ .nav-burger {
+    display: block;
+  }
+  #burger-lang-toggle:checked ~ .nav-lang {
+    display: block;
+  }
+}
 
 // 1. HEADER 
 .header {
@@ -64,20 +72,40 @@
   align-items: center;
   gap: rem(8px);
   cursor: pointer;
-  
-  i { font-size: rem(24px); color: $color-icon; }
-  .header__text { font-size: rem($spacing-xl); color: $black; }
-  .icon-arrow-dropdown { 
-    font-size: rem(16px); 
-    transition: transform 0.2s ease;
-  }
 }
 
-.header__burger { 
-  display: none; 
-  font-size: rem(24px); 
-  color: $color-icon; 
+.header__group-trigger i {
+  font-size: rem(24px);
+  color: $color-icon;
+}
+
+.header__group-trigger .header__text {
+  font-size: rem($spacing-xl);
+  color: $black;
+}
+
+.header__group-trigger .icon-arrow-dropdown {
+  font-size: rem(16px);
+  transition: transform 0.2s ease;
+}
+
+// the extra close icon inside the user trigger label isn't used, keep it hidden
+.header__icon-close { display: none; }
+
+.header__burger {
+  display: none;
+  font-size: rem(24px);
+  color: $color-icon;
   cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__burger i {
+  display: inline-block;
 }
 
 // 2. MENÚ USUARIO
@@ -95,66 +123,79 @@
   border-radius: rem(12px); 
   overflow: hidden;
   padding: 0;
+}
 
-  .nav-user__info {
-    display: block;
-    padding: rem(24px) rem(24px) rem(22px);
-    border-bottom: 1px solid #ddd;
-    cursor: default;
-  }
+.nav-user__info {
+  display: block;
+  padding: rem(24px) rem(24px) rem(22px);
+  border-bottom: 1px solid #ddd;
+  cursor: default;
+}
 
-  .nav-user__title {
-    display: block;
-    margin-bottom: rem(16px);
-    font-size: rem(16px);
-    font-weight: 700;
-    color: $black;
-  }
+.nav-user__title {
+  display: block;
+  margin-bottom: rem(16px);
+  font-size: rem(16px);
+  font-weight: 700;
+  color: $black;
+}
 
-  .nav-user__description {
-    display: block;
-    font-size: rem(14px);
-    color: $text-muted;
-    line-height: 1.4;
-  }
+.nav-user__description {
+  display: block;
+  font-size: rem(14px);
+  color: $text-muted;
+  line-height: 1.4;
+}
 
-  .nav-user__item {
-    display: grid;
-    grid-template-columns: rem(24px) 1fr; 
-    align-items: center;
-    gap: rem($spacing-m);
-    height: 61px;
-    padding: 0 rem(20px);
-    cursor: pointer;
-    position: relative;
-    background-color: $white;
-    text-decoration: none;
+.nav-user__item {
+  display: grid;
+  grid-template-columns: rem(24px) 1fr; 
+  align-items: center;
+  gap: rem($spacing-m);
+  height: 61px;
+  padding: 0 rem(20px);
+  cursor: pointer;
+  position: relative;
+  background-color: $white;
+  text-decoration: none;
+}
 
-    &::before {
-      content: '';
-      position: absolute;
-      left: -1px;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background-color: $primary300;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
+.nav-user__item::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: $primary300;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
 
-    &:hover {
-      background-color: $hover-bg;
-      &::before { opacity: 1; }
-    }
+.nav-user__item:hover {
+  background-color: $hover-bg;
+  text-decoration: none;
+}
 
-    i { font-size: rem(20px); color: $color-icon; text-align: center; }
-    span { font-size: rem(14px); color: $text-link; font-weight: $weight-medium; }
-  }
+.nav-user__item:hover::before {
+  opacity: 1;
+}
+
+.nav-user__item i {
+  font-size: rem(20px);
+  color: $color-icon;
+  text-align: center;
+}
+
+.nav-user__item span {
+  font-size: rem(14px);
+  color: $text-link;
+  font-weight: $weight-medium;
 }
 
 // 3. MENÚ IDIOMAS
 .nav-lang {
-  display: none; // Oculto por defecto
+  display: none;
   position: absolute;
   top: 100%;
   right: 0;
@@ -168,21 +209,42 @@
   margin-top: rem(12px);
   cursor: default;
   overflow: hidden;
+}
 
-  .nav-lang__item {
-    padding: rem(10px) rem($spacing-xl);
-    font-size: rem(14px);
-    color: $text-link;
-    display: block;
-    cursor: pointer;
-    text-decoration: none;
+.nav-lang__item {
+  padding: rem(10px) rem($spacing-xl);
+  font-size: rem(14px);
+  color: $text-link;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
 
-    &:hover { 
-      background-color: $hover-bg; 
-      font-weight: $weight-bold;
-      color: $text-link;         
-    }
-  }
+.nav-lang__item:hover {
+  background-color: $hover-bg;
+  font-weight: $weight-bold;
+  color: $text-link;
+}
+
+/* nav-burger items hidden by default (only shown in mobile) */
+.nav-burger__item {
+  display: none;
+  align-items: center;
+  width: 100%;
+  padding: rem(16px);
+  text-decoration: none;
+  color: $text-link;
+  font-size: rem(16px);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.nav-burger__item:last-child {
+  border-bottom: none;
+}
+
+/* nav-burger language selector hidden by default */
+.nav-burger__group--language {
+  display: none;
 }
 
 // 4. MEDIA QUERIES
@@ -199,14 +261,83 @@
     display: none; 
   }
 
-  .header__burger { display: block; }
+  .header__burger { display: inline-flex; }
+
+  // swap icons when menu is open
+  .header__burger .header__burger-close { display: none; }
+  .header__burger.is-close .header__burger-icon { display: none; }
+  .header__burger.is-close .header__burger-close { display: inline-block; }
 
   .nav-user {
-    width: 90vw;
-    max-width: rem(375px);
+    width: 100%;
+    max-width: none;
     position: fixed;
     top: rem(80px);
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    transform: none;
+    height: rem(500px);
+    right: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow-y: auto;
+    margin-top: 0;
+    border: none;
   }
+
+  /* mobile navigation triggered by burger icon - desktop hidden */
+  .nav-burger {
+    display: none;
+    position: fixed;
+    top: rem(80px);
+    left: 0;
+    width: 100%;
+    height: rem(500px);
+    right: 0;
+    background-color: $white;
+    overflow-y: auto;
+    z-index: 9999;
+  }
+
+  /* show burger items only in mobile */
+  .nav-burger__item {
+    display: flex;
+  }
+
+  /* show burger language selector only in mobile */
+  .nav-burger__group--language {
+    display: block;
+    position: absolute;
+    bottom: rem(16px);
+    left: rem(16px);
+  }
+
+  /* ensure nav-burger only visible on mobile when toggled */
+  @media (min-width: calc($mobilexlMax + 1px)) {
+    .nav-burger {
+      display: none;
+    }
+    .nav-burger__item {
+      display: none;
+    }
+    .nav-burger__group--language {
+      display: none;
+    }
+  }
+  /* override dropdown position when inside burger nav */
+  .nav-burger .nav-lang {
+    top: auto;
+    bottom: 100%;
+    left: 0;
+    right: auto;
+  }  .nav-burger__group-trigger {
+    display: flex;
+    align-items: center;
+    gap: rem(8px);
+    cursor: pointer;
+  }
+  .nav-burger__text {
+    font-size: rem($spacing-xl);
+    color: $black;
+  }
+
 }

@@ -13,11 +13,12 @@ header.header
       .header__group.header__group--user
         input#user-menu-toggle(type="checkbox" hidden)
         label.header__group-trigger(for="user-menu-toggle")
-          i.icon-user
+          i.icon-user.js-user-icon
           span.header__text Mi perfil
           i.icon-arrow-dropdown
+          //- Icono de cierre para mobile (usando tu variable)
+          i.header__icon-close(class=$icon-close)
         
-        //- El include debe contener el nav.nav-user
         include ../templates/dropdown-perfil.pug
       
       //- Menú de Idiomas
@@ -28,7 +29,24 @@ header.header
           span.header__text Español
           i.icon-arrow-dropdown
         
-        //- El include debe contener el nav.nav-lang
         include ../templates/dropdown-idiomas.pug
       
-      i.icon-burger_menu.header__burger
+      //- Icon used on mobile. We'll control its behaviour with JS (open/close sections).
+      button.header__burger(type="button" aria-label="Cerrar menú usuario o abrir navegación")
+        i.icon-burger_menu.header__burger-icon
+        i.icon-close.header__burger-close
+
+      //- Hidden checkbox to drive the burger menu
+      input#burger-menu-toggle(type="checkbox" hidden)
+      .nav-burger
+        a.nav-burger__item(href="#") Inicio
+        a.nav-burger__item(href="#") Próximas renovaciones
+
+        //- idioma dentro del menú burger
+        .nav-burger__group.nav-burger__group--language
+          input#burger-lang-toggle(type="checkbox" hidden)
+          label.nav-burger__group-trigger(for="burger-lang-toggle")
+            i.icon-globe
+            span.nav-burger__text Español
+            i.icon-arrow-dropdown
+          include ../templates/dropdown-idiomas.pug
