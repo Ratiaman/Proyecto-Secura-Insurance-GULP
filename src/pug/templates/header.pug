@@ -9,20 +9,26 @@ header.header
         a.header__link(href="#") Próximas renovaciones
 
     .header__right
-      
+      //- Menú de Usuario
       .header__group.header__group--user
-        i.icon-user
-        span.header__text Mi perfil
-        i.icon-arrow-dropdown
-       
+        input#user-menu-toggle(type="checkbox" hidden)
+        label.header__group-trigger(for="user-menu-toggle")
+          i.icon-user
+          span.header__text Mi perfil
+          i.icon-arrow-dropdown
+        
+        //- El include debe contener el nav.nav-user
         include ../templates/dropdown-perfil.pug
       
-     
+      //- Menú de Idiomas
       .header__group.header__group--language
-        i.icon-globe
-        span.header__text Español
-        i.icon-arrow-dropdown
-       
+        input#lang-menu-toggle(type="checkbox" hidden)
+        label.header__group-trigger(for="lang-menu-toggle")
+          i.icon-globe
+          span.header__text Español
+          i.icon-arrow-dropdown
+        
+        //- El include debe contener el nav.nav-lang
         include ../templates/dropdown-idiomas.pug
       
       i.icon-burger_menu.header__burger
