@@ -8,7 +8,7 @@
   display: block;
 }
 
-// mostrar menú principal móvil disparado por burger (sólo en móvil)
+
 @media (max-width: $mobilexlMax) {
   #burger-menu-toggle:checked ~ .nav-burger {
     display: block;
@@ -89,7 +89,7 @@
   transition: transform 0.2s ease;
 }
 
-// the extra close icon inside the user trigger label isn't used, keep it hidden
+
 .header__icon-close { display: none; }
 
 .header__burger {
@@ -226,7 +226,7 @@
   color: $text-link;
 }
 
-/* nav-burger items hidden by default (only shown in mobile) */
+
 .nav-burger__item {
   display: none;
   align-items: center;
@@ -242,7 +242,7 @@
   border-bottom: none;
 }
 
-/* nav-burger language selector hidden by default */
+
 .nav-burger__group--language {
   display: none;
 }
@@ -263,7 +263,7 @@
 
   .header__burger { display: inline-flex; }
 
-  // swap icons when menu is open
+
   .header__burger .header__burger-close { display: none; }
   .header__burger.is-close .header__burger-icon { display: none; }
   .header__burger.is-close .header__burger-close { display: inline-block; }
@@ -284,7 +284,7 @@
     border: none;
   }
 
-  /* mobile navigation triggered by burger icon - desktop hidden */
+
   .nav-burger {
     display: none;
     position: fixed;
@@ -298,12 +298,12 @@
     z-index: 9999;
   }
 
-  /* show burger items only in mobile */
+
   .nav-burger__item {
     display: flex;
   }
 
-  /* show burger language selector only in mobile */
+
   .nav-burger__group--language {
     display: block;
     position: absolute;
@@ -311,7 +311,7 @@
     left: rem(16px);
   }
 
-  /* ensure nav-burger only visible on mobile when toggled */
+  
   @media (min-width: calc($mobilexlMax + 1px)) {
     .nav-burger {
       display: none;
@@ -323,7 +323,7 @@
       display: none;
     }
   }
-  /* override dropdown position when inside burger nav */
+  
   .nav-burger .nav-lang {
     top: auto;
     bottom: 100%;
