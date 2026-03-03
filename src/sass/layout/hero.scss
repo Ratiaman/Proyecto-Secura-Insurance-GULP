@@ -1,0 +1,86 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+@use "../base/fonts";
+
+// SECCIÓN HERO
+.hero-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: rem(500px);
+  background-image: url('../images/background.svg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.hero-home__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: rem(1046px);
+  height: rem(496px);
+}
+
+.hero-home__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.hero-home__title {
+  width: rem(695px);
+  height: rem(150px);
+  font-family: $font-family-roboto;
+  font-size: rem(64px);
+  font-weight: 700;
+  line-height: 1;
+  color: $white;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-home__subtitle {
+  width: rem(718px);
+  height: rem(28px);
+  font-family: $font-family-roboto;
+  font-size: rem(24px);
+  font-weight: 400;
+  line-height: 1;
+  color: $white;
+  margin: rem(20px) auto 0;
+  text-align: center;
+  white-space: nowrap; 
+}
+
+@media (max-width: $mobilexlMax) {
+  .hero-home {
+    height: auto;
+    min-height: rem(500px);
+    background-image: url('../images/%23hero-cover.3.svg');
+  }
+  .hero-home__title {
+    width: rem(358px);
+    height: rem(94px);
+    font-size: rem(40px); 
+  }
+  .hero-home__subtitle {
+    width: rem(284px);
+    height: rem(84px);
+    font-size: rem(24px);
+    font-weight: 400;
+    color: $white;
+    margin: rem(24px) auto 0;
+    white-space: normal;
+    text-align: center;
+  }
+}
