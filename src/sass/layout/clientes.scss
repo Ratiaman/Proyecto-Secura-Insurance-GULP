@@ -1,0 +1,125 @@
+@use '../helpers/variables' as *;
+@use '../helpers/mixins' as *;
+
+// Clientes - estilos de las cards
+
+/* sección principal */
+.client {
+  width: 100%;
+  padding: rem(40px) 0;
+  font-family: 'Roboto', sans-serif; // apply Roboto to entire section
+}
+
+.client__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: rem(1392px);
+  gap: rem(32px);
+  padding: 0 rem(16px);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.client__title {
+  font-size: rem(28px);
+  font-weight: 600;
+  color: $neutral500;
+  margin: 0 0 rem(24px);
+}
+
+.client-grid {
+  width: 100%;
+  max-width: rem(1392px); // ancho máximo igual que la tabla
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: rem(32px);
+  padding: 0 rem(16px);
+  box-sizing: border-box;
+}
+
+/* tarjetas */
+.client-card {
+  width: 100%;
+  background-color: $white;
+  border-radius: rem(12px);
+  overflow: hidden;
+  box-shadow: 0 rem(2px) rem(8px) rgba(0, 0, 0, 0.08);
+}
+
+.client-card__top {
+  padding: rem(20px) rem(24px) 0;
+}
+
+.client-card__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: rem(12px);
+}
+
+.client-card__name {
+  font-family: $fontReg;
+  font-size: rem(24px);
+  color: $neutral500;
+}
+
+.client-card__icon {
+  font-size: rem(18px);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: $neutral500;
+}
+
+.client-card__icon:hover {
+  color: $primary500;
+}
+
+.client-card__offer {
+  display: block;
+  font-family: $fontReg;
+  font-size: rem(16px);
+  color: #9FC3E2; 
+  margin: rem(8px) 0 rem(16px);
+}
+
+.client-card__bottom {
+  padding: rem(20px) rem(24px) rem(24px);
+}
+
+.client-card__contact {
+  display: flex;
+  gap: rem(24px);
+  align-items: center;
+}
+
+.client-card__mail,
+.client-card__phone {
+  font-family: $fontMed;
+  font-size: rem(16px);
+  color: #4B98D9; 
+}
+
+
+@media (max-width: $mobilexlMax) {
+  .client {
+    padding: rem(16px) 0;
+  }
+
+  .client-grid {
+    grid-template-columns: 1fr;
+    gap: rem(16px);
+    padding: 0 rem(12px);
+    max-width: 100%;
+  }
+
+  .client-card__contact {
+    flex-direction: column;
+    gap: rem(12px);
+  }
+}
+
