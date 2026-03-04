@@ -312,17 +312,7 @@
   }
 
   
-  @media (min-width: calc($mobilexlMax + 1px)) {
-    .nav-burger {
-      display: none;
-    }
-    .nav-burger__item {
-      display: none;
-    }
-    .nav-burger__group--language {
-      display: none;
-    }
-  }
+  
   
   .nav-burger .nav-lang {
     top: auto;
@@ -341,3 +331,15 @@
   }
 
 }
+
+@media (min-width: calc($mobilexlMax + 1px)) {
+    .nav-burger {
+      display: none;
+    }
+    .nav-burger__item {
+      display: none;
+    }
+    .nav-burger__group--language {
+      display: none;
+    }
+  }

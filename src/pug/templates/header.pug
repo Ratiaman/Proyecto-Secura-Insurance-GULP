@@ -9,19 +9,19 @@ header.header
         a.header__link(href="#") Próximas renovaciones
 
     .header__right
-      //- Menú de Usuario
+      
       .header__group.header__group--user
         input#user-menu-toggle(type="checkbox" hidden)
         label.header__group-trigger(for="user-menu-toggle")
           i.icon-user.js-user-icon
           span.header__text Mi perfil
           i.icon-arrow-dropdown
-          //- Icono de cierre para mobile (usando tu variable)
+          
           i.header__icon-close(class=$icon-close)
         
         include ../templates/dropdown-perfil.pug
       
-      //- Menú de Idiomas
+      
       .header__group.header__group--language
         input#lang-menu-toggle(type="checkbox" hidden)
         label.header__group-trigger(for="lang-menu-toggle")
@@ -31,12 +31,12 @@ header.header
         
         include ../templates/dropdown-idiomas.pug
       
-      //- Icon used on mobile. We'll control its behaviour with JS (open/close sections).
+      
       button.header__burger(type="button" aria-label="Cerrar menú usuario o abrir navegación")
         i.icon-burger_menu.header__burger-icon
         i.icon-close.header__burger-close
 
-      //- Hidden checkbox to drive the burger menu
+      
       input#burger-menu-toggle(type="checkbox" hidden)
       .nav-burger
         a.nav-burger__item(href="#") Inicio

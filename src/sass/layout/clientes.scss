@@ -1,13 +1,13 @@
 @use '../helpers/variables' as *;
 @use '../helpers/mixins' as *;
 
-// Clientes - estilos de las cards
+
 
 /* sección principal */
 .client {
   width: 100%;
-  padding: rem(40px) 0;
-  font-family: 'Roboto', sans-serif; // apply Roboto to entire section
+  //padding: rem(40px) 0;
+  font-family: 'Roboto', sans-serif; 
 }
 
 .client__wrapper {
@@ -30,7 +30,7 @@
 
 .client-grid {
   width: 100%;
-  max-width: rem(1392px); // ancho máximo igual que la tabla
+  max-width: rem(1392px); 
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -62,9 +62,10 @@
 }
 
 .client-card__name {
-  font-family: $fontReg;
+  font-family: $font-family-roboto;
   font-size: rem(24px);
   color: $neutral500;
+  font-weight: 400;
 }
 
 .client-card__icon {
@@ -94,7 +95,7 @@
 .client-card__contact {
   display: flex;
   gap: rem(24px);
-  align-items: center;
+  align-items: left;
 }
 
 .client-card__mail,
