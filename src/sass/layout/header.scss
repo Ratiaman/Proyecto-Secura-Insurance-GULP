@@ -3,8 +3,8 @@
 @use "../base/fonts";
 
 // Ocultar/Mostrar Nav
-#user-menu-toggle:checked ~ .nav-user,
-#lang-menu-toggle:checked ~ .nav-lang {
+.header__group.is-open > .nav-user,
+.header__group.is-open > .nav-lang {
   display: block;
 }
 
@@ -72,6 +72,14 @@
   align-items: center;
   gap: rem(8px);
   cursor: pointer;
+  background-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header__group-trigger:active,
+.header__group-trigger:focus,
+.header__group-trigger:focus-within {
+  background-color: transparent;
 }
 
 .header__group-trigger i {
@@ -84,11 +92,45 @@
   color: $black;
 }
 
-.header__group-trigger .icon-arrow-dropdown {
-  font-size: rem(16px);
-  transition: transform 0.2s ease;
+.header__dropdown-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
+.header__dropdown-toggle:active,
+.header__dropdown-toggle:focus,
+.header__dropdown-toggle:focus-visible {
+  background: transparent;
+}
+
+.header__user-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.header__user-toggle:active,
+.header__user-toggle:focus,
+.header__user-toggle:focus-visible {
+  background: transparent;
+}
+
+.header__dropdown-toggle .icon-arrow-dropdown {
+  font-size: rem(16px);
+  color: $color-icon;
+  transition: transform 0.2s ease;
+}
 
 .header__icon-close { display: none; }
 
@@ -119,7 +161,6 @@
   background-color: $white;
   margin-top: rem(12px);
   box-shadow: $shadow-custom-menu;
-  border: 1px solid #e0e0e0;
   border-radius: rem(12px); 
   overflow: hidden;
   padding: 0;
@@ -203,7 +244,6 @@
   width: rem(140px);
   padding: rem(10px) 0;
   background-color: $white;
-  border: 1px solid #ccc;
   border-radius: rem(12px);
   box-shadow: $shadow-large;
   margin-top: rem(12px);
@@ -256,8 +296,8 @@
 
   .header__left .header__nav,
   .header__group--language,
-  .header__group--user .header__text, 
-  .header__group--user .icon-arrow-dropdown { 
+  .header__group--user .header__text,
+  .header__group--user .header__dropdown-toggle {
     display: none; 
   }
 
@@ -331,6 +371,7 @@
   }
 
 }
+
 
 @media (min-width: calc($mobilexlMax + 1px)) {
     .nav-burger {

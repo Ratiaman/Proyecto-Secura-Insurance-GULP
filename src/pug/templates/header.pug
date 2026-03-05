@@ -11,11 +11,12 @@ header.header
     .header__right
       
       .header__group.header__group--user
-        input#user-menu-toggle(type="checkbox" hidden)
-        label.header__group-trigger(for="user-menu-toggle")
-          i.icon-user.js-user-icon
+        .header__group-trigger
+          button.header__user-toggle(type="button" aria-label="Mostrar menu de perfil" aria-expanded="false")
+            i.icon-user.js-user-icon
           span.header__text Mi perfil
-          i.icon-arrow-dropdown
+          button.header__dropdown-toggle(type="button" aria-label="Mostrar menu de perfil" aria-expanded="false" data-menu-target=".nav-user")
+            i.icon-arrow-dropdown
           
           i.header__icon-close(class=$icon-close)
         
@@ -23,11 +24,11 @@ header.header
       
       
       .header__group.header__group--language
-        input#lang-menu-toggle(type="checkbox" hidden)
-        label.header__group-trigger(for="lang-menu-toggle")
+        .header__group-trigger
           i.icon-globe
           span.header__text Español
-          i.icon-arrow-dropdown
+          button.header__dropdown-toggle(type="button" aria-label="Mostrar menu de idiomas" aria-expanded="false" data-menu-target=".nav-lang")
+            i.icon-arrow-dropdown
         
         include ../templates/dropdown-idiomas.pug
       

@@ -1,68 +1,118 @@
-// mobile user menu close toggle
-(function(){
-  const userToggle = document.getElementById('user-menu-toggle');
-  const burgerBtn = document.querySelector('.header__burger');
+// Header dropdowns: user/language via arrow buttons + burger state sync
+(function () {
+  const header = document.querySelector('.header');
+  if (!header) return;
 
-  if (!userToggle || !burgerBtn) return;
-
+  const groups = Array.from(header.querySelectorAll('.header__group'));
+  const dropdownButtons = Array.from(header.querySelectorAll('.header__dropdown-toggle, .header__user-toggle'));
+  const userGroup = header.querySelector('.header__group--user');
+  const burgerBtn = header.querySelector('.header__burger');
   const burgerToggle = document.getElementById('burger-menu-toggle');
+  const userToggleButton = header.querySelector('.header__user-toggle');
+
+  const setExpanded = (group, expanded) => {
+    const buttons = group.querySelectorAll('.header__dropdown-toggle, .header__user-toggle');
+    buttons.forEach((button) => {
+      button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    });
+  };
+
+  const closeDesktopMenus = (exceptGroup) => {
+    groups.forEach((group) => {
+      if (group !== exceptGroup) {
+        group.classList.remove('is-open');
+        setExpanded(group, false);
+      }
+    });
+  };
 
   const updateBurgerIcon = () => {
-    // close icon when either menu is open
-    if (userToggle.checked || (burgerToggle && burgerToggle.checked)) {
-      burgerBtn.classList.add('is-close');
-      burgerBtn.setAttribute('aria-label', 'Cerrar menú');
-    } else {
-      burgerBtn.classList.remove('is-close');
-      burgerBtn.setAttribute('aria-label', 'Abrir navegación mobile');
+    const userMenuOpen = !!(userGroup && userGroup.classList.contains('is-open'));
+    const burgerMenuOpen = !!(burgerToggle && burgerToggle.checked);
+
+    if (burgerBtn) {
+      if (userMenuOpen || burgerMenuOpen) {
+        burgerBtn.classList.add('is-close');
+        burgerBtn.setAttribute('aria-label', 'Cerrar menú');
+      } else {
+        burgerBtn.classList.remove('is-close');
+        burgerBtn.setAttribute('aria-label', 'Abrir navegación mobile');
+      }
     }
 
-    // hide user icon when burger menu is open
-    const userIcon = document.querySelector('.js-user-icon');
-    if (userIcon) {
-      userIcon.style.display = (burgerToggle && burgerToggle.checked) ? 'none' : '';
+    if (userToggleButton) {
+      userToggleButton.style.display = burgerMenuOpen ? 'none' : '';
     }
   };
 
-  // click handler: close when open, ignore otherwise
-  burgerBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation && e.stopImmediatePropagation();
+  dropdownButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-    const langToggle = document.getElementById('lang-menu-toggle');
+      const group = button.closest('.header__group');
+      if (!group) return;
 
-    if (userToggle.checked) {
-      // close the user menu
-      userToggle.checked = false;
+      const willOpen = !group.classList.contains('is-open');
+      closeDesktopMenus(group);
+
+      group.classList.toggle('is-open', willOpen);
+      setExpanded(group, willOpen);
+
+      if (willOpen && burgerToggle) {
+        burgerToggle.checked = false;
+      }
+
       updateBurgerIcon();
-    } else if (burgerToggle && burgerToggle.checked) {
-      // close the burger navigation
-      burgerToggle.checked = false;
-      updateBurgerIcon();
-    } else {
-      // open burger navigation
-      if (langToggle) langToggle.checked = false;
-      if (userToggle) userToggle.checked = false;
-      if (burgerToggle) burgerToggle.checked = true;
-      updateBurgerIcon();
-    }
+    });
   });
 
-  userToggle.addEventListener('change', updateBurgerIcon);
+  if (burgerBtn) {
+    burgerBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const userMenuOpen = !!(userGroup && userGroup.classList.contains('is-open'));
+
+      if (userMenuOpen && userGroup) {
+        userGroup.classList.remove('is-open');
+        setExpanded(userGroup, false);
+      } else if (burgerToggle && burgerToggle.checked) {
+        burgerToggle.checked = false;
+      } else if (burgerToggle) {
+        closeDesktopMenus();
+        burgerToggle.checked = true;
+      }
+
+      updateBurgerIcon();
+    });
+  }
+
   if (burgerToggle) {
     burgerToggle.addEventListener('change', updateBurgerIcon);
   }
-  window.addEventListener('resize', updateBurgerIcon);
 
-  // close burger nav when an item is clicked
   document.addEventListener('click', (e) => {
+    if (!header.contains(e.target)) {
+      closeDesktopMenus();
+      updateBurgerIcon();
+      return;
+    }
+
     if (burgerToggle && burgerToggle.checked && e.target.closest('.nav-burger__item')) {
       burgerToggle.checked = false;
       updateBurgerIcon();
     }
   });
 
-  // initialize on load
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeDesktopMenus();
+      if (burgerToggle) burgerToggle.checked = false;
+      updateBurgerIcon();
+    }
+  });
+
+  window.addEventListener('resize', updateBurgerIcon);
   updateBurgerIcon();
 })();

@@ -1,18 +1,16 @@
 /* Convert px to rem 
     - example of usage: @include toRem(font-size, 20px);
 */
+@use 'sass:math';
 @use '../helpers/variables' as *;
 
-//PROBLEMAS CON LA VERSION DE ESTE MIXIN !!!!!!
-@mixin toRem($property, $value, $base: 16px) {
-    #{$property}: ($value / $base) * 1rem;
-}
 
 
-@function rem($pixel) {
-  // Dividir por 1px elimina la unidad "px"
-  @return ($pixel / 1px / 16) * 1rem;
+@function rem($pixel) { // La nueva funcion usando math
+  
+  @return math.div(math.div($pixel, 1px), 16) * 1rem;
 }
+
 
 
 @mixin text-style($font-size, $font-weight: $weight-regular, $line-height: normal, $letter-spacing: 0, $font-family: $font-family-roboto) {

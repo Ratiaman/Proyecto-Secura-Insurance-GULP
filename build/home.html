@@ -17,15 +17,18 @@
           </div>
           <div class="header__right">
             <div class="header__group header__group--user">
-              <input id="user-menu-toggle" type="checkbox" hidden>
-              <label class="header__group-trigger" for="user-menu-toggle"><i class="icon-user js-user-icon"></i><span class="header__text">Mi perfil</span><i class="icon-arrow-dropdown"></i><i class="header__icon-close"></i></label>
+              <div class="header__group-trigger">
+                <button class="header__user-toggle" type="button" aria-label="Mostrar menu de perfil" aria-expanded="false"><i class="icon-user js-user-icon"></i></button><span class="header__text">Mi perfil</span>
+                <button class="header__dropdown-toggle" type="button" aria-label="Mostrar menu de perfil" aria-expanded="false" data-menu-target=".nav-user"><i class="icon-arrow-dropdown"></i></button><i class="header__icon-close"></i>
+              </div>
               <div class="nav-user">
                 <div class="nav-user__info"><span class="nav-user__title">Mi perfil</span><span class="nav-user__description">En este espacio puedes acceder, modificar, gestionar y consultar todo lo relacionado con tus servicios de energía. Fácil y rápido. </span></div><a class="nav-user__item" href="#"><i class="icon-user"> </i><span>Mis datos personales</span></a><a class="nav-user__item" href="#"><i class="icon-lock"> </i><span>Mi contraseña</span></a><a class="nav-user__item" href="#"><i class="icon-phone"></i><span>Contacto</span></a><a class="nav-user__item" href="#"><i class="icon-power-off"></i><span>Cerrar sesión</span></a>
               </div>
             </div>
             <div class="header__group header__group--language">
-              <input id="lang-menu-toggle" type="checkbox" hidden>
-              <label class="header__group-trigger" for="lang-menu-toggle"><i class="icon-globe"></i><span class="header__text">Español</span><i class="icon-arrow-dropdown"></i></label>
+              <div class="header__group-trigger"><i class="icon-globe"></i><span class="header__text">Español</span>
+                <button class="header__dropdown-toggle" type="button" aria-label="Mostrar menu de idiomas" aria-expanded="false" data-menu-target=".nav-lang"><i class="icon-arrow-dropdown"></i></button>
+              </div>
               <div class="nav-lang"><span class="nav-lang__item">Español</span><span class="nav-lang__item">English</span><span class="nav-lang__item">Catalán</span><span class="nav-lang__item">Gallego</span><span class="nav-lang__item">Euskera</span></div>
             </div>
             <button class="header__burger" type="button" aria-label="Cerrar menú usuario o abrir navegación"><i class="icon-burger_menu header__burger-icon"></i><i class="icon-close header__burger-close"></i></button>

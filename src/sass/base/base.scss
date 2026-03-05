@@ -91,10 +91,21 @@ html {
 
 body {
   min-height: 100vh;
+  background-color: rgba(255, 255, 255, 1);
   &.not-scroll {
     height: 100%;
     overflow: hidden;
   }
+}
+
+.main-content {
+  background-color: rgba(255, 255, 255, 1);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(249, 251, 252, 1) 62%,
+    rgba(244, 247, 249, 1) 100%
+  );
 }
 
 select,

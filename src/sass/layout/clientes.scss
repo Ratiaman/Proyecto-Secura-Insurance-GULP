@@ -6,6 +6,8 @@
 /* sección principal */
 .client {
   width: 100%;
+  background-color: transparent;
+  padding-bottom: rem(80px);
   //padding: rem(40px) 0;
   font-family: 'Roboto', sans-serif; 
 }
@@ -35,7 +37,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: rem(32px);
-  padding: 0 rem(16px);
+  
   box-sizing: border-box;
 }
 
