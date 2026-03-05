@@ -44,6 +44,7 @@
 /* tarjetas */
 .client-card {
   width: 100%;
+  font-family: $font-family-roboto;
   background-color: $white;
   border-radius: rem(12px);
   overflow: hidden;
@@ -84,7 +85,7 @@
 
 .client-card__offer {
   display: block;
-  font-family: $fontReg;
+  font-family: $font-family-roboto;
   font-size: rem(16px);
   color: #9FC3E2; 
   margin: rem(8px) 0 rem(16px);
@@ -98,11 +99,12 @@
   display: flex;
   gap: rem(24px);
   align-items: left;
+  font-weight: 700;
 }
 
 .client-card__mail,
 .client-card__phone {
-  font-family: $fontMed;
+  font-family: $font-family-roboto;
   font-size: rem(16px);
   color: #4B98D9; 
 }
@@ -111,18 +113,78 @@
 @media (max-width: $mobilexlMax) {
   .client {
     padding: rem(16px) 0;
-  }
+    &__wrapper {
+      padding: 0;
+      align-items: stretch;
+    }
 
-  .client-grid {
-    grid-template-columns: 1fr;
-    gap: rem(16px);
-    padding: 0 rem(12px);
-    max-width: 100%;
-  }
+    .client-header {
+      width: 100%;
+    }
 
-  .client-card__contact {
-    flex-direction: column;
-    gap: rem(12px);
+    .client-header .renovaciones__title {
+      text-align: left;
+      margin-left: rem(16px);
+    }
+
+    .client-grid {
+      grid-template-columns: 1fr;
+      gap: rem(16px);
+      padding: 0;
+      max-width: 100%;
+      justify-content: center;
+      justify-items: center;
+    }
+
+    .client-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: min(100%, rem(343px));
+      height: rem(326px);
+      border-radius: rem(12px);
+      padding: rem(16px) rem(24px);
+      box-sizing: border-box;
+    }
+
+    .client-card__top {
+      display: flex;
+      flex-direction: column;
+      width: rem(295px);
+      min-height: rem(127px);
+      gap: 0;
+      padding: 0;
+    }
+
+    .client-card__header {
+      margin-top: rem(58px);
+    }
+
+    .client-card__offer {
+      margin: rem(10px) 0 0;
+    }
+
+    .client-card__bottom {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: rem(295px);
+      height: rem(126px);
+      gap: rem(24px);
+      padding: rem(24px) 0 0;
+    }
+
+    .client-card__icon {
+      position: absolute;
+      top: rem(16px);
+      right: rem(24px);
+    }
+
+    .client-card__contact {
+      flex-direction: column;
+      gap: rem(12px);
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 // Header dropdowns: user/language via arrow buttons + burger state sync
-(function () {
+function dropdown() {
   const header = document.querySelector('.header');
   if (!header) return;
 
@@ -9,6 +9,7 @@
   const burgerBtn = header.querySelector('.header__burger');
   const burgerToggle = document.getElementById('burger-menu-toggle');
   const userToggleButton = header.querySelector('.header__user-toggle');
+  const userCloseIcon = userGroup ? userGroup.querySelector('.header__icon-close') : null;
 
   const setExpanded = (group, expanded) => {
     const buttons = group.querySelectorAll('.header__dropdown-toggle, .header__user-toggle');
@@ -88,6 +89,17 @@
     });
   }
 
+  if (userCloseIcon && userGroup) {
+    userCloseIcon.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      userGroup.classList.remove('is-open');
+      setExpanded(userGroup, false);
+      updateBurgerIcon();
+    });
+  }
+
   if (burgerToggle) {
     burgerToggle.addEventListener('change', updateBurgerIcon);
   }
@@ -115,4 +127,6 @@
 
   window.addEventListener('resize', updateBurgerIcon);
   updateBurgerIcon();
-})();
+}
+
+dropdown();

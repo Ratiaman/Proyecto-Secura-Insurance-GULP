@@ -51,6 +51,11 @@
   flex-direction: column;
 }
 
+.footer-direction {
+  justify-self: end;
+  text-align: right;
+}
+
 .footer-contact__direction-country {
   margin-bottom: rem(12px);
 }
@@ -59,6 +64,10 @@
 .footer-legal__link {
   @include text-style(10px, 500);
   text-decoration: none;
+}
+
+.footer-legal {
+  margin-top: rem(16px);
 }
 
 .footer-legal__separation {
@@ -72,6 +81,12 @@
 
 .footer-marc__text {
   @include text-style(10px, 400);
+}
+
+.footer-marc {
+  justify-self: end;
+  text-align: right;
+  margin-top: rem(16px);
 }
 
 /* breakpoints */
@@ -96,15 +111,38 @@
   .footer-contact__direction {
     margin-top: rem(10px);
   }
+
+  .footer-direction {
+    justify-self: start;
+    text-align: left;
+    margin-top: rem(32px);
+  }
+
+  .footer-legal {
+    margin-top: rem(32px);
+    display: flex;
+    flex-direction: column;
+    gap: rem(24px);
+  }
+
   .footer-legal__link {
     @include text-style(16px, 400);
+    display: block;
   }
+
   .footer-legal__middle {
-    margin: rem(14px) 0;
+    margin: 0;
   }
+
   .footer-legal__separation {
     display: none;
   }
+
+  .footer-marc {
+    justify-self: start;
+    text-align: left;
+  }
+
   .footer-marc__text {
     @include text-style(16px, 400);
   }

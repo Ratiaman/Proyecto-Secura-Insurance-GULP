@@ -61,13 +61,14 @@ th.tabla-renovaciones__head-cell {
 tr.tabla-renovaciones__row {
   height: rem(76px);
   background-color: $white;
-  box-shadow: 0 rem(8px) rem(20px) 0 rgba(55, 70, 73, 0.5);
+  box-shadow: 0 rem(8px) rem(20px) 0 rgba(55, 70, 73, 0.1);
 }
 
 td.tabla-renovaciones__cell {
   padding: rem(24px) rem(16px);
   font-family: $font-family-roboto;
   font-size: rem(16px);
+  font-weight: 400;
   color: #111827;
   line-height: 1;
   vertical-align: middle;
@@ -105,7 +106,6 @@ td.tabla-renovaciones__cell.tabla-renovaciones__cell--importe {
     grid-template-columns: 1fr;
     height: auto;
     margin-bottom: rem(24px);
-    border: rem(1px) solid #A7B8BF;
     border-radius: rem(8px);
     padding: rem(16px);
     background-color: $white;
@@ -113,9 +113,12 @@ td.tabla-renovaciones__cell.tabla-renovaciones__cell--importe {
   }
 
   td.tabla-renovaciones__cell {
-    display: block;          
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     padding: rem(10px) 0;
-    border-bottom: rem(1px) solid #F3F4F6;
+    font-size: rem(16px);
+    font-weight: 400;
     margin-bottom: rem(4px);  
   }
 
@@ -127,11 +130,11 @@ td.tabla-renovaciones__cell.tabla-renovaciones__cell--importe {
   td.tabla-renovaciones__cell::before {
     content: attr(data-label);
     display: block;          
-    margin-bottom: rem(4px);
-    font-weight: 600;
+    margin-bottom: 0;
+    font-weight: 400;
     font-size: rem(16px);
     color: #6B7280;
-    text-transform: uppercase;
+    text-transform: none;
   }
 
  
@@ -197,6 +200,7 @@ span.badge-estado--pagada i.icon-check {
 
 @media (max-width: $mobilexlMax) {
   span.badge-estado {
-    justify-self: end;
+    align-self: flex-start;
+    width: fit-content;
   }
 }
