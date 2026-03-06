@@ -133,6 +133,14 @@
 	.header-renovaciones__tags {
 		width: 100%;
 	}
+
+	.header-renovaciones__subtitulo {
+		display: none;
+	}
+
+	.header-renovaciones__tag {
+		align-self: flex-start;
+	}
 }
 
 @media (max-width: $mobilexlMax) {
@@ -148,3 +156,4 @@
 		min-height: auto;
 	}
 }
+
