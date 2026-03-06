@@ -1,0 +1,150 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+
+.header-renovaciones {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: rem(1440px);
+	min-height: rem(159px);
+	padding: rem(32px) rem(88px);
+	gap: rem(40px);
+	border-bottom: rem(1px) solid $header-border;
+	box-sizing: border-box;
+	margin: 0 auto;
+}
+
+.header-renovaciones__breadcrumbs {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: fit-content;
+	height: fit-content;
+	gap: rem(8px);
+}
+
+.header-renovaciones__subtitulo {
+	display: flex;
+	align-items: center;
+	gap: rem(8px);
+}
+
+.header-renovaciones__poliza,
+.header-renovaciones__polizas {
+	width: rem(52px);
+	height: rem(19px);
+	font-family: $font-family-roboto;
+	font-size: rem(16px);
+	font-weight: $weight-regular;
+	line-height: 1;
+	letter-spacing: 0;
+	color: $color-primary;
+}
+
+.header-renovaciones__proximas {
+	width: rem(167px);
+	height: rem(19px);
+	font-family: $font-family-roboto;
+	font-size: rem(16px);
+	font-weight: $weight-regular;
+	line-height: 1;
+	letter-spacing: 0;
+	color: $text-breadcrumb-proximas;
+}
+
+.header-renovaciones__tags {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: rem(1264px);
+	max-width: 100%;
+	min-height: rem(36px);
+	gap: rem(16px);
+}
+
+.header-renovaciones__titulo {
+	width: rem(1125px);
+	height: rem(28px);
+	font-family: $font-family-roboto;
+	font-size: rem(24px);
+	font-weight: $weight-regular;
+	line-height: 1;
+	letter-spacing: 0;
+	color: $text-renovaciones-title;
+	margin: 0;
+}
+
+.header-renovaciones__tag {
+	display: flex;
+	align-items: center;
+	align-self: center;
+	gap: 0;
+	min-height: rem(20px);
+}
+
+.header-renovaciones__tag .icon-file {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: rem(20px);
+	height: rem(20px);
+	font-size: rem(20px);
+	line-height: 1;
+	margin-right: rem(12px);
+}
+
+.header-renovaciones__tag .icon-file::before {
+	display: block;
+	line-height: 1;
+}
+
+.header-renovaciones__total {
+	width: rem(27px);
+	height: rem(19px);
+	display: inline-flex;
+	align-items: center;
+	font-family: $font-family-roboto;
+	font-size: rem(16px);
+	font-weight: $weight-regular;
+	line-height: 1;
+	letter-spacing: 0;
+	color: $text-link;
+}
+
+.header-renovaciones__etiqueta {
+	width: rem(52px);
+	height: rem(19px);
+	display: inline-flex;
+	align-items: center;
+	font-family: $font-family-roboto;
+	font-size: rem(16px);
+	font-weight: $weight-regular;
+	line-height: 1;
+	letter-spacing: 0;
+	color: $text-link;
+	margin-left: rem(4px);
+}
+
+@media (max-width: $desktopMax) {
+	.header-renovaciones {
+		padding: rem(32px) rem(40px);
+	}
+
+	.header-renovaciones__tags {
+		width: 100%;
+	}
+}
+
+@media (max-width: $mobilexlMax) {
+	.header-renovaciones {
+		min-height: auto;
+		padding: rem(24px) rem(16px);
+		gap: rem(20px);
+	}
+
+	.header-renovaciones__tags {
+		flex-direction: column;
+		align-items: flex-start;
+		min-height: auto;
+	}
+}

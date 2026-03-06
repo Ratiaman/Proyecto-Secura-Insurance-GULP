@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/lib/jquery-ui.min.css" rel="stylesheet" media="all">
+    <link href="css/lib/bootstrap-grid.min.css" rel="stylesheet" media="all">
+    <link href="css/main.min.css" rel="stylesheet" media="all">
+    <link rel="icon" href="images/favicon.png" sizes="32x32" type="image/png">
+  </head>
+  <body>
+    <header class="header" id="header">
+      <header class="header">
+        <div class="header__container">
+          <div class="header__left"><a class="header__logo" href="/"><img src="/images/secura-insurance_logo.svg" alt="Logo"></a>
+            <nav class="header__nav"><a class="header__link" href="home.html">Inicio</a><a class="header__link" href="renovaciones.html">Próximas renovaciones</a></nav>
+          </div>
+          <div class="header__right">
+            <div class="header__group header__group--user">
+              <div class="header__group-trigger">
+                <button class="header__user-toggle" type="button" aria-label="Mostrar menu de perfil" aria-expanded="false"><i class="icon-user js-user-icon"></i></button><span class="header__text">Mi perfil</span>
+                <button class="header__dropdown-toggle" type="button" aria-label="Mostrar menu de perfil" aria-expanded="false" data-menu-target=".nav-user"><i class="icon-arrow-dropdown"></i></button><i class="header__icon-close"></i>
+              </div>
+              <div class="nav-user">
+                <div class="nav-user__info"><span class="nav-user__title">Mi perfil</span><span class="nav-user__description">En este espacio puedes acceder, modificar, gestionar y consultar todo lo relacionado con tus servicios de energía. Fácil y rápido. </span></div><a class="nav-user__item" href="#"><i class="icon-user"> </i><span>Mis datos personales</span></a><a class="nav-user__item" href="#"><i class="icon-lock"> </i><span>Mi contraseña</span></a><a class="nav-user__item" href="#"><i class="icon-phone"></i><span>Contacto</span></a><a class="nav-user__item" href="#"><i class="icon-power-off"></i><span>Cerrar sesión</span></a>
+              </div>
+            </div>
+            <div class="header__group header__group--language">
+              <div class="header__group-trigger"><i class="icon-globe"></i><span class="header__text">Español</span>
+                <button class="header__dropdown-toggle" type="button" aria-label="Mostrar menu de idiomas" aria-expanded="false" data-menu-target=".nav-lang"><i class="icon-arrow-dropdown"></i></button>
+              </div>
+              <div class="nav-lang"><span class="nav-lang__item">Español</span><span class="nav-lang__item">English</span><span class="nav-lang__item">Catalán</span><span class="nav-lang__item">Gallego</span><span class="nav-lang__item">Euskera</span></div>
+            </div>
+            <button class="header__burger" type="button" aria-label="Cerrar menú usuario o abrir navegación"><i class="icon-burger_menu header__burger-icon"></i><i class="icon-close header__burger-close"></i></button>
+            <input id="burger-menu-toggle" type="checkbox" hidden>
+            <div class="nav-burger"><a class="nav-burger__item" href="home.html">Inicio</a><a class="nav-burger__item" href="renovaciones.html">Próximas renovaciones</a>
+              <div class="nav-burger__group nav-burger__group--language">
+                <input id="burger-lang-toggle" type="checkbox" hidden>
+                <label class="nav-burger__group-trigger" for="burger-lang-toggle"><i class="icon-globe"></i><span class="nav-burger__text">Español</span><i class="icon-arrow-dropdown"></i></label>
+                <div class="nav-lang"><span class="nav-lang__item">Español</span><span class="nav-lang__item">English</span><span class="nav-lang__item">Catalán</span><span class="nav-lang__item">Gallego</span><span class="nav-lang__item">Euskera</span></div>
+              </div>
+            </div>
+            <div class="header__mobile-overlay"></div>
+          </div>
+        </div>
+      </header>
+    </header>
+    <main class="main-content renovaciones-page" id="main-content">
+      <div class="header-renovaciones">
+        <div class="header-renovaciones__breadcrumbs">
+          <div class="header-renovaciones__subtitulo"><span class="header-renovaciones__polizas">Pólizas </span><span class="separacion">/</span><span class="header-renovaciones__proximas">Próximas renovaciones</span></div>
+        </div>
+        <div class="header-renovaciones__tags">
+          <h1 class="header-renovaciones__titulo">Próximas renovaciones</h1>
+          <div class="header-renovaciones__tag"><span class="icon-file"></span><span class="header-renovaciones__total">770</span><span class="header-renovaciones__etiqueta">Pólizas</span></div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer" id="footer">
+      <div class="footer">
+        <div class="footer-info">
+          <div class="footer-contact"><span class="footer-contact__title">¿Necesitás ayuda?</span>
+            <div class="footer-contact__email"><span class="footer-contact__email-icon icon-mail"></span><span class="footer-contact__email-text">atencionalcliente@securainsurance.com</span></div>
+            <div class="footer-contact__phone"><span class="footer-contact__phone-icon icon-phone"></span><span class="footer-contact__phone-text">900 926 676</span></div>
+          </div>
+          <div class="footer-direction"><span class="footer-contact__direction"><span class="footer-contact__direction-country">SECURA INSURANCE ESPAÑA, S.A.U</span><span class="footer-contact__direction-info">Calle Ribera del Loira 46, Madrid, 28042</span></span></div>
+          <div class="footer-legal"><a class="footer-legal__link" href="#">Política de cookies</a><span class="footer-legal__separation">|</span><a class="footer-legal__link footer-legal__middle" href="#">Aviso legal</a><span class="footer-legal__separation">|</span><a class="footer-legal__link" href="#">Política de privacidad</a></div>
+          <div class="footer-marc"><span class="footer-marc__text">© 2022 SecuraInsurance</span></div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>
