@@ -41,6 +41,16 @@
   box-sizing: border-box;
 }
 
+.client-header .renovaciones__title {
+  margin-bottom: 0;
+}
+
+@media (min-width: $desktop) {
+  .client__wrapper {
+    gap: rem(32px);
+  }
+}
+
 /* tarjetas */
 .client-card {
   width: 100%;
@@ -112,10 +122,11 @@
 
 @media (max-width: $mobilexlMax) {
   .client {
-    padding: rem(16px) 0;
+    padding: rem(16px) 0 rem(24px);
     &__wrapper {
       padding: 0;
       align-items: stretch;
+      gap: rem(24px);
     }
 
     .client-header {
@@ -125,11 +136,12 @@
     .client-header .renovaciones__title {
       text-align: left;
       margin-left: rem(16px);
+      margin-bottom: 0;
     }
 
     .client-grid {
       grid-template-columns: 1fr;
-      gap: rem(16px);
+      gap: rem(24px);
       padding: 0;
       max-width: 100%;
       justify-content: center;

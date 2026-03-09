@@ -92,6 +92,13 @@
 /* breakpoints */
 
 @media (min-width: $desktop) {
+  .footer {
+    padding-left: 0;
+  }
+
+  .footer-info {
+    padding-left: rem(88px);
+  }
   
   .footer-legal__separation {
     margin-inline: rem(14px);

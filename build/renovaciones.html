@@ -37,7 +37,9 @@
               <div class="nav-burger__group nav-burger__group--language">
                 <input id="burger-lang-toggle" type="checkbox" hidden>
                 <label class="nav-burger__group-trigger" for="burger-lang-toggle"><i class="icon-globe"></i><span class="nav-burger__text">Español</span><i class="icon-arrow-dropdown"></i></label>
-                <div class="nav-lang"><span class="nav-lang__item">Español</span><span class="nav-lang__item">English</span><span class="nav-lang__item">Catalán</span><span class="nav-lang__item">Gallego</span><span class="nav-lang__item">Euskera</span></div>
+                <div class="nav-burger__language-panel">
+                  <div class="nav-lang"><span class="nav-lang__item">Español</span><span class="nav-lang__item">English</span><span class="nav-lang__item">Catalán</span><span class="nav-lang__item">Gallego</span><span class="nav-lang__item">Euskera</span></div>
+                </div>
               </div>
             </div>
             <div class="header__mobile-overlay"></div>
@@ -55,6 +57,26 @@
           <div class="header-renovaciones__tag"><span class="icon-file"></span><span class="header-renovaciones__total">770</span><span class="header-renovaciones__etiqueta">Pólizas</span></div>
         </div>
       </div>
+      <section class="renovaciones-tabla">
+        <div class="renovaciones-tabla__container">
+          <div class="renovaciones-tabla__info">
+            <button class="renovaciones-tabla__filtros" type="button" aria-label="Abrir filtros"><i class="icon-filter"></i><span>Filtros</span></button>
+            <div class="renovaciones-tabla__meta">
+              <div class="header-renovaciones__tag"><span class="header-renovaciones__total">770</span><span class="header-renovaciones__etiqueta">Pólizas</span></div>
+              <div class="renovaciones-tabla__orden"><span class="renovaciones-tabla__orden-label">Ordenar por:</span>
+                <select class="renovaciones-tabla__orden-select" name="ordenar" aria-label="Ordenar por">
+                  <option value="importe">Mayor importe</option>
+                  <option value="poliza">No. de póliza</option>
+                  <option value="riesgo">Nombre del riesgo</option>
+                  <option value="contrato">Fecha de contrato</option>
+                  <option value="vencimiento">Fecha de vencimiento					</option>
+                  <option value="estado">Estado de la póliza</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <footer class="footer" id="footer">
       <div class="footer">

@@ -10708,12 +10708,14 @@ function dropdown() {
   if (!header) return;
 
   const groups = Array.from(header.querySelectorAll('.header__group'));
+  const groupTriggers = Array.from(header.querySelectorAll('.header__group-trigger'));
   const dropdownButtons = Array.from(header.querySelectorAll('.header__dropdown-toggle, .header__user-toggle'));
   const userGroup = header.querySelector('.header__group--user');
   const burgerBtn = header.querySelector('.header__burger');
   const burgerToggle = document.getElementById('burger-menu-toggle');
   const userToggleButton = header.querySelector('.header__user-toggle');
   const userCloseIcon = userGroup ? userGroup.querySelector('.header__icon-close') : null;
+  const mobileMenuQuery = window.matchMedia('(max-width: 767px)');
 
   const setExpanded = (group, expanded) => {
     const buttons = group.querySelectorAll('.header__dropdown-toggle, .header__user-toggle');
@@ -10731,9 +10733,26 @@ function dropdown() {
     });
   };
 
+  const toggleGroup = (group) => {
+    if (!group) return;
+
+    const willOpen = !group.classList.contains('is-open');
+    closeDesktopMenus(group);
+
+    group.classList.toggle('is-open', willOpen);
+    setExpanded(group, willOpen);
+
+    if (willOpen && burgerToggle) {
+      burgerToggle.checked = false;
+    }
+
+    updateBurgerIcon();
+  };
+
   const updateBurgerIcon = () => {
     const userMenuOpen = !!(userGroup && userGroup.classList.contains('is-open'));
     const burgerMenuOpen = !!(burgerToggle && burgerToggle.checked);
+    const shouldLockScroll = mobileMenuQuery.matches && (userMenuOpen || burgerMenuOpen);
 
     if (burgerBtn) {
       if (userMenuOpen || burgerMenuOpen) {
@@ -10748,6 +10767,8 @@ function dropdown() {
     if (userToggleButton) {
       userToggleButton.style.display = burgerMenuOpen ? 'none' : '';
     }
+
+    document.body.classList.toggle('not-scroll', shouldLockScroll);
   };
 
   dropdownButtons.forEach((button) => {
@@ -10756,19 +10777,19 @@ function dropdown() {
       e.stopPropagation();
 
       const group = button.closest('.header__group');
-      if (!group) return;
+      toggleGroup(group);
+    });
+  });
 
-      const willOpen = !group.classList.contains('is-open');
-      closeDesktopMenus(group);
+  groupTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      if (e.target.closest('.header__icon-close')) return;
 
-      group.classList.toggle('is-open', willOpen);
-      setExpanded(group, willOpen);
+      e.preventDefault();
+      e.stopPropagation();
 
-      if (willOpen && burgerToggle) {
-        burgerToggle.checked = false;
-      }
-
-      updateBurgerIcon();
+      const group = trigger.closest('.header__group');
+      toggleGroup(group);
     });
   });
 
