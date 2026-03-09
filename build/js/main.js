@@ -10855,3 +10855,20 @@ function dropdown() {
 }
 
 dropdown();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  if (!dropdownToggles.length) return;
+
+  dropdownToggles.forEach((toggle) => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const dropdownMenu = toggle.nextElementSibling;
+
+      if (dropdownMenu) {
+        dropdownMenu.classList.toggle('show');
+      }
+    });
+  });
+});
