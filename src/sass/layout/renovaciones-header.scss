@@ -12,6 +12,16 @@
 	border-bottom: rem(1px) solid $header-border;
 	box-sizing: border-box;
 	margin: 0 auto;
+
+	@media (max-width: $desktopMax) {
+		padding: rem(32px) rem(40px);
+	}
+
+	@media (max-width: $mobilexlMax) {
+		min-height: auto;
+		padding: rem(24px) rem(16px);
+		gap: rem(20px);
+	}
 }
 
 .header-renovaciones__breadcrumbs {
@@ -27,6 +37,10 @@
 	display: flex;
 	align-items: center;
 	gap: rem(8px);
+
+	@media (max-width: $desktopMax) {
+		display: none;
+	}
 }
 
 .header-renovaciones__poliza,
@@ -60,6 +74,16 @@
 	max-width: 100%;
 	min-height: rem(36px);
 	gap: rem(16px);
+
+	@media (max-width: $desktopMax) {
+		width: 100%;
+	}
+
+	@media (max-width: $mobilexlMax) {
+		flex-direction: column;
+		align-items: flex-start;
+		min-height: auto;
+	}
 }
 
 .header-renovaciones__titulo {
@@ -80,6 +104,10 @@
 	align-self: center;
 	gap: 0;
 	min-height: rem(20px);
+
+	@media (max-width: $desktopMax) {
+		align-self: flex-start;
+	}
 }
 
 .header-renovaciones__tag .icon-file {
@@ -123,37 +151,5 @@
 	letter-spacing: 0;
 	color: $text-link;
 	margin-left: rem(4px);
-}
-
-@media (max-width: $desktopMax) {
-	.header-renovaciones {
-		padding: rem(32px) rem(40px);
-	}
-
-	.header-renovaciones__tags {
-		width: 100%;
-	}
-
-	.header-renovaciones__subtitulo {
-		display: none;
-	}
-
-	.header-renovaciones__tag {
-		align-self: flex-start;
-	}
-}
-
-@media (max-width: $mobilexlMax) {
-	.header-renovaciones {
-		min-height: auto;
-		padding: rem(24px) rem(16px);
-		gap: rem(20px);
-	}
-
-	.header-renovaciones__tags {
-		flex-direction: column;
-		align-items: flex-start;
-		min-height: auto;
-	}
 }
 

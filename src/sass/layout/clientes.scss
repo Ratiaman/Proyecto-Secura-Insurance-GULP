@@ -1,15 +1,17 @@
 @use '../helpers/variables' as *;
 @use '../helpers/mixins' as *;
 
-
-
 /* sección principal */
 .client {
   width: 100%;
   background-color: transparent;
   padding-bottom: rem(80px);
   //padding: rem(40px) 0;
-  font-family: 'Roboto', sans-serif; 
+  font-family: 'Roboto', sans-serif;
+
+  @media (max-width: $mobilexlMax) {
+    padding: rem(16px) 0 rem(24px);
+  }
 }
 
 .client__wrapper {
@@ -21,6 +23,16 @@
   padding: 0 rem(16px);
   margin: 0 auto;
   box-sizing: border-box;
+
+  @media (min-width: $desktop) {
+    gap: rem(32px);
+  }
+
+  @media (max-width: $mobilexlMax) {
+    padding: 0;
+    align-items: stretch;
+    gap: rem(24px);
+  }
 }
 
 .client__title {
@@ -32,22 +44,36 @@
 
 .client-grid {
   width: 100%;
-  max-width: rem(1392px); 
+  max-width: rem(1392px);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: rem(32px);
-  
   box-sizing: border-box;
+
+  @media (max-width: $mobilexlMax) {
+    grid-template-columns: 1fr;
+    gap: rem(24px);
+    padding: 0;
+    max-width: 100%;
+    justify-content: center;
+    justify-items: center;
+  }
+}
+
+.client-header {
+  @media (max-width: $mobilexlMax) {
+    width: 100%;
+  }
 }
 
 .client-header .renovaciones__title {
   margin-bottom: 0;
-}
 
-@media (min-width: $desktop) {
-  .client__wrapper {
-    gap: rem(32px);
+  @media (max-width: $mobilexlMax) {
+    text-align: left;
+    margin-left: rem(16px);
+    margin-bottom: 0;
   }
 }
 
@@ -59,10 +85,31 @@
   border-radius: rem(12px);
   overflow: hidden;
   box-shadow: 0 rem(2px) rem(8px) rgba(0, 0, 0, 0.08);
+
+  @media (max-width: $mobilexlMax) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: min(100%, rem(343px));
+    height: rem(326px);
+    border-radius: rem(12px);
+    padding: rem(16px) rem(24px);
+    box-sizing: border-box;
+  }
 }
 
 .client-card__top {
   padding: rem(20px) rem(24px) 0;
+
+  @media (max-width: $mobilexlMax) {
+    display: flex;
+    flex-direction: column;
+    width: rem(295px);
+    min-height: rem(127px);
+    gap: 0;
+    padding: 0;
+  }
 }
 
 .client-card__header {
@@ -72,6 +119,10 @@
   align-items: center;
   width: 100%;
   gap: rem(12px);
+
+  @media (max-width: $mobilexlMax) {
+    margin-top: rem(58px);
+  }
 }
 
 .client-card__name {
@@ -87,6 +138,12 @@
   border: none;
   cursor: pointer;
   color: $neutral500;
+
+  @media (max-width: $mobilexlMax) {
+    position: absolute;
+    top: rem(16px);
+    right: rem(24px);
+  }
 }
 
 .client-card__icon:hover {
@@ -97,12 +154,26 @@
   display: block;
   font-family: $font-family-roboto;
   font-size: rem(16px);
-  color: #9FC3E2; 
+  color: #9FC3E2;
   margin: rem(8px) 0 rem(16px);
+
+  @media (max-width: $mobilexlMax) {
+    margin: rem(10px) 0 0;
+  }
 }
 
 .client-card__bottom {
   padding: rem(20px) rem(24px) rem(24px);
+
+  @media (max-width: $mobilexlMax) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: rem(295px);
+    height: rem(126px);
+    gap: rem(24px);
+    padding: rem(24px) 0 0;
+  }
 }
 
 .client-card__contact {
@@ -110,93 +181,16 @@
   gap: rem(24px);
   align-items: left;
   font-weight: 700;
+
+  @media (max-width: $mobilexlMax) {
+    flex-direction: column;
+    gap: rem(12px);
+  }
 }
 
 .client-card__mail,
 .client-card__phone {
   font-family: $font-family-roboto;
   font-size: rem(16px);
-  color: #4B98D9; 
+  color: #4B98D9;
 }
-
-
-@media (max-width: $mobilexlMax) {
-  .client {
-    padding: rem(16px) 0 rem(24px);
-    &__wrapper {
-      padding: 0;
-      align-items: stretch;
-      gap: rem(24px);
-    }
-
-    .client-header {
-      width: 100%;
-    }
-
-    .client-header .renovaciones__title {
-      text-align: left;
-      margin-left: rem(16px);
-      margin-bottom: 0;
-    }
-
-    .client-grid {
-      grid-template-columns: 1fr;
-      gap: rem(24px);
-      padding: 0;
-      max-width: 100%;
-      justify-content: center;
-      justify-items: center;
-    }
-
-    .client-card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: min(100%, rem(343px));
-      height: rem(326px);
-      border-radius: rem(12px);
-      padding: rem(16px) rem(24px);
-      box-sizing: border-box;
-    }
-
-    .client-card__top {
-      display: flex;
-      flex-direction: column;
-      width: rem(295px);
-      min-height: rem(127px);
-      gap: 0;
-      padding: 0;
-    }
-
-    .client-card__header {
-      margin-top: rem(58px);
-    }
-
-    .client-card__offer {
-      margin: rem(10px) 0 0;
-    }
-
-    .client-card__bottom {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      width: rem(295px);
-      height: rem(126px);
-      gap: rem(24px);
-      padding: rem(24px) 0 0;
-    }
-
-    .client-card__icon {
-      position: absolute;
-      top: rem(16px);
-      right: rem(24px);
-    }
-
-    .client-card__contact {
-      flex-direction: column;
-      gap: rem(12px);
-    }
-  }
-}
-
