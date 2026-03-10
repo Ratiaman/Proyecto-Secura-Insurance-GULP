@@ -36,51 +36,47 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   width: 100%;
+  max-width: min(100%, rem(699px));
+  row-gap: clamp(rem(24px), 3vw, rem(40px));
+  padding-block: clamp(rem(24px), 3vw, rem(40px));
+  padding-inline: clamp(rem(16px), 4vw, rem(40px));
+  box-sizing: border-box;
 }
 
 .hero-home__title {
-  width: rem(695px);
-  height: rem(150px);
+  width: 100%;
   font-family: $font-family-roboto;
-  font-size: rem(64px);
+  font-size: clamp(rem(40px), 5.2vw, rem(64px));
   font-weight: 700;
   line-height: 1;
   color: $white;
-  margin: 0 auto;
+  margin: 0;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-width: $mobilexlMax) {
-    width: rem(358px);
-    height: rem(94px);
-    font-size: rem(40px);
-  }
 }
 
 .hero-home__subtitle {
-  width: rem(718px);
-  height: rem(28px);
+  width: min(100%, 52ch);
   font-family: $font-family-roboto;
-  font-size: rem(24px);
+  font-size: clamp(rem(20px), 2.1vw, rem(24px));
   font-weight: 400;
   line-height: 1;
   color: $white;
-  margin: rem(20px) auto 0;
+  margin: 0;
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
+  text-wrap: balance;
 
   @media (max-width: $mobilexlMax) {
-    width: rem(284px);
-    height: rem(84px);
+    width: min(100%, rem(284px));
     font-size: rem(24px);
-    font-weight: 400;
-    color: $white;
-    margin: rem(24px) auto 0;
-    white-space: normal;
-    text-align: center;
+    line-height: 1.16;
+    text-wrap: pretty;
+  }
+
+  @media (min-width: $desktopsm) {
+    white-space: nowrap;
   }
 }

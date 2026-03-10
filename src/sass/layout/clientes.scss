@@ -24,10 +24,6 @@
   margin: 0 auto;
   box-sizing: border-box;
 
-  @media (min-width: $desktop) {
-    gap: rem(32px);
-  }
-
   @media (max-width: $mobilexlMax) {
     padding: 0;
     align-items: stretch;
@@ -72,7 +68,6 @@
   @media (max-width: $mobilexlMax) {
     text-align: left;
     margin-left: rem(16px);
-    margin-bottom: 0;
   }
 }
 
@@ -90,7 +85,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
     height: rem(326px);
     border-radius: rem(12px);
     padding: rem(16px) rem(24px);

@@ -91,12 +91,10 @@
   cursor: pointer;
   background-color: transparent;
   -webkit-tap-highlight-color: transparent;
-}
 
-.header__group-trigger:active,
-.header__group-trigger:focus,
-.header__group-trigger:focus-within {
-  background-color: transparent;
+  @media (max-width: $mobilexlMax) {
+    background-color: rgba(239, 243, 245, 1);
+  }
 }
 
 .header__group-trigger i {
@@ -124,12 +122,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.header__dropdown-toggle:active,
-.header__dropdown-toggle:focus,
-.header__dropdown-toggle:focus-visible {
-  background: transparent;
-}
-
 .header__user-toggle {
   background: none;
   border: none;
@@ -139,12 +131,6 @@
   cursor: pointer;
   appearance: none;
   -webkit-tap-highlight-color: transparent;
-}
-
-.header__user-toggle:active,
-.header__user-toggle:focus,
-.header__user-toggle:focus-visible {
-  background: transparent;
 }
 
 .header__dropdown-toggle .icon-arrow-dropdown {
@@ -342,10 +328,14 @@
   @media (max-width: $mobilexlMax) {
     display: flex;
   }
+}
 
-  @media (min-width: calc($mobilexlMax + 1px)) {
-    display: none;
-  }
+.nav-burger__item:hover,
+.nav-burger__item:focus,
+.nav-burger__item:focus-visible,
+.nav-burger__item:active,
+.nav-burger__item:visited {
+  text-decoration: none;
 }
 
 .nav-burger__item:last-child {
@@ -367,10 +357,6 @@
     margin-left: 0;
     padding: 0 rem(16px);
     z-index: 2;
-  }
-
-  @media (min-width: calc($mobilexlMax + 1px)) {
-    display: none;
   }
 }
 
@@ -438,13 +424,14 @@
 }
 
 .nav-burger {
+  display: none;
+
   @media (max-width: $mobilexlMax) {
-    display: none;
     position: fixed;
     top: rem(80px);
     left: 0;
     width: 100vw;
-    height: rem(587px);
+    height: calc(100vh - #{rem(80px)});
     right: 0;
     background-color: $white;
     border-top: 1px solid #ddd;
@@ -452,36 +439,24 @@
     overflow-y: auto;
     z-index: 9999;
   }
-
-  @media (min-width: calc($mobilexlMax + 1px)) {
-    display: none;
-  }
 }
 
-#burger-menu-toggle:checked ~ .nav-burger {
+.burger-menu-toggle:checked ~ .nav-burger {
   @media (max-width: $mobilexlMax) {
     display: flex;
     flex-direction: column;
-    height: auto;
-    min-height: rem(587px);
-    max-height: calc(100vh - #{rem(80px)});
-  }
-}
-
-#burger-lang-toggle:checked ~ .nav-lang {
-  @media (max-width: $mobilexlMax) {
-    display: block;
+    height: calc(100vh - #{rem(80px)});
   }
 }
 
 .header__group--user.is-open ~ .header__mobile-overlay,
-#burger-menu-toggle:checked ~ .header__mobile-overlay {
+.burger-menu-toggle:checked ~ .header__mobile-overlay {
   @media (max-width: $mobilexlMax) {
     display: block;
   }
 }
 
-#burger-menu-toggle:checked ~ .header__mobile-overlay {
+.burger-menu-toggle:checked ~ .header__mobile-overlay {
   @media (max-width: $mobilexlMax) {
     background-color: $white;
   }
@@ -499,7 +474,7 @@
   @media (max-width: $mobilexlMax) {
     display: block;
     position: static;
-    width: 100%;
+    width: rem(120px);
     height: auto;
     margin-top: rem(8px);
     padding: 0;
@@ -511,7 +486,7 @@
   }
 }
 
-.nav-burger__group--language #burger-lang-toggle:checked ~ .nav-burger__language-panel {
+.nav-burger__group--language.is-open .nav-burger__language-panel {
   @media (max-width: $mobilexlMax) {
     max-height: rem(260px);
   }
@@ -524,13 +499,25 @@
     gap: rem(8px);
     width: auto;
     padding: 0;
+    border: 0;
+    background: transparent;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
   }
 }
 
 .nav-burger__group-trigger .icon-arrow-dropdown {
   @media (max-width: $mobilexlMax) {
+    display: inline-block;
     margin-left: 0;
+    transition: transform 0.2s ease;
+  }
+}
+
+.nav-burger__group--language.is-open .nav-burger__group-trigger .icon-arrow-dropdown {
+  @media (max-width: $mobilexlMax) {
+    transform: rotate(180deg);
   }
 }
 
@@ -539,12 +526,6 @@
     padding: rem(16px);
     border-bottom: none;
     font-size: rem(16px);
-  }
-}
-
-.nav-burger .nav-lang .nav-lang__item:last-child {
-  @media (max-width: $mobilexlMax) {
-    border-bottom: none;
   }
 }
 

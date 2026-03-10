@@ -20,16 +20,8 @@
   flex-direction: column;
   width: 100%;
   max-width: rem(1392px);
-  gap: rem(24px);
+  gap: 0;
   padding: 0 rem(16px);
-
-  @media (min-width: $tablet) {
-    gap: 0;
-  }
-
-  @media (max-width: $mobilexlMax) {
-    gap: 0;
-  }
 }
 
 .renovaciones__title {
@@ -115,8 +107,6 @@
     flex-direction: column;
     gap: 4px;
     padding: rem(10px) 0;
-    font-size: rem(16px);
-    font-weight: 400;
     margin-bottom: rem(4px);
   }
 }

@@ -10712,9 +10712,11 @@ function dropdown() {
   const dropdownButtons = Array.from(header.querySelectorAll('.header__dropdown-toggle, .header__user-toggle'));
   const userGroup = header.querySelector('.header__group--user');
   const burgerBtn = header.querySelector('.header__burger');
-  const burgerToggle = document.getElementById('burger-menu-toggle');
+  const burgerToggle = header.querySelector('.burger-menu-toggle');
   const userToggleButton = header.querySelector('.header__user-toggle');
   const userCloseIcon = userGroup ? userGroup.querySelector('.header__icon-close') : null;
+  const burgerLangGroup = header.querySelector('.nav-burger__group--language');
+  const burgerLangTrigger = burgerLangGroup ? burgerLangGroup.querySelector('.nav-burger__group-trigger') : null;
   const mobileMenuQuery = window.matchMedia('(max-width: 767px)');
 
   const setExpanded = (group, expanded) => {
@@ -10771,6 +10773,13 @@ function dropdown() {
     document.body.classList.toggle('not-scroll', shouldLockScroll);
   };
 
+  const closeBurgerLangMenu = () => {
+    if (!burgerLangGroup || !burgerLangTrigger) return;
+
+    burgerLangGroup.classList.remove('is-open');
+    burgerLangTrigger.setAttribute('aria-expanded', 'false');
+  };
+
   dropdownButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
       e.preventDefault();
@@ -10803,11 +10812,14 @@ function dropdown() {
       if (userMenuOpen && userGroup) {
         userGroup.classList.remove('is-open');
         setExpanded(userGroup, false);
+        closeBurgerLangMenu();
       } else if (burgerToggle && burgerToggle.checked) {
         burgerToggle.checked = false;
+        closeBurgerLangMenu();
       } else if (burgerToggle) {
         closeDesktopMenus();
         burgerToggle.checked = true;
+        closeBurgerLangMenu();
       }
 
       updateBurgerIcon();
@@ -10825,6 +10837,17 @@ function dropdown() {
     });
   }
 
+  if (burgerLangTrigger && burgerLangGroup) {
+    burgerLangTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const willOpen = !burgerLangGroup.classList.contains('is-open');
+      burgerLangGroup.classList.toggle('is-open', willOpen);
+      burgerLangTrigger.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    });
+  }
+
   if (burgerToggle) {
     burgerToggle.addEventListener('change', updateBurgerIcon);
   }
@@ -10832,12 +10855,14 @@ function dropdown() {
   document.addEventListener('click', (e) => {
     if (!header.contains(e.target)) {
       closeDesktopMenus();
+      closeBurgerLangMenu();
       updateBurgerIcon();
       return;
     }
 
     if (burgerToggle && burgerToggle.checked && e.target.closest('.nav-burger__item')) {
       burgerToggle.checked = false;
+      closeBurgerLangMenu();
       updateBurgerIcon();
     }
   });
@@ -10846,6 +10871,7 @@ function dropdown() {
     if (e.key === 'Escape') {
       closeDesktopMenus();
       if (burgerToggle) burgerToggle.checked = false;
+      closeBurgerLangMenu();
       updateBurgerIcon();
     }
   });

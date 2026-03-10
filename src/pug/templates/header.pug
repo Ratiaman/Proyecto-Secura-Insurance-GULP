@@ -1,7 +1,7 @@
 header.header
   .header__container
     .header__left
-      a.header__logo(href="/")
+      .header__logo
         img(src="/images/secura-insurance_logo.svg", alt="Logo")
       
       nav.header__nav
@@ -38,19 +38,18 @@ header.header
         i.icon-close.header__burger-close
 
       
-      input#burger-menu-toggle(type="checkbox" hidden)
+      input#burger-menu-toggle.burger-menu-toggle(type="checkbox" hidden)
       .nav-burger
         a.nav-burger__item(href="home.html") Inicio
         a.nav-burger__item(href="renovaciones.html") Próximas renovaciones
 
         //- idioma dentro del menú burger
         .nav-burger__group.nav-burger__group--language
-          input#burger-lang-toggle(type="checkbox" hidden)
-          label.nav-burger__group-trigger(for="burger-lang-toggle")
+          button.nav-burger__group-trigger(type="button" aria-expanded="false" aria-controls="burger-language-panel")
             i.icon-globe
             span.nav-burger__text Español
             i.icon-arrow-dropdown
-          .nav-burger__language-panel
+          .nav-burger__language-panel#burger-language-panel
             include ../templates/dropdown-idiomas.pug
 
       .header__mobile-overlay

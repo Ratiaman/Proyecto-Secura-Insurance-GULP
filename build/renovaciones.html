@@ -12,7 +12,8 @@
     <header class="header" id="header">
       <header class="header">
         <div class="header__container">
-          <div class="header__left"><a class="header__logo" href="/"><img src="/images/secura-insurance_logo.svg" alt="Logo"></a>
+          <div class="header__left">
+            <div class="header__logo"><img src="/images/secura-insurance_logo.svg" alt="Logo"></div>
             <nav class="header__nav"><a class="header__link" href="home.html">Inicio</a><a class="header__link" href="renovaciones.html">Próximas renovaciones</a></nav>
           </div>
           <div class="header__right">
@@ -32,12 +33,11 @@
               <div class="nav-lang"><span class="nav-lang__item">Español</span><span class="nav-lang__item">English</span><span class="nav-lang__item">Catalán</span><span class="nav-lang__item">Gallego</span><span class="nav-lang__item">Euskera</span></div>
             </div>
             <button class="header__burger" type="button" aria-label="Cerrar menú usuario o abrir navegación"><i class="icon-burger_menu header__burger-icon"></i><i class="icon-close header__burger-close"></i></button>
-            <input id="burger-menu-toggle" type="checkbox" hidden>
+            <input class="burger-menu-toggle" id="burger-menu-toggle" type="checkbox" hidden>
             <div class="nav-burger"><a class="nav-burger__item" href="home.html">Inicio</a><a class="nav-burger__item" href="renovaciones.html">Próximas renovaciones</a>
               <div class="nav-burger__group nav-burger__group--language">
-                <input id="burger-lang-toggle" type="checkbox" hidden>
-                <label class="nav-burger__group-trigger" for="burger-lang-toggle"><i class="icon-globe"></i><span class="nav-burger__text">Español</span><i class="icon-arrow-dropdown"></i></label>
-                <div class="nav-burger__language-panel">
+                <button class="nav-burger__group-trigger" type="button" aria-expanded="false" aria-controls="burger-language-panel"><i class="icon-globe"></i><span class="nav-burger__text">Español</span><i class="icon-arrow-dropdown"></i></button>
+                <div class="nav-burger__language-panel" id="burger-language-panel">
                   <div class="nav-lang"><span class="nav-lang__item">Español</span><span class="nav-lang__item">English</span><span class="nav-lang__item">Catalán</span><span class="nav-lang__item">Gallego</span><span class="nav-lang__item">Euskera</span></div>
                 </div>
               </div>
