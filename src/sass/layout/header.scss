@@ -221,14 +221,15 @@
   margin-bottom: rem(16px);
   font-size: rem(16px);
   font-weight: 700;
-  color: $black;
+  color: rgba(55, 70, 73, 1);
 }
 
 .nav-user__description {
   display: block;
   font-size: rem(14px);
-  color: $text-muted;
+  color: rgba(55, 70, 73, 1);
   line-height: 1.4;
+  
 }
 
 .nav-user__item {
@@ -236,13 +237,15 @@
   grid-template-columns: rem(24px) 1fr; 
   align-items: center;
   gap: rem($spacing-m);
-  height: 61px;
+  height: rem(61px);
   padding: 0 rem(20px);
   border-bottom: 1px solid #ddd;
   cursor: pointer;
   position: relative;
   background-color: $white;
   text-decoration: none;
+  color: rgba(55, 70, 73, 1);
+  
 }
 
 .nav-user__item:last-child {
@@ -278,7 +281,7 @@
 
 .nav-user__item span {
   font-size: rem(14px);
-  color: $text-link;
+  color: rgba(55, 70, 73, 1);
   font-weight: $weight-medium;
 }
 
@@ -303,7 +306,7 @@
 .nav-lang__item {
   padding: rem(10px) rem($spacing-xl);
   font-size: rem(14px);
-  color: $text-link;
+  color: rgba(55, 70, 73, 1);
   display: block;
   cursor: pointer;
   text-decoration: none;
@@ -316,7 +319,7 @@
 .nav-lang__item:hover {
   background-color: $hover-bg;
   font-weight: $weight-bold;
-  color: $text-link;
+  color: rgba(55, 70, 73, 1);
 }
 
 .nav-lang__item:last-child {
