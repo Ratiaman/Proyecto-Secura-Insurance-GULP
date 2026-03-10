@@ -11,6 +11,15 @@
   width: 100%;
   font-family: $font-family-roboto;
   //justify-content: space-between;
+
+  @media (min-width: $desktop) {
+    padding-left: 0;
+  }
+
+  @media (max-width: $mobilexlMax) {
+    padding: rem(16px);
+    margin-bottom: rem(10px);
+  }
 }
 
 .footer a, .footer span {
@@ -27,6 +36,15 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+  @media (min-width: $desktop) {
+    padding-left: rem(88px);
+  }
+
+  @media (max-width: $mobilexlMax) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /*Contact */
@@ -49,11 +67,21 @@
 .footer-contact__direction {
   display: flex;
   flex-direction: column;
+
+  @media (max-width: $mobilexlMax) {
+    margin-top: rem(10px);
+  }
 }
 
 .footer-direction {
   justify-self: end;
   text-align: right;
+
+  @media (max-width: $mobilexlMax) {
+    justify-self: start;
+    text-align: left;
+    margin-top: rem(32px);
+  }
 }
 
 .footer-contact__direction-country {
@@ -64,93 +92,60 @@
 .footer-legal__link {
   @include text-style(10px, 500);
   text-decoration: none;
+
+  @media (max-width: $mobilexlMax) {
+    @include text-style(16px, 400);
+    display: block;
+  }
 }
 
 .footer-legal {
   margin-top: rem(16px);
+
+  @media (max-width: $mobilexlMax) {
+    margin-top: rem(32px);
+    display: flex;
+    flex-direction: column;
+    gap: rem(24px);
+  }
 }
 
 .footer-legal__separation {
   margin-inline: rem(24px);
+
+  @media (min-width: $desktop) {
+    margin-inline: rem(14px);
+  }
+
+  @media (max-width: $mobilexlMax) {
+    display: none;
+  }
 }
 
 .footer-legal__middle {
   margin: rem(14px) 0;
+
+  @media (max-width: $mobilexlMax) {
+    margin: 0;
+  }
 }
 
 
 .footer-marc__text {
   @include text-style(10px, 400);
+
+  @media (max-width: $mobilexlMax) {
+    @include text-style(16px, 400);
+  }
 }
 
 .footer-marc {
   justify-self: end;
   text-align: right;
   margin-top: rem(16px);
-}
 
-/* breakpoints */
-
-@media (min-width: $desktop) {
-  .footer {
-    padding-left: 0;
-  }
-
-  .footer-info {
-    padding-left: rem(88px);
-  }
-  
-  .footer-legal__separation {
-    margin-inline: rem(14px);
-  }
-}
-
-@media (max-width: $mobilexlMax) {
-  
-  .footer {
-    padding: rem(16px);
-    margin-bottom: rem(10px);
-  }
-  .footer-info {
-    display: flex;
-    flex-direction: column;
-  }
-  .footer-contact__direction {
-    margin-top: rem(10px);
-  }
-
-  .footer-direction {
+  @media (max-width: $mobilexlMax) {
     justify-self: start;
     text-align: left;
-    margin-top: rem(32px);
-  }
-
-  .footer-legal {
-    margin-top: rem(32px);
-    display: flex;
-    flex-direction: column;
-    gap: rem(24px);
-  }
-
-  .footer-legal__link {
-    @include text-style(16px, 400);
-    display: block;
-  }
-
-  .footer-legal__middle {
-    margin: 0;
-  }
-
-  .footer-legal__separation {
-    display: none;
-  }
-
-  .footer-marc {
-    justify-self: start;
-    text-align: left;
-  }
-
-  .footer-marc__text {
-    @include text-style(16px, 400);
   }
 }
