@@ -3,9 +3,8 @@
 @use '../helpers/icons-variables' as *;
 
 
-.footer,
-.footer-content {
-  padding: rem(16px) rem(32px);
+.footer {
+  padding: rem(16px) 0;
   background-color: $white;
   max-width: rem(1440px);
   margin: 0 auto;
@@ -13,14 +12,19 @@
   font-family: $font-family-roboto;
   //justify-content: space-between;
 
-  @media (min-width: $desktop) {
-    padding-left: 0;
+  @media (max-width: $desktopMax) {
+    padding-left: rem(32px);
+    padding-right: rem(32px);
   }
 
   @media (max-width: $mobilexlMax) {
     padding: rem(16px);
     margin-bottom: rem(10px);
   }
+}
+
+.footer-content {
+  width: 100%;
 }
 
 .footer a, .footer span,
@@ -31,17 +35,20 @@
 .footer .footer-contact__title,
 .footer-content .footer-contact__title {
   @include text-style(16px, 700);
-  color: #4B98D9;
+  color: $footer-title-color;
 }
 
 /* Layout */
 .footer-info {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  padding-left: rem(88px);
+  padding-right: rem(88px);
 
-  @media (min-width: $desktop) {
-    padding-left: rem(88px);
+  @media (max-width: $desktopMax) {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   @media (max-width: $mobilexlMax) {
@@ -114,10 +121,10 @@
 }
 
 .footer-legal__separation {
-  margin-inline: rem(24px);
+  margin-inline: rem(14px);
 
-  @media (min-width: $desktop) {
-    margin-inline: rem(14px);
+  @media (max-width: $desktopMax) {
+    margin-inline: rem(24px);
   }
 
   @media (max-width: $mobilexlMax) {

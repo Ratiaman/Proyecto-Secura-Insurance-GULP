@@ -1,5 +1,5 @@
 @use '../helpers/icons-variables';
-@use '../helpers/variables';
+@use '../helpers/variables' as *;
 @font-face {
   font-family: 'icomoon';
   src:  url('fonts/icomoon.eot?wg6xgh');
@@ -29,76 +29,76 @@
 
 .icon-arrow-dropdown:before {
   content: icons-variables.$icon-arrow-dropdown;
-  color: variables.$color-primary;
+  color: $color-primary;
 }
 .icon-arrow-right:before {
   content: "\e901";
-  color: #4b98d9;
+  color: $color-primary;
 }
 .icon-back:before {
   content: "\e902";
-  color: #a7b8bf;
+  color: $color-secondary;
 }
 .icon-burger_menu:before {
   content: "\e903";
-  color: #4b98d9;
+  color: $color-primary;
 }
 .icon-check:before {
   content: "\e904";
-  color: #45944d;
+  color: $color-success;
 }
 .icon-clock:before {
   content: "\e905";
-  color: #405258;
+  color: $color-dark;
 }
 .icon-close:before {
   content: "\e906";
-  color: #4b98d9;
+  color: $color-primary;
 }
 .icon-file:before {
   content: icons-variables.$icon-file;
-  color: #405258;
+  color: $color-dark;
 }
 .icon-filter:before {
   content: "\e908";
-  color: #4b98d9;
+  color: $color-primary;
 }
 .icon-Frame-1021:before {
   content: "\e909";
 }
 .icon-globe:before {
   content: "\e90a";
-  color: #4b98d9;
+  color: $color-primary;
 }
 .icon-lock:before {
   content: "\e90b";
-  color: #4b98d9;
+  color: $color-primary;
 }
 .icon-mail:before {
   content: "\e90c";
-  color: #4b98d9;
+  color: $color-primary;
 }
 .icon-phone:before {
   content: "\e90d";
-  color: #4b98d9;
+  color: $color-primary;
 }
 .icon-power-off:before {
   content: "\e90e";
-  color: #4b98d9;
+  color: $color-primary;
 }
 .icon-skip-left:before {
   content: "\e90f";
-  color: #a7b8bf;
+  color: $color-secondary;
 }
 .icon-skip-right:before {
   content: "\e910";
-  color: #4b98d9;
+  color: $color-primary;
 }
 .icon-trash-alt:before {
   content: "\e911";
-  color: #4b98d9;
+  color: $color-primary;
 }
 .icon-user:before {
   content: "\e912";
-  color: #4b98d9;
+  color: $color-primary;
 }

@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: rem(40px) 0;
+  padding: rem(40px) 0 0;
   background-color: transparent;
 
   @media (max-width: $mobilexlMax) {
@@ -20,8 +20,12 @@
   flex-direction: column;
   width: 100%;
   max-width: rem(1392px);
-  gap: 0;
+  gap: rem(16px);
   padding: 0 rem(16px);
+
+  @media (max-width: $mobilexlMax) {
+    gap: rem(24px);
+  }
 }
 
 .renovaciones__title {
@@ -33,17 +37,9 @@
   font-weight: 600;
   line-height: 1; 
   letter-spacing: 0;
-  color: #353535;
+  color: $tabla-title-color;
   margin: 0;
   white-space: nowrap; // Fuerza a que esté en una sola línea
-
-  @media (min-width: $tablet) {
-    margin-bottom: rem(40px);
-  }
-
-  @media (max-width: $mobilexlMax) {
-    margin-bottom: rem(16px);
-  }
 }
 
 .renovaciones__container {
@@ -72,14 +68,14 @@
   font-size: rem(16px);
   font-weight: 400;
   line-height: 1;
-  color: #405258;
-  border-bottom: rem(1px) solid #A7B8BF;
+  color: $text-link;
+  border-bottom: rem(1px) solid $color-secondary;
 }
 
 .tabla-renovaciones__row {
   height: rem(76px);
   background-color: $white;
-  box-shadow: 0 rem(8px) rem(20px) 0 rgba(55, 70, 73, 0.1);
+  box-shadow: 0 rem(8px) rem(20px) 0 $tabla-row-shadow-color;
 
   @media (max-width: $mobilexlMax) {
     display: grid;
@@ -89,7 +85,7 @@
     border-radius: rem(8px);
     padding: rem(16px);
     background-color: $white;
-    box-shadow: 0 rem(4px) rem(8px) 0 rgba(55, 70, 73, 0.2);
+    box-shadow: 0 rem(4px) rem(8px) 0 $tabla-row-shadow-mobile-color;
   }
 }
 
@@ -98,7 +94,7 @@
   font-family: $font-family-roboto;
   font-size: rem(16px);
   font-weight: 400;
-  color: #111827;
+  color: $tabla-cell-color;
   line-height: 1;
   vertical-align: middle;
 
@@ -156,7 +152,7 @@
     margin-bottom: 0;
     font-weight: 400;
     font-size: rem(16px);
-    color: #6B7280;
+    color: $neutral300;
     text-transform: none;
   }
 }
@@ -164,15 +160,6 @@
 // Botón
 .renovaciones__actions {
   text-align: left;
-
-  @media (max-width: $mobilexlMax) {
-    margin-top: rem(24px);
-    margin-bottom: rem(8px);
-  }
-
-  @media (min-width: $desktop) {
-    margin-top: rem(16px);
-  }
 }
 
 .renovaciones__actions .boton-ver-todas {
@@ -181,8 +168,8 @@
   width: rem(100px);
   height: rem(39px);
   border-radius: rem(8px);
-  background-color: #CFE1F1;
-  color: #191C3D;
+  background-color: $boton-ver-todas-bg;
+  color: $boton-ver-todas-text;
   margin: 0;
   line-height: rem(39px);
   text-align: center;
@@ -214,19 +201,19 @@
 }
 
 .badge-estado.badge-estado--pendiente {
-  background-color: #FFE74F66;
-  color: #405258;
+  background-color: $badge-pendiente-bg;
+  color: $text-link;
 }
 
 .badge-estado.badge-estado--pagada {
-  background-color: rgba(87, 174, 96, 0.15); 
-  color: #03543F;
+  background-color: $badge-pagada-bg; 
+  color: $badge-pagada-text;
 }
 
 .badge-estado--pendiente .icon-clock {
-  color: #92400E;
+  color: $badge-pendiente-icon;
 }
 
 .badge-estado--pagada .icon-check {
-  color: #03543F;
+  color: $badge-pagada-text;
 }

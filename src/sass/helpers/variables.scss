@@ -6,7 +6,7 @@ $primary300: #006DB3;
 $primary200: #8ABCDC;
 $primary100: #B0D2E7;
 $primary50: #E6F0F7;
-$primary10: #F5FAFD;
+$primary10: #F5FAFD; //variable para el fondo del icon-user 
 
 /* Secondary */
 $secondary500: #470E19;
@@ -141,6 +141,30 @@ $text-link: #405258;
 $text-muted: #6c757d;    
 $text-breadcrumb-proximas: #6b8893;
 $text-renovaciones-title: #161c1f;
+
+$header-group-trigger-mobile-bg: rgba(239, 243, 245, 1);
+$header-border-light: #ddd;
+$header-border-soft: #e0e0e0;
+$header-text-primary: rgba(55, 70, 73, 1);
+
+$footer-title-color: $color-primary;
+
+$tabla-title-color: #353535;
+$tabla-cell-color: #111827;
+$tabla-row-shadow-color: rgba(55, 70, 73, 0.1);
+$tabla-row-shadow-mobile-color: rgba(55, 70, 73, 0.2);
+$boton-ver-todas-bg: #CFE1F1;
+$boton-ver-todas-text: #191C3D;
+$badge-pendiente-bg: #FFE74F66;
+$badge-pagada-bg: rgba(87, 174, 96, 0.15);
+$badge-pagada-text: #03543F;
+$badge-pendiente-icon: #92400E;
+
+$client-card-shadow-color: rgba(0, 0, 0, 0.08);
+$client-offer-color: #9FC3E2;
+
+$main-content-gradient-mid: #F9FBFC;
+$main-content-gradient-end: #F4F7F9;
 
 
 //Variables de Tipografía

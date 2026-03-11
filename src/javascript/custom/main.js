@@ -1,4 +1,4 @@
-// Header dropdowns: user/language via arrow buttons + burger state sync
+// Controla los dropdowns del header (user/language) y sincroniza el estado del burger
 function dropdown() {
   const header = document.querySelector('.header');
   if (!header) return;
@@ -15,6 +15,7 @@ function dropdown() {
   const burgerLangTrigger = burgerLangGroup ? burgerLangGroup.querySelector('.nav-burger__group-trigger') : null;
   const mobileMenuQuery = window.matchMedia('(max-width: 767px)');
 
+  // Actualiza aria-expanded en los button de un group
   const setExpanded = (group, expanded) => {
     const buttons = group.querySelectorAll('.header__dropdown-toggle, .header__user-toggle');
     buttons.forEach((button) => {
@@ -22,6 +23,7 @@ function dropdown() {
     });
   };
 
+  // Cierra los menús de desktop, excepto el group indicado
   const closeDesktopMenus = (exceptGroup) => {
     groups.forEach((group) => {
       if (group !== exceptGroup) {
@@ -31,6 +33,7 @@ function dropdown() {
     });
   };
 
+  // Abre o cierra un group y mantiene el resto en estado consistente
   const toggleGroup = (group) => {
     if (!group) return;
 
@@ -47,6 +50,7 @@ function dropdown() {
     updateBurgerIcon();
   };
 
+  // Sincroniza icono/label del burger y bloquea scroll en mobile cuando hay menú abierto
   const updateBurgerIcon = () => {
     const userMenuOpen = !!(userGroup && userGroup.classList.contains('is-open'));
     const burgerMenuOpen = !!(burgerToggle && burgerToggle.checked);
@@ -69,6 +73,7 @@ function dropdown() {
     document.body.classList.toggle('not-scroll', shouldLockScroll);
   };
 
+  // Cierra el selector de idioma dentro del menú burger
   const closeBurgerLangMenu = () => {
     if (!burgerLangGroup || !burgerLangTrigger) return;
 
@@ -179,6 +184,7 @@ function dropdown() {
 dropdown();
 
 
+// Activa los dropdown-toggle genéricos cuando el DOM ya está listo
 document.addEventListener('DOMContentLoaded', () => {
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
   if (!dropdownToggles.length) return;

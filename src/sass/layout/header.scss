@@ -94,7 +94,7 @@
   -webkit-tap-highlight-color: transparent;
 
   @media (max-width: $mobilexlMax) {
-    background-color: rgba(239, 243, 245, 1);
+    background-color: $header-group-trigger-mobile-bg;
   }
 }
 
@@ -197,7 +197,7 @@
     overflow-y: auto;
     margin-top: 0;
     border: none;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid $header-border-light;
     z-index: 9999;
   }
 }
@@ -205,7 +205,7 @@
 .nav-user__info {
   display: block;
   padding: rem(24px) rem(24px) rem(22px);
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid $header-border-light;
   cursor: default;
 }
 
@@ -214,13 +214,13 @@
   margin-bottom: rem(16px);
   font-size: rem(16px);
   font-weight: 700;
-  color: rgba(55, 70, 73, 1);
+  color: $header-text-primary;
 }
 
 .nav-user__description {
   display: block;
   font-size: rem(14px);
-  color: rgba(55, 70, 73, 1);
+  color: $header-text-primary;
   line-height: 1.4;
   
 }
@@ -232,12 +232,12 @@
   gap: rem($spacing-m);
   height: rem(61px);
   padding: 0 rem(20px);
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid $header-border-light;
   cursor: pointer;
   position: relative;
   background-color: $white;
   text-decoration: none;
-  color: rgba(55, 70, 73, 1);
+  color: $header-text-primary;
   
 }
 
@@ -274,7 +274,7 @@
 
 .nav-user__item span {
   font-size: rem(14px);
-  color: rgba(55, 70, 73, 1);
+  color: $header-text-primary;
   font-weight: $weight-medium;
 }
 
@@ -299,13 +299,13 @@
 .nav-lang__item {
   padding: rem(10px) rem($spacing-xl);
   font-size: rem(14px);
-  color: rgba(55, 70, 73, 1);
+  color: $header-text-primary;
   display: block;
   cursor: pointer;
   text-decoration: none;
 
   @media (min-width: calc($mobilexlMax + 1px)) {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $header-border-light;
   }
 }
 
@@ -320,7 +320,7 @@
 .nav-lang__item:hover {
   background-color: $hover-bg;
   font-weight: $weight-bold;
-  color: rgba(55, 70, 73, 1);
+  color: $header-text-primary;
 }
 
 .nav-lang__item:last-child {
@@ -338,7 +338,7 @@
   text-decoration: none;
   color: $text-link;
   font-size: rem(16px);
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid $header-border-soft;
 
   @media (max-width: $mobilexlMax) {
     display: flex;
@@ -384,7 +384,7 @@
     left: 0;
     width: 100vw;
     height: calc(100vh - #{rem(80px)});
-    background-color: rgba(31, 41, 55, 0.2);
+    background-color: rgba($neutral500, 0.2);
     z-index: 9998;
     pointer-events: none;
   }
@@ -449,7 +449,7 @@
     height: calc(100vh - #{rem(80px)});
     right: 0;
     background-color: $white;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid $header-border-light;
     box-shadow: $shadow-custom-menu;
     overflow-y: auto;
     z-index: 9999;
