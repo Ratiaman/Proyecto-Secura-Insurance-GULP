@@ -3,7 +3,8 @@
 @use '../helpers/icons-variables' as *;
 
 
-.footer {
+.footer,
+.footer-content {
   padding: rem(16px) rem(32px);
   background-color: $white;
   max-width: rem(1440px);
@@ -22,11 +23,13 @@
   }
 }
 
-.footer a, .footer span {
+.footer a, .footer span,
+.footer-content a, .footer-content span {
   color: $text-link; // #405258
 }
 
-.footer .footer-contact__title {
+.footer .footer-contact__title,
+.footer-content .footer-contact__title {
   @include text-style(16px, 700);
   color: #4B98D9;
 }

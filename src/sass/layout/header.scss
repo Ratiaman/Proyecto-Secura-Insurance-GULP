@@ -9,7 +9,8 @@
 }
 
 // 1. HEADER 
-.header {
+.header,
+.header-content {
   background-color: $header-bg;
   border-bottom: rem(1px) solid $header-border;
   width: 100%;
@@ -131,6 +132,12 @@
   cursor: pointer;
   appearance: none;
   -webkit-tap-highlight-color: transparent;
+
+  @media (max-width: $mobilexlMax) {
+    background-color: $primary10;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rem(8px) $primary10;
+  }
 }
 
 .header__dropdown-toggle .icon-arrow-dropdown {
@@ -300,6 +307,14 @@
   @media (min-width: calc($mobilexlMax + 1px)) {
     border-bottom: 1px solid #ddd;
   }
+}
+
+.nav-lang__item:hover,
+.nav-lang__item:focus,
+.nav-lang__item:focus-visible,
+.nav-lang__item:active,
+.nav-lang__item:visited {
+  text-decoration: none;
 }
 
 .nav-lang__item:hover {
