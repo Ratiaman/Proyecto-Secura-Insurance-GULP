@@ -25,6 +25,10 @@
 
 .footer-content {
   width: 100%;
+
+  @media (max-width: $mobilexlMax) {
+    padding-top: rem(20px);
+  }
 }
 
 .footer a, .footer span,
@@ -59,6 +63,14 @@
 
 /*Contact */
 
+.footer-contact {
+  padding-top: rem(16px);
+
+  @media (max-width: $desktopMax) {
+    padding-top: 0;
+  }
+}
+
 
 .footer-contact__email,
 .footer-contact__phone {
@@ -84,8 +96,13 @@
 }
 
 .footer-direction {
+  padding-top: rem(32.5px);
   justify-self: end;
   text-align: right;
+
+  @media (max-width: $desktopMax) {
+    padding-top: 0;
+  }
 
   @media (max-width: $mobilexlMax) {
     justify-self: start;

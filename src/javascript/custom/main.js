@@ -181,8 +181,6 @@ function dropdown() {
   updateBurgerIcon();
 }
 
-dropdown();
-
 
 // Activa los dropdown-toggle genéricos cuando el DOM ya está listo
 document.addEventListener('DOMContentLoaded', () => {
@@ -200,3 +198,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+dropdown();

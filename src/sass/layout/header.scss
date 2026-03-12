@@ -511,11 +511,14 @@
   @media (max-width: $mobilexlMax) {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: rem(8px);
-    width: auto;
+    width: rem(129px);
+    height: rem(40px);
     padding: 0;
     border: 0;
-    background: transparent;
+    border-radius: rem(8px);
+    background: #eff3f5;
     appearance: none;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
