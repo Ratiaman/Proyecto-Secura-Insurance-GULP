@@ -38,7 +38,7 @@
 	align-items: center;
 	gap: rem(8px);
 
-	@media (max-width: $desktopMax) {
+	@media (max-width: $mobilexlMax) {
 		display: none;
 	}
 }
@@ -102,10 +102,14 @@
 	display: flex;
 	align-items: center;
 	align-self: center;
+	width: rem(139px);
+	height: rem(36px);
+	padding: rem(8px) rem(12px);
 	gap: 0;
-	min-height: rem(20px);
+	border-radius: rem(8px);
+	background-color: $header-group-trigger-mobile-bg;
 
-	@media (max-width: $desktopMax) {
+	@media (max-width: $mobilexlMax) {
 		align-self: flex-start;
 	}
 }
@@ -137,6 +141,7 @@
 	line-height: 1;
 	letter-spacing: 0;
 	color: $text-link;
+	margin-right: rem(4px);
 }
 
 .header-renovaciones__etiqueta {
@@ -150,6 +155,6 @@
 	line-height: 1;
 	letter-spacing: 0;
 	color: $text-link;
-	margin-left: rem(4px);
+	margin-left: 0;
 }
 
