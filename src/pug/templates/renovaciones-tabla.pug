@@ -1,0 +1,48 @@
+
+section.renovaciones
+    .renovaciones__wrapper
+        h3.renovaciones__title Próximas renovaciones
+
+        -
+            const fallbackClientesData = [
+                { poliza: '10483921', riesgo: 'Hyundai Ioniq 5', contrato: '15/03/2021', vencimiento: '15/03/2022', importe: '1.240,50€', estado: 'Pagada' },
+                { poliza: '10483922', riesgo: 'Toyota Corolla 1.8', contrato: '22/06/2020', vencimiento: '22/06/2021', importe: '980,00€', estado: 'Pendiente' },
+                { poliza: '10483923', riesgo: 'Volkswagen Golf VIII', contrato: '10/09/2022', vencimiento: '10/09/2023', importe: '1.580,75€', estado: 'Pagada' },
+                { poliza: '10483924', riesgo: 'BMW Serie 3 320d', contrato: '05/01/2023', vencimiento: '05/01/2024', importe: '2.340,00€', estado: 'Pagada' },
+                { poliza: '10483925', riesgo: 'Ford Focus 1.5 EcoBoost', contrato: '18/04/2021', vencimiento: '18/04/2022', importe: '870,20€', estado: 'Pendiente' },
+                { poliza: '10483926', riesgo: 'Audi A4 2.0 TDI', contrato: '30/11/2022', vencimiento: '30/11/2023', importe: '3.100,00€', estado: 'Pagada' },
+                { poliza: '10483927', riesgo: 'Seat León FR', contrato: '07/02/2020', vencimiento: '07/02/2021', importe: '760,80€', estado: 'Pendiente' },
+                { poliza: '10483928', riesgo: 'Renault Megane 1.5 dCi', contrato: '14/07/2021', vencimiento: '14/07/2022', importe: '690,00€', estado: 'Pagada' },
+                { poliza: '10483929', riesgo: 'Mercedes Clase C 200', contrato: '03/10/2023', vencimiento: '03/10/2024', importe: '4.200,50€', estado: 'Pagada' },
+                { poliza: '10483930', riesgo: 'Peugeot 308 1.2 PureTech', contrato: '25/05/2022', vencimiento: '25/05/2023', importe: '820,30€', estado: 'Pendiente' }
+            ];
+            const sourceClientesData = Array.isArray(clientesData) && clientesData.length ? clientesData : fallbackClientesData;
+            const itemsRenovaciones = sourceClientesData.slice(0, 10);
+
+        .renovaciones__container
+            table.tabla-renovaciones
+                thead.tabla-renovaciones__head
+                    tr.tabla-renovaciones__head-row
+                        th.tabla-renovaciones__head-cell No. de póliza
+                        th.tabla-renovaciones__head-cell Nombre del riesgo
+                        th.tabla-renovaciones__head-cell Fecha de contrato
+                        th.tabla-renovaciones__head-cell Fecha de vencimiento
+                        th.tabla-renovaciones__head-cell Importe
+                        th.tabla-renovaciones__head-cell Estado de la póliza
+                tbody.tabla-renovaciones__body
+                    each item in itemsRenovaciones
+                        tr.tabla-renovaciones__row
+                            td.tabla-renovaciones__cell(data-label="No. de póliza")= item.poliza
+                            td.tabla-renovaciones__cell(data-label="Nombre del riesgo")= item.riesgo
+                            td.tabla-renovaciones__cell(data-label="Fecha de contrato")= item.contrato
+                            td.tabla-renovaciones__cell(data-label="Fecha de vencimiento")= item.vencimiento
+                            td.tabla-renovaciones__cell.tabla-renovaciones__cell--importe(data-label="Importe")= item.importe
+                            td.tabla-renovaciones__cell(data-label="Estado")
+                                if item.estado == 'Pagada'
+                                    span.badge-estado.badge-estado--pagada
+                                        i.icon-check
+                                        |  #{item.estado}
+                                else
+                                    span.badge-estado.badge-estado--pendiente
+                                        i.icon-clock
+                                        |  #{item.estado}

@@ -11,6 +11,7 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const browserSync = require('browser-sync').create();
 const mkdirp = require('mkdirp');
+const fs = require('fs');
 
 const path = {
   pug: ['src/pug/*.pug'],
@@ -49,7 +50,16 @@ function buildLocaleComponents() {
 }
 gulp.task('buildLocaleComponents', buildLocaleComponents);
 
-gulp.task('buildPUG', () => gulp.src(path.pug).pipe(pug({ pretty: true })).pipe(gulp.dest(path.build)));
+gulp.task('buildPUG', () => {
+  const clientesData = JSON.parse(fs.readFileSync('src/pug/locale/clientes.json', 'utf8'));
+
+  return gulp.src(path.pug)
+    .pipe(pug({
+      pretty: true,
+      locals: { clientesData }
+    }))
+    .pipe(gulp.dest(path.build));
+});
 
 gulp.task('deployPUG', gulp.series(
   gulp.series('buildPUG', 'buildLocale', 'buildLocaleComponents'),
