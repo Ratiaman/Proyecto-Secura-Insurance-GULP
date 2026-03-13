@@ -518,10 +518,16 @@
     padding: 0;
     border: 0;
     border-radius: rem(8px);
-    background: #eff3f5;
+    background: transparent;
     appearance: none;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
+  }
+}
+
+.nav-burger__group--language.is-open .nav-burger__group-trigger {
+  @media (max-width: $mobilexlMax) {
+    background: #eff3f5;
   }
 }
 

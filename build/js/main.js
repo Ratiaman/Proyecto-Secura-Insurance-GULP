@@ -10705,6 +10705,19 @@ return jQuery;
 // Controla los dropdowns del header (user/language) y sincroniza el estado del burger
 function dropdown() {
   const header = document.querySelector('.header');
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+  dropdownToggles.forEach((toggle) => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const dropdownMenu = toggle.nextElementSibling;
+
+      if (dropdownMenu) {
+        dropdownMenu.classList.toggle('show');
+      }
+    });
+  });
+
   if (!header) return;
 
   const groups = Array.from(header.querySelectorAll('.header__group'));
@@ -10886,21 +10899,8 @@ function dropdown() {
 }
 
 
-// Activa los dropdown-toggle genéricos cuando el DOM ya está listo
 document.addEventListener('DOMContentLoaded', () => {
-  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-  if (!dropdownToggles.length) return;
-
-  dropdownToggles.forEach((toggle) => {
-    toggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      const dropdownMenu = toggle.nextElementSibling;
-
-      if (dropdownMenu) {
-        dropdownMenu.classList.toggle('show');
-      }
-    });
-  });
+  dropdown();
 });
 
-dropdown();
+
