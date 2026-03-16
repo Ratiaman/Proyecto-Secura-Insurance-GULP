@@ -1,0 +1,134 @@
+@use '../helpers/variables' as *;
+@use '../helpers/mixins' as *;
+
+.main-content.renovaciones-page {
+  padding-bottom: rem(80px);
+}
+
+.renovaciones-paginacion {
+  margin-top: rem(16px);
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: rem(1392px);
+  height: rem(48px);
+  padding: 0 rem(24px) 0 rem(16px);
+  gap: rem(32px);
+  margin-left: auto;
+  margin-right: auto;
+
+  .renovaciones-paginacion__grupo-filas,
+  .renovaciones-paginacion__grupo-paginas {
+    display: flex;
+    align-items: center;
+    gap: rem(12px);
+    flex-shrink: 0;
+  }
+
+  .renovaciones-paginacion__filas-select {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: rem(72px);
+    height: rem(44px);
+    padding: 0 rem(12px);
+    gap: rem(8px);
+    border: rem(1px) solid $color-secondary;
+    border-radius: rem(4px);
+    background-color: $white;
+  }
+
+  .renovaciones-paginacion__filas-dropdown {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    appearance: none;
+    cursor: pointer;
+    padding-right: rem(16px);
+    background-color: transparent;
+    border: 0;
+    font-weight: 400;
+    font-size: rem(16px);
+    color: $neutral300;
+    text-align: center;
+    text-align-last: center;
+
+    option {
+      text-align: center;
+      font-size: rem(16px);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .renovaciones-paginacion__filas-icon {
+    position: absolute;
+    right: rem(12px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: rem(16px);
+    color: $color-secondary;
+    pointer-events: none;
+  }
+
+  .renovaciones-paginacion__botones {
+    display: flex;
+    align-items: center;
+    gap: rem(8px);
+  }
+
+  .renovaciones-paginacion__boton {
+    border: none;
+    width: rem(48px);
+    height: rem(48px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+    border-radius: rem(8px);
+    cursor: pointer;
+    box-shadow: none;
+
+    &.renovaciones-paginacion__boton--right,
+    &.renovaciones-paginacion__boton--skip-right {
+      box-shadow: 0 rem(6px) rem(16px) $tabla-row-shadow-color;
+    }
+    &.renovaciones-paginacion__boton--skip-left {
+      font-size: rem(20px);
+      color: $color-secondary;
+    }
+    &.renovaciones-paginacion__boton--left {
+      font-size: rem(20px);
+      color: $color-secondary;
+    }
+    &.renovaciones-paginacion__boton--right {
+      font-size: rem(20px);
+      color: $tabla-title-color;
+    }
+    &.renovaciones-paginacion__boton--skip-right {
+      font-size: rem(20px);
+      color: $tabla-title-color;
+    }
+  }
+
+  .renovaciones-paginacion__boton i {
+    line-height: 1;
+  }
+
+  .renovaciones-paginacion__filas,
+  .renovaciones-paginacion__paginas {
+    font-family: $font-family-roboto;
+    font-weight: 700;
+    font-size: rem(16px);
+    line-height: 1;
+    letter-spacing: 0;
+    color: $text-link;
+    white-space: nowrap;
+  }
+}

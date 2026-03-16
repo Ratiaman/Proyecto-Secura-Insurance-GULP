@@ -108,7 +108,7 @@
                   <td class="tabla-renovaciones__cell" data-label="Fecha de contrato">22/06/2020</td>
                   <td class="tabla-renovaciones__cell" data-label="Fecha de vencimiento">22/06/2021</td>
                   <td class="tabla-renovaciones__cell tabla-renovaciones__cell--importe" data-label="Importe">980,00€</td>
-                  <td class="tabla-renovaciones__cell" data-label="Estado"><span class="badge-estado badge-estado--pendiente"><i class="icon-clock"></i> Pendiente</span>
+                  <td class="tabla-renovaciones__cell" data-label="Estado"><span class="badge-estado badge-estado--vencido"><i class="icon-close"></i> Vencido</span>
                   </td>
                 </tr>
                 <tr class="tabla-renovaciones__row">
@@ -126,7 +126,7 @@
                   <td class="tabla-renovaciones__cell" data-label="Fecha de contrato">05/01/2023</td>
                   <td class="tabla-renovaciones__cell" data-label="Fecha de vencimiento">05/01/2024</td>
                   <td class="tabla-renovaciones__cell tabla-renovaciones__cell--importe" data-label="Importe">2.340,00€</td>
-                  <td class="tabla-renovaciones__cell" data-label="Estado"><span class="badge-estado badge-estado--pagada"><i class="icon-check"></i> Pagada</span>
+                  <td class="tabla-renovaciones__cell" data-label="Estado"><span class="badge-estado badge-estado--vencido"><i class="icon-close"></i> Vencido</span>
                   </td>
                 </tr>
                 <tr class="tabla-renovaciones__row">
@@ -153,7 +153,7 @@
                   <td class="tabla-renovaciones__cell" data-label="Fecha de contrato">07/02/2020</td>
                   <td class="tabla-renovaciones__cell" data-label="Fecha de vencimiento">07/02/2021</td>
                   <td class="tabla-renovaciones__cell tabla-renovaciones__cell--importe" data-label="Importe">760,80€</td>
-                  <td class="tabla-renovaciones__cell" data-label="Estado"><span class="badge-estado badge-estado--pendiente"><i class="icon-clock"></i> Pendiente</span>
+                  <td class="tabla-renovaciones__cell" data-label="Estado"><span class="badge-estado badge-estado--vencido"><i class="icon-close"></i> Vencido</span>
                   </td>
                 </tr>
                 <tr class="tabla-renovaciones__row">
@@ -188,6 +188,32 @@
           </div>
         </div>
       </section>
+      <div class="renovaciones-paginacion">
+        <div class="renovaciones-paginacion__grupo-filas"><span class="renovaciones-paginacion__filas">Filas por pagina:</span>
+          <div class="renovaciones-paginacion__filas-select">
+            <select class="renovaciones-paginacion__filas-dropdown" name="filas" aria-label="Filas por pagina">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10" selected>10</option>
+            </select><i class="icon-arrow-dropdown renovaciones-paginacion__filas-icon"></i>
+          </div>
+        </div>
+        <div class="renovaciones-paginacion__grupo-paginas"><span class="renovaciones-paginacion__paginas">Página 1 de 77</span>
+          <div class="renovaciones-paginacion__botones">
+            <button class="renovaciones-paginacion__boton renovaciones-paginacion__boton--skip-left" type="button" aria-label="Primera pagina"><i class="icon-skip-left"></i></button>
+            <button class="renovaciones-paginacion__boton renovaciones-paginacion__boton--left" type="button" aria-label="Pagina anterior"><i class="icon-back"></i></button>
+            <button class="renovaciones-paginacion__boton renovaciones-paginacion__boton--right" type="button" aria-label="Pagina siguiente"><i class="icon-arrow-right"></i></button>
+            <button class="renovaciones-paginacion__boton renovaciones-paginacion__boton--skip-right" type="button" aria-label="Ultima pagina"><i class="icon-skip-right"></i></button>
+          </div>
+        </div>
+      </div>
     </main>
     <footer class="footer" id="footer">
       <div class="footer-content">

@@ -211,10 +211,23 @@
   color: $badge-pagada-text;
 }
 
+.badge-estado.badge-estado--vencido {
+  background-color: $badge-vencido-bg;
+  color: $badge-vencido-icon;
+}
+
 .badge-estado--pendiente .icon-clock {
   color: $badge-pendiente-icon;
 }
 
 .badge-estado--pagada .icon-check {
   color: $badge-pagada-text;
+}
+
+.badge-estado--vencido .icon-close {
+  color: $badge-vencido-icon;
+}
+
+.badge-estado--vencido .icon-close:before {
+  color: $badge-vencido-icon;
 }

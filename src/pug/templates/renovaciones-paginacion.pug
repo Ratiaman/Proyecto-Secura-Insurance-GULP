@@ -1,0 +1,28 @@
+.renovaciones-paginacion
+    .renovaciones-paginacion__grupo-filas
+        span.renovaciones-paginacion__filas Filas por pagina:
+        .renovaciones-paginacion__filas-select
+            select.renovaciones-paginacion__filas-dropdown(name="filas" aria-label="Filas por pagina")
+                option(value="1") 1
+                option(value="2") 2
+                option(value="3") 3
+                option(value="4") 4
+                option(value="5") 5
+                option(value="6") 6
+                option(value="7") 7
+                option(value="8") 8
+                option(value="9") 9
+                option(value="10" selected) 10
+            i.icon-arrow-dropdown.renovaciones-paginacion__filas-icon
+
+    .renovaciones-paginacion__grupo-paginas
+        span.renovaciones-paginacion__paginas Página 1 de 77
+        .renovaciones-paginacion__botones
+            button.renovaciones-paginacion__boton.renovaciones-paginacion__boton--skip-left(type="button" aria-label="Primera pagina")
+                i.icon-skip-left
+            button.renovaciones-paginacion__boton.renovaciones-paginacion__boton--left(type="button" aria-label="Pagina anterior")
+                i.icon-back
+            button.renovaciones-paginacion__boton.renovaciones-paginacion__boton--right(type="button" aria-label="Pagina siguiente")
+                i.icon-arrow-right
+            button.renovaciones-paginacion__boton.renovaciones-paginacion__boton--skip-right(type="button" aria-label="Ultima pagina")
+                i.icon-skip-right
