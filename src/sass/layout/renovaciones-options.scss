@@ -1,5 +1,6 @@
 @use "../helpers/variables" as *;
 @use "../helpers/mixins" as *;
+@use "../helpers/icons-variables" as *;
 @use "../base/fonts";
 
 .renovaciones-options {
@@ -12,6 +13,10 @@
   margin-top: rem(40px);
   margin-left: auto;
   margin-right: auto;
+  @media (max-width: $mobilexlMax) {
+    margin-top: rem(16px);
+    gap: rem(12px);
+  }
 }
 
 .renovaciones-options__filtros {
@@ -27,6 +32,11 @@
   background-color: transparent;
   border-radius: rem(8px);
   border: rem(1px) solid $client-offer-color;
+  cursor: pointer;
+
+  @media (max-width: $mobilexlMax) {
+    display: none;
+  }
 }
 
 .renovaciones-options__info {
@@ -35,6 +45,13 @@
   align-items: stretch;
   gap: rem(24px);
   padding-left: rem(24px);
+
+  @media (max-width: $mobilexlMax) {
+    flex-direction: column;
+    gap: rem(8px);
+    padding-left: rem(16px);
+    padding-right: rem(16px);
+  }
 }
 
 .renovaciones-options__meta {
@@ -43,6 +60,13 @@
   justify-content: space-between;
   gap: rem(24px);
   padding-right: rem(24px);
+
+  @media (max-width: $mobilexlMax) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: rem(0);
+    gap: rem(28px);
+  }
 }
 
 .renovaciones-options__orden {
@@ -53,6 +77,23 @@
   width: rem(265px);
   height: rem(44px);
   gap: rem(14px);
+  position: relative;
+ 
+  @media (max-width: $mobilexlMax) {
+    order: -1;
+  }
+}
+
+.renovaciones-options__orden::after {
+  content: "\e900";
+  position: absolute;
+  right: rem(12px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "icomoon";
+  font-size: rem(16px);
+  color: $primary200;
+  pointer-events: none;
 }
 
 .renovaciones-options__orden-label {
@@ -86,6 +127,8 @@
   line-height: 1;
   letter-spacing: 0;
   box-shadow: none;
+  appearance: none;
+  padding-right: rem(36px);
 
   &:focus,
   &:active {
@@ -103,7 +146,6 @@
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0;
-  
 }
 
 .renovaciones-options__orden-select option:checked {
@@ -128,6 +170,11 @@
   gap: 0;
   border-radius: rem(8px);
   background-color: transparent;
+
+  @media (max-width: $mobilexlMax) {
+    width: rem(139px);
+    padding: rem(6px) rem(8px);
+  }
 }
 
 .renovaciones-options__tag .icon-file {
@@ -158,6 +205,10 @@
   letter-spacing: 0;
   color: $text-link;
   margin-right: rem(4px);
+
+  @media (max-width: $mobilexlMax) {
+    font-size: rem(14px);
+  }
 }
 
 .renovaciones-options__etiqueta {
@@ -172,4 +223,8 @@
   letter-spacing: 0;
   color: $text-link;
   margin-left: 0;
+
+  @media (max-width: $mobilexlMax) {
+    font-size: rem(14px);
+  }
 }

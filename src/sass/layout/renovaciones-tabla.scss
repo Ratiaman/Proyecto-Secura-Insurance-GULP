@@ -41,6 +41,10 @@
   color: $tabla-title-color;
   margin: 0;
   white-space: nowrap;
+
+  @media (max-width: $mobilexlMax) {
+    display: none;
+  }
 }
 
 .renovaciones__container {
