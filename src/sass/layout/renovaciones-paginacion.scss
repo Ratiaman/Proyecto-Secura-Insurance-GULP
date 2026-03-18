@@ -55,13 +55,14 @@
     border: 0;
     font-weight: 400;
     font-size: rem(16px);
-    color: $neutral300;
+    color: $text-renovaciones-title;
     text-align: center;
     text-align-last: center;
 
     option {
       text-align: center;
       font-size: rem(16px);
+      color: $text-renovaciones-title;
     }
 
     &:focus {
@@ -132,5 +133,29 @@
     letter-spacing: 0;
     color: $text-link;
     white-space: nowrap;
+  }
+
+  @media (max-width: $mobilexlMax) {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    height: auto;
+    padding: 0;
+    gap: rem(12px);
+
+    .renovaciones-paginacion__grupo-filas,
+    .renovaciones-paginacion__grupo-paginas {
+      width: 100%;
+      justify-content: flex-end;
+      padding-right: rem(24px);
+    }
+
+    .renovaciones-paginacion__grupo-filas {
+      order: 1;
+    }
+
+    .renovaciones-paginacion__grupo-paginas {
+      order: 2;
+    }
   }
 }

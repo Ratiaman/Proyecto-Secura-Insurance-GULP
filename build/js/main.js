@@ -10898,9 +10898,42 @@ function dropdown() {
   updateBurgerIcon();
 }
 
+// Controla cuantas filas de la tabla de renovaciones se muestran segun el select (1 a 10)
+function initRenovacionesFilas() {
+  const filasSelect = document.querySelector('.renovaciones-paginacion__filas-dropdown');
+  const filasTabla = document.querySelectorAll('.tabla-renovaciones__body .tabla-renovaciones__row');
+
+  // Si no estamos en la vista de renovaciones, no hacemos nada
+  if (!filasSelect || !filasTabla.length) return;
+
+  const MIN_FILAS = 1;
+  const MAX_FILAS = 10;
+
+  // Aplica el numero de filas visibles validando el rango permitido
+  const aplicarFilasVisibles = (valorSeleccionado) => {
+    const valorNumerico = Number.parseInt(valorSeleccionado, 10);
+    const filasVisibles = Number.isNaN(valorNumerico)
+      ? MAX_FILAS
+      : Math.min(Math.max(valorNumerico, MIN_FILAS), MAX_FILAS);
+
+    filasTabla.forEach((fila, indice) => {
+      fila.style.display = indice < filasVisibles ? '' : 'none';
+    });
+  };
+
+  // Estado inicial: mostrar 10 filas al cargar
+  filasSelect.value = String(MAX_FILAS);
+  aplicarFilasVisibles(MAX_FILAS);
+
+  filasSelect.addEventListener('change', (event) => {
+    aplicarFilasVisibles(event.target.value);
+  });
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
   dropdown();
+  initRenovacionesFilas();
 });
 
 
