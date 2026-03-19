@@ -10909,7 +10909,7 @@ function initRenovacionesFilas() {
   const MIN_FILAS = 1;
   const MAX_FILAS = 10;
 
-  // Aplica el numero de filas visibles validando el rango permitido
+  // Aplico el numero de filas visibles validando el rango 
   const aplicarFilasVisibles = (valorSeleccionado) => {
     const valorNumerico = Number.parseInt(valorSeleccionado, 10);
     const filasVisibles = Number.isNaN(valorNumerico)
@@ -10921,7 +10921,7 @@ function initRenovacionesFilas() {
     });
   };
 
-  // Estado inicial: mostrar 10 filas al cargar
+  // 10 filas por defecto
   filasSelect.value = String(MAX_FILAS);
   aplicarFilasVisibles(MAX_FILAS);
 
@@ -10930,10 +10930,58 @@ function initRenovacionesFilas() {
   });
 }
 
+// Controla la apertura/cierre del menú lateral de filtros en renovaciones
+function initRenovacionesFiltroMenu() {
+  const filterTriggerButton = document.querySelector('.renovaciones-options__filtros');
+  const filterMenuPanel = document.querySelector('.filter-menu');
+  const filterCloseButton = filterMenuPanel ? filterMenuPanel.querySelector('.filter-menu__header__icon') : null;
+
+  if (!filterTriggerButton || !filterMenuPanel) return;
+
+  const setFilterMenuState = (isOpen) => {
+    filterMenuPanel.classList.toggle('is-open', isOpen);
+    filterMenuPanel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    filterTriggerButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    document.body.classList.toggle('not-scroll', isOpen);
+  };
+
+  filterTriggerButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const willOpen = !filterMenuPanel.classList.contains('is-open');
+    setFilterMenuState(willOpen);
+  });
+
+  if (filterCloseButton) {
+    filterCloseButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      setFilterMenuState(false);
+    });
+  }
+
+  document.addEventListener('click', (event) => {
+    const clickedInsideMenu = filterMenuPanel.contains(event.target);
+    const clickedTrigger = filterTriggerButton.contains(event.target);
+
+    if (!clickedInsideMenu && !clickedTrigger) {
+      setFilterMenuState(false);
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      setFilterMenuState(false);
+    }
+  });
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
   dropdown();
   initRenovacionesFilas();
+  initRenovacionesFiltroMenu();
 });
 
 

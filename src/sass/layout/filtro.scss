@@ -1,0 +1,261 @@
+@use "../helpers/variables" as *;
+@use "../helpers/icons-variables" as *;
+@use "../base/fonts";
+
+$filter-menu-z-index: 9999;
+$filter-menu-width: 496px;
+$filter-menu-height: 1081px;
+$filter-menu-bottom-width: 493px;
+$filter-menu-bottom-height: 80px;
+$filter-menu-bg: $white;
+$filter-menu-overlay: rgba(0, 0, 0, 0.35);
+$filter-menu-header-height: 72px;
+$filter-menu-border: 1px solid $neutral50;
+$filter-menu-panel-shadow: 0 8px 24px -3px rgba(0, 0, 0, 0.18);
+
+$filter-menu-body-padding-top: 32px;
+$filter-menu-body-padding-side: 40px;
+$filter-menu-body-padding-bottom: 40px;
+$filter-menu-bottom-padding-y: 20px;
+$filter-menu-bottom-padding-x: 40px;
+$filter-menu-section-gap: 32px;
+$filter-menu-label-gap: 8px;
+
+$filter-menu-title-color: $neutral500;
+$filter-menu-label-color: $neutral400;
+$filter-menu-input-color: $neutral400;
+$filter-menu-placeholder-color: $neutral200;
+$filter-menu-icon-color: $primary300;
+$filter-menu-separation-color: $neutral400;
+
+$filter-menu-field-height: 44px;
+$filter-menu-field-border: 1px solid $neutral100;
+$filter-menu-field-radius: 4px;
+$filter-menu-field-padding-x: 12px;
+$filter-menu-date-field-width: 177px;
+
+$filter-menu-button-height: 40px;
+$filter-menu-button-radius: 8px;
+$filter-menu-clear-border: 1px solid $primary50;
+$filter-menu-clear-color: $neutral400;
+$filter-menu-apply-bg: $primary50;
+$filter-menu-apply-color: $neutral500;
+
+.filter-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $filter-menu-z-index;
+  display: none;
+  width: $filter-menu-width;
+  height: $filter-menu-height;
+  overflow-y: auto;
+  background-color: $filter-menu-bg;
+  box-shadow: $filter-menu-panel-shadow, 0 0 0 100vmax $filter-menu-overlay;
+
+  &.is-open {
+    display: block;
+  }
+
+  @media (max-width: $mobilexlMax) {
+    width: 100%;
+  }
+}
+
+.filter-menu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: $filter-menu-header-height;
+  padding: 24px $filter-menu-body-padding-side;
+  border-bottom: $filter-menu-border;
+}
+
+.filter-menu__header__title {
+  font-family: $font-family-roboto;
+  font-size: 16px;
+  font-weight: $weight-bold;
+  line-height: 1;
+  color: $filter-menu-title-color;
+}
+
+.filter-menu__header__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: $filter-menu-icon-color;
+  cursor: pointer;
+}
+
+.filter-menu__header__icon .icon-close {
+  font-size: 20px;
+}
+
+.filter-menu__body {
+  padding: $filter-menu-body-padding-top $filter-menu-body-padding-side $filter-menu-body-padding-bottom;
+}
+
+.filter-menu__form {
+  display: flex;
+  flex-direction: column;
+  gap: $filter-menu-section-gap;
+}
+
+.filter-menu__field-policy-number,
+.filter-menu__field-risk-name,
+.filter-menu__field-validity-date,
+.filter-menu__field-amount,
+.filter-menu__field-status {
+  position: relative;
+}
+
+.filter-menu__label-policy-number,
+.filter-menu__label-risk-name,
+.filter-menu__label-validity-date,
+.filter-menu__label-amount,
+.filter-menu__label-status {
+  margin-bottom: $filter-menu-label-gap;
+  font-family: $font-family-roboto;
+  font-size: 16px;
+  font-weight: $weight-bold;
+  color: $filter-menu-label-color;
+}
+
+.filter-menu__select-policy-number,
+.filter-menu__select-status,
+.filter-menu__input-risk-name,
+.filter-menu__input-amount {
+  width: 100%;
+  height: $filter-menu-field-height;
+  padding: 0 $filter-menu-field-padding-x;
+  border: $filter-menu-field-border;
+  border-radius: $filter-menu-field-radius;
+  font-family: $font-family-roboto;
+  font-size: 16px;
+  font-weight: $weight-regular;
+  color: $filter-menu-input-color;
+  background-color: $white;
+}
+
+.filter-menu__select-policy-number,
+.filter-menu__select-status {
+  appearance: none;
+  padding-right: 36px;
+}
+
+.filter-menu__input-risk-name::placeholder,
+.filter-menu__input-date-start::placeholder,
+.filter-menu__input-date-end::placeholder,
+.filter-menu__input-amount::placeholder {
+  color: $filter-menu-placeholder-color;
+}
+
+.filter-menu__date-range {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  @media (max-width: $mobilexlMax) {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+.filter-menu__date-field {
+  position: relative;
+  width: $filter-menu-date-field-width;
+
+  @media (max-width: $mobilexlMax) {
+    width: 100%;
+  }
+}
+
+.filter-menu__input-date-start,
+.filter-menu__input-date-end {
+  width: 100%;
+  height: $filter-menu-field-height;
+  padding: 0 36px 0 $filter-menu-field-padding-x;
+  border: $filter-menu-field-border;
+  border-radius: $filter-menu-field-radius;
+  font-family: $font-family-roboto;
+  font-size: 16px;
+  font-weight: $weight-regular;
+  color: $filter-menu-input-color;
+}
+
+.filter-menu__date-separator {
+  font-family: $font-family-roboto;
+  font-size: 16px;
+  font-weight: $weight-regular;
+  color: $filter-menu-separation-color;
+}
+
+.filter-menu__icon-policy-chevron,
+.filter-menu__icon-status-chevron {
+  position: absolute;
+  top: 58%;
+  right: 12px;
+  font-size: 16px;
+  color: $filter-menu-icon-color;
+  pointer-events: none;
+}
+
+.filter-menu__date-field .icon-calendar {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: $filter-menu-icon-color;
+  pointer-events: none;
+}
+
+.filter-menu__bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: $filter-menu-bottom-width;
+  height: $filter-menu-bottom-height;
+  gap: 16px;
+  position: absolute;
+  left: 40px;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid $neutral50;
+  padding: 12px 40px 12px 40px;
+  box-sizing: border-box;
+}
+
+.filter-menu__bottom__clear,
+.filter-menu__bottom__apply {
+  min-width: 160px;
+  height: $filter-menu-button-height;
+  padding: 0 16px;
+  border-radius: $filter-menu-button-radius;
+  font-family: $font-family-roboto;
+  font-size: 16px;
+  font-weight: $weight-regular;
+  cursor: pointer;
+
+  @media (max-width: $mobilexlMax) {
+    min-width: 0;
+    flex: 1;
+  }
+}
+
+.filter-menu__bottom__clear {
+  border: $filter-menu-clear-border;
+  background-color: $white;
+  color: $filter-menu-clear-color;
+}
+
+.filter-menu__bottom__apply {
+  border: none;
+  background-color: $filter-menu-apply-bg;
+  color: $filter-menu-apply-color;
+}

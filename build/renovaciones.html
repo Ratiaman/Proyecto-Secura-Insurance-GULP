@@ -60,7 +60,7 @@
       <section class="renovaciones-options">
         <div class="renovaciones-options__container">
           <div class="renovaciones-options__info">
-            <button class="renovaciones-options__filtros" type="button" aria-label="Abrir filtros"><i class="icon-filter"></i><span>Filtros</span></button>
+            <button class="renovaciones-options__filtros" type="button" aria-label="Abrir filtros" aria-expanded="false" aria-controls="renovaciones-filter-menu"><i class="icon-filter"></i><span>Filtros</span></button>
             <div class="renovaciones-options__meta">
               <div class="renovaciones-options__tag"><span class="renovaciones-options__total">770</span><span class="renovaciones-options__etiqueta">Pólizas</span></div>
               <div class="renovaciones-options__orden"><span class="renovaciones-options__orden-label">Ordenar por:</span>
@@ -77,6 +77,56 @@
           </div>
         </div>
       </section>
+      <div class="filter-menu" id="renovaciones-filter-menu" aria-hidden="true">
+        <div class="filter-menu__header"><span class="filter-menu__header__title">Filtros</span>
+          <button class="filter-menu__header__icon" type="button" aria-label="Cerrar filtros"><i class="icon-close"></i></button>
+        </div>
+        <div class="filter-menu__body">
+          <form class="filter-menu__form">
+            <div class="filter-menu__field-policy-number">
+              <div class="filter-menu__label-policy-number">No. de póliza</div>
+              <select class="filter-menu__select-policy-number" name="numero-poliza">
+                <option value="Todas las pólizas">Todas las pólizas</option>
+                <option value="Opción 2">Opción 2</option>
+                <option value="Opción 3">Opción 3</option>
+                <option value="Opción 4">Opción 4</option>
+              </select><span class="icon-chev-down filter-menu__icon-policy-chevron"></span>
+            </div>
+            <div class="filter-menu__field-risk-name">
+              <div class="filter-menu__label-risk-name">Nombre del riesgo</div>
+              <input class="filter-menu__input-risk-name" type="text" name="nombre-riesgo" placeholder="Introduce el nombre del riesgo">
+            </div>
+            <div class="filter-menu__field-validity-date">
+              <div class="filter-menu__label-validity-date">Fecha de validez</div>
+              <div class="filter-menu__date-range">
+                <div class="filter-menu__date-field">
+                  <input class="filter-menu__input-date-start" type="text" name="fecha-inicio" placeholder="Fecha inicio"><span class="icon-calendar filter-menu__icon-calendar"></span>
+                </div><span class="filter-menu__date-separator">al</span>
+                <div class="filter-menu__date-field">
+                  <input class="filter-menu__input-date-end" type="text" name="fecha-fin" placeholder="Fecha fin"><span class="icon-calendar filter-menu__icon-calendar"></span>
+                </div>
+              </div>
+            </div>
+            <div class="filter-menu__field-amount">
+              <div class="filter-menu__label-amount">Importe</div>
+              <input class="filter-menu__input-amount" type="number" name="importe" placeholder="Introduzca importe">
+            </div>
+            <div class="filter-menu__field-status">
+              <div class="filter-menu__label-status">Estado</div>
+              <select class="filter-menu__select-status" name="estado">
+                <option value="Todos los estados">Todos los estados</option>
+                <option value="Opción 2">Opción 2</option>
+                <option value="Opción 3">Opción 3</option>
+                <option value="Opción 4">Opción 4</option>
+              </select><span class="icon-chev-down filter-menu__icon-status-chevron"></span>
+            </div>
+          </form>
+        </div>
+        <div class="filter-menu__bottom">
+          <button class="filter-menu__bottom__clear" type="button">Borrar filtros</button>
+          <button class="filter-menu__bottom__apply" type="button">Aplicar filtros</button>
+        </div>
+      </div>
       <section class="renovaciones">
         <div class="renovaciones__wrapper">
           <div class="renovaciones__container">

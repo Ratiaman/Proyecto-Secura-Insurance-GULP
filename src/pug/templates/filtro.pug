@@ -1,0 +1,64 @@
+.filter-menu#renovaciones-filter-menu(aria-hidden="true")
+    .filter-menu__header
+        span.filter-menu__header__title Filtros
+        button.filter-menu__header__icon(type="button" aria-label="Cerrar filtros")
+            i.icon-close
+
+    .filter-menu__body
+        form.filter-menu__form
+            .filter-menu__field-policy-number
+                .filter-menu__label-policy-number No. de póliza
+                select.filter-menu__select-policy-number(name="numero-poliza")
+                    option(value="Todas las pólizas") Todas las pólizas
+                    option(value="Opción 2") Opción 2
+                    option(value="Opción 3") Opción 3
+                    option(value="Opción 4") Opción 4
+                span.icon-chev-down.filter-menu__icon-policy-chevron
+
+            .filter-menu__field-risk-name
+                .filter-menu__label-risk-name Nombre del riesgo
+                input.filter-menu__input-risk-name(
+                    type="text"
+                    name="nombre-riesgo"
+                    placeholder="Introduce el nombre del riesgo"
+                )
+
+            .filter-menu__field-validity-date
+                .filter-menu__label-validity-date Fecha de validez
+                .filter-menu__date-range
+                    .filter-menu__date-field
+                        input.filter-menu__input-date-start(
+                            type="text"
+                            name="fecha-inicio"
+                            placeholder="Fecha inicio"
+                        )
+                        span.icon-calendar.filter-menu__icon-calendar
+                    span.filter-menu__date-separator al
+                    .filter-menu__date-field
+                        input.filter-menu__input-date-end(
+                            type="text"
+                            name="fecha-fin"
+                            placeholder="Fecha fin"
+                        )
+                        span.icon-calendar.filter-menu__icon-calendar
+
+            .filter-menu__field-amount
+                .filter-menu__label-amount Importe
+                input.filter-menu__input-amount(
+                    type="number"
+                    name="importe"
+                    placeholder="Introduzca importe"
+                )
+
+            .filter-menu__field-status
+                .filter-menu__label-status Estado
+                select.filter-menu__select-status(name="estado")
+                    option(value="Todos los estados") Todos los estados
+                    option(value="Opción 2") Opción 2
+                    option(value="Opción 3") Opción 3
+                    option(value="Opción 4") Opción 4
+                span.icon-chev-down.filter-menu__icon-status-chevron
+
+    .filter-menu__bottom
+        button.filter-menu__bottom__clear(type="button") Borrar filtros
+        button.filter-menu__bottom__apply(type="button") Aplicar filtros
