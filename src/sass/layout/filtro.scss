@@ -1,45 +1,9 @@
 @use "../helpers/variables" as *;
 @use "../helpers/icons-variables" as *;
 @use "../base/fonts";
+@use "../helpers/mixins" as *;
 
-$filter-menu-z-index: 9999;
-$filter-menu-width: 496px;
-$filter-menu-height: 1081px;
-$filter-menu-bottom-width: 493px;
-$filter-menu-bottom-height: 80px;
-$filter-menu-bg: $white;
-$filter-menu-overlay: rgba(0, 0, 0, 0.35);
-$filter-menu-header-height: 72px;
-$filter-menu-border: 1px solid $neutral50;
-$filter-menu-panel-shadow: 0 8px 24px -3px rgba(0, 0, 0, 0.18);
 
-$filter-menu-body-padding-top: 32px;
-$filter-menu-body-padding-side: 40px;
-$filter-menu-body-padding-bottom: 40px;
-$filter-menu-bottom-padding-y: 20px;
-$filter-menu-bottom-padding-x: 40px;
-$filter-menu-section-gap: 32px;
-$filter-menu-label-gap: 8px;
-
-$filter-menu-title-color: $neutral500;
-$filter-menu-label-color: $neutral400;
-$filter-menu-input-color: $neutral400;
-$filter-menu-placeholder-color: $neutral200;
-$filter-menu-icon-color: $primary300;
-$filter-menu-separation-color: $neutral400;
-
-$filter-menu-field-height: 44px;
-$filter-menu-field-border: 1px solid $neutral100;
-$filter-menu-field-radius: 4px;
-$filter-menu-field-padding-x: 12px;
-$filter-menu-date-field-width: 177px;
-
-$filter-menu-button-height: 40px;
-$filter-menu-button-radius: 8px;
-$filter-menu-clear-border: 1px solid $primary50;
-$filter-menu-clear-color: $neutral400;
-$filter-menu-apply-bg: $primary50;
-$filter-menu-apply-color: $neutral500;
 
 .filter-menu {
   position: fixed;
@@ -67,13 +31,13 @@ $filter-menu-apply-color: $neutral500;
   align-items: center;
   justify-content: space-between;
   min-height: $filter-menu-header-height;
-  padding: 24px $filter-menu-body-padding-side;
+  padding: rem(24px) $filter-menu-body-padding-side;
   border-bottom: $filter-menu-border;
 }
 
 .filter-menu__header__title {
   font-family: $font-family-roboto;
-  font-size: 16px;
+  font-size: rem(16px);
   font-weight: $weight-bold;
   line-height: 1;
   color: $filter-menu-title-color;
@@ -91,7 +55,7 @@ $filter-menu-apply-color: $neutral500;
 }
 
 .filter-menu__header__icon .icon-close {
-  font-size: 20px;
+  font-size: rem(20px);
 }
 
 .filter-menu__body {
@@ -104,60 +68,64 @@ $filter-menu-apply-color: $neutral500;
   gap: $filter-menu-section-gap;
 }
 
-.filter-menu__field-policy-number,
-.filter-menu__field-risk-name,
-.filter-menu__field-validity-date,
-.filter-menu__field-amount,
-.filter-menu__field-status {
-  position: relative;
-}
+  .filter-menu__numero,
+  .filter-menu__riesgo,
+  .filter-menu__fecha-validez,
+  .filter-menu__importe,
+  .filter-menu__estado,
+  .filter-menu__fecha-inicio,
+  .filter-menu__fecha-fin {
+    position: relative;
+  }
 
-.filter-menu__label-policy-number,
-.filter-menu__label-risk-name,
-.filter-menu__label-validity-date,
-.filter-menu__label-amount,
-.filter-menu__label-status {
-  margin-bottom: $filter-menu-label-gap;
-  font-family: $font-family-roboto;
-  font-size: 16px;
-  font-weight: $weight-bold;
-  color: $filter-menu-label-color;
-}
+  .filter-menu__label-numero,
+  .filter-menu__label-riesgo,
+  .filter-menu__label-fecha-validez,
+  .filter-menu__label-importe,
+  .filter-menu__label-estado {
+    margin-bottom: $filter-menu-label-gap;
+    font-family: $font-family-roboto;
+    font-size: rem(16px);
+    font-weight: $weight-bold;
+    color: $filter-menu-label-color;
+  }
 
-.filter-menu__select-policy-number,
-.filter-menu__select-status,
-.filter-menu__input-risk-name,
-.filter-menu__input-amount {
-  width: 100%;
-  height: $filter-menu-field-height;
-  padding: 0 $filter-menu-field-padding-x;
-  border: $filter-menu-field-border;
-  border-radius: $filter-menu-field-radius;
-  font-family: $font-family-roboto;
-  font-size: 16px;
-  font-weight: $weight-regular;
-  color: $filter-menu-input-color;
-  background-color: $white;
-}
+  .filter-menu__select-numero,
+  .filter-menu__select-estado,
+  .filter-menu__input-riesgo,
+  .filter-menu__input-importe,
+  .filter-menu__input-fecha-inicio,
+  .filter-menu__input-fecha-fin {
+    width: 100%;
+    height: $filter-menu-field-height;
+    border: $filter-menu-field-border;
+    border-radius: $filter-menu-field-radius;
+    font-family: $font-family-roboto;
+    font-size: rem(16px);
+    font-weight: $weight-regular;
+    color: $filter-menu-input-color;
+    background-color: $white;
+  }
 
-.filter-menu__select-policy-number,
-.filter-menu__select-status {
-  appearance: none;
-  padding-right: 36px;
-}
+  .filter-menu__select-numero,
+  .filter-menu__select-estado {
+    appearance: none;
+    padding-right: rem(36px);
+    padding-left: $filter-menu-field-padding-x;
+  }
 
-.filter-menu__input-risk-name::placeholder,
-.filter-menu__input-date-start::placeholder,
-.filter-menu__input-date-end::placeholder,
-.filter-menu__input-amount::placeholder {
-  color: $filter-menu-placeholder-color;
-}
+  .filter-menu__input-riesgo::placeholder,
+  .filter-menu__input-fecha-inicio::placeholder,
+  .filter-menu__input-fecha-fin::placeholder,
+  .filter-menu__input-importe::placeholder {
+    color: $filter-menu-placeholder-color;
+  }
 
 .filter-menu__date-range {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: rem(10px);
 
   @media (max-width: $mobilexlMax) {
     flex-wrap: wrap;
@@ -165,51 +133,58 @@ $filter-menu-apply-color: $neutral500;
   }
 }
 
-.filter-menu__date-field {
-  position: relative;
-  width: $filter-menu-date-field-width;
-
-  @media (max-width: $mobilexlMax) {
-    width: 100%;
+  .filter-menu__fecha-inicio,
+  .filter-menu__fecha-fin {
+    width: $filter-menu-date-field-width;
+    @media (max-width: $mobilexlMax) {
+      width: 100%;
+    }
   }
-}
 
-.filter-menu__input-date-start,
-.filter-menu__input-date-end {
-  width: 100%;
-  height: $filter-menu-field-height;
-  padding: 0 36px 0 $filter-menu-field-padding-x;
-  border: $filter-menu-field-border;
-  border-radius: $filter-menu-field-radius;
-  font-family: $font-family-roboto;
-  font-size: 16px;
-  font-weight: $weight-regular;
-  color: $filter-menu-input-color;
-}
+  .filter-menu__input-fecha-inicio,
+  .filter-menu__input-fecha-fin {
+    padding: 0 rem(36px) 0 $filter-menu-field-padding-x;
+  }
 
 .filter-menu__date-separator {
   font-family: $font-family-roboto;
-  font-size: 16px;
+  font-size: rem(16px);
   font-weight: $weight-regular;
   color: $filter-menu-separation-color;
 }
 
-.filter-menu__icon-policy-chevron,
-.filter-menu__icon-status-chevron {
+  .filter-menu__icon-numero-dropdown,
+  .filter-menu__icon-estado-dropdown {
   position: absolute;
   top: 58%;
-  right: 12px;
-  font-size: 16px;
+  right: rem(12px);
+  font-size: rem(16px);
   color: $filter-menu-icon-color;
   pointer-events: none;
 }
 
-.filter-menu__date-field .icon-calendar {
+.filter-menu__fecha-inicio {
+  position: relative;
+}
+.filter-menu__fecha-inicio .icon-calendar {
   position: absolute;
   top: 50%;
-  right: 12px;
+  right: rem(12px);
   transform: translateY(-50%);
-  font-size: 16px;
+  font-size: rem(16px);
+  color: $filter-menu-icon-color;
+  pointer-events: none;
+}
+
+.filter-menu__fecha-fin {
+  position: relative;
+}
+.filter-menu__fecha-fin .icon-calendar {
+  position: absolute;
+  top: 50%;
+  right: rem(12px);
+  transform: translateY(-50%);
+  font-size: rem(16px);
   color: $filter-menu-icon-color;
   pointer-events: none;
 }
@@ -221,24 +196,24 @@ $filter-menu-apply-color: $neutral500;
   justify-content: space-between;
   width: $filter-menu-bottom-width;
   height: $filter-menu-bottom-height;
-  gap: 16px;
+  gap: rem(16px);
   position: absolute;
-  left: 40px;
+  left: 0;
   right: 0;
   bottom: 0;
   border-top: 1px solid $neutral50;
-  padding: 12px 40px 12px 40px;
+  padding: rem(12px) $filter-menu-body-padding-side rem(12px) $filter-menu-body-padding-side;
   box-sizing: border-box;
 }
 
-.filter-menu__bottom__clear,
-.filter-menu__bottom__apply {
-  min-width: 160px;
+  .filter-menu__bottom__boton-borrar,
+  .filter-menu__bottom__boton-aplicar {
+  min-width: rem(160px);
   height: $filter-menu-button-height;
-  padding: 0 16px;
+  padding: 0 rem(16px);
   border-radius: $filter-menu-button-radius;
   font-family: $font-family-roboto;
-  font-size: 16px;
+  font-size: rem(16px);
   font-weight: $weight-regular;
   cursor: pointer;
 
@@ -248,13 +223,13 @@ $filter-menu-apply-color: $neutral500;
   }
 }
 
-.filter-menu__bottom__clear {
+.filter-menu__bottom__boton-borrar {
   border: $filter-menu-clear-border;
   background-color: $white;
   color: $filter-menu-clear-color;
 }
 
-.filter-menu__bottom__apply {
+.filter-menu__bottom__boton-aplicar {
   border: none;
   background-color: $filter-menu-apply-bg;
   color: $filter-menu-apply-color;

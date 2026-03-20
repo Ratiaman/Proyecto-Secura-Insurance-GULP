@@ -6,59 +6,59 @@
 
     .filter-menu__body
         form.filter-menu__form
-            .filter-menu__field-policy-number
-                .filter-menu__label-policy-number No. de póliza
-                select.filter-menu__select-policy-number(name="numero-poliza")
+            .filter-menu__numero
+                .filter-menu__label-numero No. de póliza
+                select.filter-menu__select-numero(name="numero-poliza")
                     option(value="Todas las pólizas") Todas las pólizas
-                    option(value="Opción 2") Opción 2
-                    option(value="Opción 3") Opción 3
-                    option(value="Opción 4") Opción 4
-                span.icon-chev-down.filter-menu__icon-policy-chevron
+                    option(value="Opción 2") 3453553464
+                    option(value="Opción 3") 4564644564
+                    option(value="Opción 4") 5675675678
+                span.icon-arrow-dropdown.filter-menu__icon-numero-dropdown
 
-            .filter-menu__field-risk-name
-                .filter-menu__label-risk-name Nombre del riesgo
-                input.filter-menu__input-risk-name(
+            .filter-menu__riesgo
+                .filter-menu__label-riesgo Nombre del riesgo
+                input.filter-menu__input-riesgo(
                     type="text"
                     name="nombre-riesgo"
-                    placeholder="Introduce el nombre del riesgo"
+                    placeholder=" Introduce el nombre del riesgo"
                 )
 
-            .filter-menu__field-validity-date
-                .filter-menu__label-validity-date Fecha de validez
+            .filter-menu__fecha-validez
+                .filter-menu__label-fecha-validez Fecha de validez
                 .filter-menu__date-range
-                    .filter-menu__date-field
-                        input.filter-menu__input-date-start(
+                    .filter-menu__fecha-inicio
+                        input.filter-menu__input-fecha-inicio(
                             type="text"
                             name="fecha-inicio"
                             placeholder="Fecha inicio"
                         )
                         span.icon-calendar.filter-menu__icon-calendar
                     span.filter-menu__date-separator al
-                    .filter-menu__date-field
-                        input.filter-menu__input-date-end(
+                    .filter-menu__fecha-fin
+                        input.filter-menu__input-fecha-fin(
                             type="text"
                             name="fecha-fin"
                             placeholder="Fecha fin"
                         )
                         span.icon-calendar.filter-menu__icon-calendar
 
-            .filter-menu__field-amount
-                .filter-menu__label-amount Importe
-                input.filter-menu__input-amount(
-                    type="number"
+            .filter-menu__importe
+                .filter-menu__label-importe Importe
+                input.filter-menu__input-importe(
+                    type="text"
                     name="importe"
-                    placeholder="Introduzca importe"
+                    placeholder=" Introduzca importe"
                 )
 
-            .filter-menu__field-status
-                .filter-menu__label-status Estado
-                select.filter-menu__select-status(name="estado")
+            .filter-menu__estado
+                .filter-menu__label-estado Estado
+                select.filter-menu__select-estado(name="estado")
                     option(value="Todos los estados") Todos los estados
-                    option(value="Opción 2") Opción 2
-                    option(value="Opción 3") Opción 3
-                    option(value="Opción 4") Opción 4
-                span.icon-chev-down.filter-menu__icon-status-chevron
+                    option(value="pendiente") Pendiente
+                    option(value="pagada") Pagada
+                    option(value="vencido") Vencido
+                span.icon-arrow-dropdown.filter-menu__icon-estado-dropdown
 
     .filter-menu__bottom
-        button.filter-menu__bottom__clear(type="button") Borrar filtros
-        button.filter-menu__bottom__apply(type="button") Aplicar filtros
+        button.filter-menu__bottom__boton-borrar(type="button") Borrar filtros
+        button.filter-menu__bottom__boton-aplicar(type="button") Aplicar filtros

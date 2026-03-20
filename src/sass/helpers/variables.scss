@@ -186,3 +186,44 @@ $nav-width-user: 375px;
 
 $border-separator: 1px solid $neutral50;
 $shadow-custom-menu: -6px 8px 20px 0px rgba(0, 0, 0, 0.15);
+
+//filtro
+
+$filter-menu-z-index: 9999;
+$filter-menu-width: 496px;
+$filter-menu-height: 1081px;
+$filter-menu-bottom-width: 493px;
+$filter-menu-bottom-height: 80px;
+$filter-menu-bg: $white;
+$filter-menu-overlay: rgba(0, 0, 0, 0.35);
+$filter-menu-header-height: 72px;
+$filter-menu-border: 1px solid $neutral50;
+$filter-menu-panel-shadow: 0 8px 24px -3px rgba(0, 0, 0, 0.18);
+
+$filter-menu-body-padding-top: 32px;
+$filter-menu-body-padding-side: 40px;
+$filter-menu-body-padding-bottom: 40px;
+$filter-menu-bottom-padding-y: 20px;
+$filter-menu-bottom-padding-x: 40px;
+$filter-menu-section-gap: 32px;
+$filter-menu-label-gap: 8px;
+
+$filter-menu-title-color: $neutral500;
+$filter-menu-label-color: $neutral400;
+$filter-menu-input-color: $neutral400;
+$filter-menu-placeholder-color: $neutral200;
+$filter-menu-icon-color: $primary300;
+$filter-menu-separation-color: $neutral400;
+
+$filter-menu-field-height: 44px;
+$filter-menu-field-border: 1px solid $neutral100;
+$filter-menu-field-radius: 4px;
+$filter-menu-field-padding-x: 12px;
+$filter-menu-date-field-width: 177px;
+
+$filter-menu-button-height: 40px;
+$filter-menu-button-radius: 8px;
+$filter-menu-clear-border: 1px solid $primary50;
+$filter-menu-clear-color: $neutral400;
+$filter-menu-apply-bg: $primary50;
+$filter-menu-apply-color: $neutral500;
