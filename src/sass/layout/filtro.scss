@@ -10,15 +10,21 @@
   top: 0;
   left: 0;
   z-index: $filter-menu-z-index;
-  display: none;
   width: $filter-menu-width;
   height: $filter-menu-height;
   overflow-y: auto;
   background-color: $filter-menu-bg;
   box-shadow: $filter-menu-panel-shadow, 0 0 0 100vmax $filter-menu-overlay;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none;
+  display: block;
 
   &.is-open {
-    display: block;
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   @media (max-width: $mobilexlMax) {

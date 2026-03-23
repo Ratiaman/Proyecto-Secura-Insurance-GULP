@@ -10938,41 +10938,62 @@ function initRenovacionesFiltroMenu() {
 
   if (!filterTriggerButton || !filterMenuPanel) return;
 
-  const setFilterMenuState = (isOpen) => {
-    filterMenuPanel.classList.toggle('is-open', isOpen);
-    filterMenuPanel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-    filterTriggerButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    document.body.classList.toggle('not-scroll', isOpen);
+  let isTransitioning = false;
+
+  const openMenu = () => {
+    if (isTransitioning) return;
+    filterMenuPanel.classList.add('is-open');
+    filterMenuPanel.setAttribute('aria-hidden', 'false');
+    filterTriggerButton.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('not-scroll');
+  };
+
+  const closeMenu = () => {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    filterMenuPanel.classList.remove('is-open');
+    filterMenuPanel.setAttribute('aria-hidden', 'true');
+    filterTriggerButton.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('not-scroll');
+    // Esperar a que termine la transición para evitar glitches
+    const onTransitionEnd = (e) => {
+      if (e.propertyName === 'transform') {
+        isTransitioning = false;
+        filterMenuPanel.removeEventListener('transitionend', onTransitionEnd);
+      }
+    };
+    filterMenuPanel.addEventListener('transitionend', onTransitionEnd);
   };
 
   filterTriggerButton.addEventListener('click', (event) => {
     event.preventDefault();
     event.stopPropagation();
-
-    const willOpen = !filterMenuPanel.classList.contains('is-open');
-    setFilterMenuState(willOpen);
+    if (filterMenuPanel.classList.contains('is-open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
 
   if (filterCloseButton) {
     filterCloseButton.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
-      setFilterMenuState(false);
+      closeMenu();
     });
   }
 
   document.addEventListener('click', (event) => {
     const clickedInsideMenu = filterMenuPanel.contains(event.target);
     const clickedTrigger = filterTriggerButton.contains(event.target);
-
-    if (!clickedInsideMenu && !clickedTrigger) {
-      setFilterMenuState(false);
+    if (!clickedInsideMenu && !clickedTrigger && filterMenuPanel.classList.contains('is-open')) {
+      closeMenu();
     }
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      setFilterMenuState(false);
+    if (event.key === 'Escape' && filterMenuPanel.classList.contains('is-open')) {
+      closeMenu();
     }
   });
 }
