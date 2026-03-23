@@ -278,5 +278,11 @@
       </div>
     </footer>
     <script src="js/main.js"></script>
+    <script src="js/renovaciones.js"></script>
+    <script>
+      if (typeof initRenovaciones === 'function') {
+        document.addEventListener('DOMContentLoaded', initRenovaciones);
+      }
+    </script>
   </body>
 </html>

@@ -194,111 +194,11 @@ function dropdown() {
   updateBurgerIcon();
 }
 
-// Controla cuantas filas de la tabla de renovaciones se muestran segun el select (1 a 10)
-function initRenovacionesFilas() {
-  const filasSelect = document.querySelector('.renovaciones-paginacion__filas-dropdown');
-  const filasTabla = document.querySelectorAll('.tabla-renovaciones__body .tabla-renovaciones__row');
-
-  // Si no estamos en la vista de renovaciones, no hacemos nada
-  if (!filasSelect || !filasTabla.length) return;
-
-  const MIN_FILAS = 1;
-  const MAX_FILAS = 10;
-
-  // Aplico el numero de filas visibles validando el rango 
-  const aplicarFilasVisibles = (valorSeleccionado) => {
-    const valorNumerico = Number.parseInt(valorSeleccionado, 10);
-    const filasVisibles = Number.isNaN(valorNumerico)
-      ? MAX_FILAS
-      : Math.min(Math.max(valorNumerico, MIN_FILAS), MAX_FILAS);
-
-    filasTabla.forEach((fila, indice) => {
-      fila.style.display = indice < filasVisibles ? '' : 'none';
-    });
-  };
-
-  // 10 filas por defecto
-  filasSelect.value = String(MAX_FILAS);
-  aplicarFilasVisibles(MAX_FILAS);
-
-  filasSelect.addEventListener('change', (event) => {
-    aplicarFilasVisibles(event.target.value);
-  });
-}
-
-// Controla la apertura/cierre del menú lateral de filtros en renovaciones
-function initRenovacionesFiltroMenu() {
-  const filterTriggerButton = document.querySelector('.renovaciones-options__filtros');
-  const filterMenuPanel = document.querySelector('.filter-menu');
-  const filterCloseButton = filterMenuPanel ? filterMenuPanel.querySelector('.filter-menu__header__icon') : null;
-
-  if (!filterTriggerButton || !filterMenuPanel) return;
-
-  let isTransitioning = false;
-
-  const openMenu = () => {
-    if (isTransitioning) return;
-    filterMenuPanel.classList.add('is-open');
-    filterMenuPanel.setAttribute('aria-hidden', 'false');
-    filterTriggerButton.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('not-scroll');
-  };
-
-  const closeMenu = () => {
-    if (isTransitioning) return;
-    isTransitioning = true;
-    filterMenuPanel.classList.remove('is-open');
-    filterMenuPanel.setAttribute('aria-hidden', 'true');
-    filterTriggerButton.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('not-scroll');
-    // Esperar a que termine la transición para evitar glitches
-    const onTransitionEnd = (e) => {
-      if (e.propertyName === 'transform') {
-        isTransitioning = false;
-        filterMenuPanel.removeEventListener('transitionend', onTransitionEnd);
-      }
-    };
-    filterMenuPanel.addEventListener('transitionend', onTransitionEnd);
-  };
-
-  filterTriggerButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    if (filterMenuPanel.classList.contains('is-open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  if (filterCloseButton) {
-    filterCloseButton.addEventListener('click', (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      closeMenu();
-    });
-  }
-
-  document.addEventListener('click', (event) => {
-    const clickedInsideMenu = filterMenuPanel.contains(event.target);
-    const clickedTrigger = filterTriggerButton.contains(event.target);
-    if (!clickedInsideMenu && !clickedTrigger && filterMenuPanel.classList.contains('is-open')) {
-      closeMenu();
-    }
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && filterMenuPanel.classList.contains('is-open')) {
-      closeMenu();
-    }
-  });
-}
 
 
 document.addEventListener('DOMContentLoaded', () => {
   dropdown();
-  initRenovacionesFilas();
-  initRenovacionesFiltroMenu();
+  
 });
 
 
