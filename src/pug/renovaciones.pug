@@ -11,3 +11,9 @@ block content
     include templates/renovaciones-tabla.pug
     include templates/renovaciones-paginacion.pug
 
+    //- Botón filtro fijo para mobile
+    button.renovaciones-options__filtros.renovaciones-options__filtros--mobile(type="button" aria-label="Abrir filtros" aria-expanded="false" aria-controls="renovaciones-filter-menu")
+        .renovaciones-filtros-mobile-content
+            i.icon-filter
+            span Filtros
+

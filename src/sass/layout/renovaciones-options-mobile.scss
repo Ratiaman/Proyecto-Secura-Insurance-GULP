@@ -1,0 +1,54 @@
+@use "../helpers/variables" as *;
+
+.renovaciones-options__filtros--mobile {
+  display: none;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  z-index: 1000;
+  background: $white;
+  border-top: 1px solid $neutral100;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  min-height: 56px;
+  font-size: 1rem;
+  cursor: pointer;
+  @media (max-width: $mobilexlMax) {
+    display: flex;
+  }
+}
+
+.renovaciones-filtros-mobile-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+  height: 20px;
+}
+
+.renovaciones-filtros-mobile-content .icon-filter {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.renovaciones-filtros-mobile-content span {
+  width: 46px;
+  height: 19px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+}

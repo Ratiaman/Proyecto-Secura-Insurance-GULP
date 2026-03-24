@@ -210,24 +210,36 @@
   border-top: 1px solid $neutral50;
   padding: rem(12px) $filter-menu-body-padding-side rem(12px) $filter-menu-body-padding-side;
   box-sizing: border-box;
+
+  @media (max-width: $mobilexlMax) {
+    width: 100vw;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    padding: rem(10px) rem(40px) rem(10px) rem(40px);
+    gap: rem(10px);
+    justify-content: space-between;
+  }
 }
 
   .filter-menu__bottom__boton-borrar,
   .filter-menu__bottom__boton-aplicar {
-  min-width: rem(160px);
-  height: $filter-menu-button-height;
-  padding: 0 rem(16px);
-  border-radius: $filter-menu-button-radius;
-  font-family: $font-family-roboto;
-  font-size: rem(16px);
-  font-weight: $weight-regular;
-  cursor: pointer;
+    min-width: rem(160px);
+    width: rem(160px);
+    height: $filter-menu-button-height;
+    padding: 0 rem(16px);
+    border-radius: $filter-menu-button-radius;
+    font-family: $font-family-roboto;
+    font-size: rem(16px);
+    font-weight: $weight-regular;
+    cursor: pointer;
 
-  @media (max-width: $mobilexlMax) {
-    min-width: 0;
-    flex: 1;
+    @media (max-width: $mobilexlMax) {
+      min-width: rem(160px);
+      width: rem(160px);
+      flex: none;
+    }
   }
-}
 
 .filter-menu__bottom__boton-borrar {
   border: $filter-menu-clear-border;

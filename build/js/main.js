@@ -10962,15 +10962,15 @@ function initRenovacionesFilas(data) {
 
 // Abre y cierra el panel lateral de filtros con animación
 function initRenovacionesFiltroMenu() {
-  // Botón que abre el panel de filtros
-  const filterTriggerButton = document.querySelector('.renovaciones-options__filtros');
+  // Botones que abren el panel de filtros (desktop y mobile)
+  const filterTriggerButtons = document.querySelectorAll('.renovaciones-options__filtros');
   // Panel lateral de filtros
   const filterMenuPanel = document.querySelector('.filter-menu');
   // Botón de cerrar dentro del panel
   const filterCloseButton = filterMenuPanel ? filterMenuPanel.querySelector('.filter-menu__header__icon') : null;
 
   // Si no hay panel o botón, no hago nada
-  if (!filterTriggerButton || !filterMenuPanel) return;
+  if (!filterMenuPanel || !filterTriggerButtons.length) return;
 
   let isTransitioning = false; // Controla si está animando
 
@@ -10979,7 +10979,7 @@ function initRenovacionesFiltroMenu() {
     if (isTransitioning) return; // Evita doble animación
     filterMenuPanel.classList.add('is-open'); // Activa la clase de animación
     filterMenuPanel.setAttribute('aria-hidden', 'false'); // Accesibilidad
-    filterTriggerButton.setAttribute('aria-expanded', 'true'); // Accesibilidad
+    filterTriggerButtons.forEach(btn => btn.setAttribute('aria-expanded', 'true'));
     document.body.classList.add('not-scroll'); // Evita scroll en el body
   };
 
@@ -10989,7 +10989,7 @@ function initRenovacionesFiltroMenu() {
     isTransitioning = true; // Marca que está animando
     filterMenuPanel.classList.remove('is-open'); // Quita la clase de animación
     filterMenuPanel.setAttribute('aria-hidden', 'true'); // Accesibilidad
-    filterTriggerButton.setAttribute('aria-expanded', 'false'); // Accesibilidad
+    filterTriggerButtons.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
     document.body.classList.remove('not-scroll'); // Permite scroll de nuevo
     // Espera a que termine la transición CSS para permitir otra acción
     const onTransitionEnd = (e) => {
@@ -11001,15 +11001,17 @@ function initRenovacionesFiltroMenu() {
     filterMenuPanel.addEventListener('transitionend', onTransitionEnd);
   };
 
-  // Click en el botón de filtros: abre o cierra el panel
-  filterTriggerButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    if (filterMenuPanel.classList.contains('is-open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+  // Click en los botones de filtros: abre o cierra el panel
+  filterTriggerButtons.forEach(btn => {
+    btn.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      if (filterMenuPanel.classList.contains('is-open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
   });
 
   // Click en el botón de cerrar dentro del panel
@@ -11024,7 +11026,8 @@ function initRenovacionesFiltroMenu() {
   // Cierra el panel si se hace click fuera de él
   document.addEventListener('click', (event) => {
     const clickedInsideMenu = filterMenuPanel.contains(event.target);
-    const clickedTrigger = filterTriggerButton.contains(event.target);
+    // Verifica si el click fue en alguno de los botones trigger
+    const clickedTrigger = Array.from(filterTriggerButtons).some(btn => btn.contains(event.target));
     if (!clickedInsideMenu && !clickedTrigger && filterMenuPanel.classList.contains('is-open')) {
       closeMenu();
     }
