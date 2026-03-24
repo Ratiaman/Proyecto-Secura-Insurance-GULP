@@ -1,39 +1,53 @@
-// renovaciones.js
+
 // Funciones exclusivas para renovaciones.html
 
+// Ruta al JSON 
+const RENOVACIONES_JSON = 'locale/clientes.json';
+
+// Renderiza las filas de la tabla de renovaciones según los datos y el número de filas a mostrar
+function renderTablaRenovaciones(data, filasVisibles) {
+  const tbody = document.querySelector('.tabla-renovaciones__body');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  data.slice(0, filasVisibles).forEach(item => {
+    const estadoClass =
+      item.estado === 'Pagada' ? 'badge-estado--pagada' :
+      item.estado === 'Vencido' ? 'badge-estado--vencido' :
+      'badge-estado--pendiente';
+    const iconClass =
+      item.estado === 'Pagada' ? 'icon-check' :
+      item.estado === 'Vencido' ? 'icon-close' :
+      'icon-clock';
+    tbody.insertAdjacentHTML('beforeend', `
+      <tr class="tabla-renovaciones__row">
+        <td class="tabla-renovaciones__cell" data-label="No. de póliza">${item.poliza}</td>
+        <td class="tabla-renovaciones__cell" data-label="Nombre del riesgo">${item.riesgo}</td>
+        <td class="tabla-renovaciones__cell" data-label="Fecha de contrato">${item.contrato}</td>
+        <td class="tabla-renovaciones__cell" data-label="Fecha de vencimiento">${item.vencimiento}</td>
+        <td class="tabla-renovaciones__cell tabla-renovaciones__cell--importe" data-label="Importe">${item.importe}</td>
+        <td class="tabla-renovaciones__cell" data-label="Estado">
+          <span class="badge-estado ${estadoClass}"><i class="${iconClass}"></i> ${item.estado}</span>
+        </td>
+      </tr>
+    `);
+  });
+}
+
 // Muestra solo el número de filas seleccionadas en la tabla de renovaciones
-function initRenovacionesFilas() {
-  // Selecciono el dropdown de filas y las filas de la tabla
+function initRenovacionesFilas(data) {
   const filasSelect = document.querySelector('.renovaciones-paginacion__filas-dropdown');
-  const filasTabla = document.querySelectorAll('.tabla-renovaciones__body .tabla-renovaciones__row');
-
-  // Si no estamos en la vista de renovaciones, no hago nada
-  if (!filasSelect || !filasTabla.length) return;
-
-  const MIN_FILAS = 1; // Mínimo de filas permitidas
-  const MAX_FILAS = 10; // Máximo de filas permitidas
-
-  // Función interna para mostrar solo las filas seleccionadas
-  const aplicarFilasVisibles = (valorSeleccionado) => {
-    // Convierto el valor del select a número
-    const valorNumerico = Number.parseInt(valorSeleccionado, 10);
+  if (!filasSelect) return;
+  const MIN_FILAS = 1;
+  const MAX_FILAS = 10;
+  // Inicializo el select en 10 filas
+  filasSelect.value = String(MAX_FILAS);
+  renderTablaRenovaciones(data, MAX_FILAS);
+  filasSelect.addEventListener('change', (event) => {
+    const valorNumerico = Number.parseInt(event.target.value, 10);
     const filasVisibles = Number.isNaN(valorNumerico)
       ? MAX_FILAS
       : Math.min(Math.max(valorNumerico, MIN_FILAS), MAX_FILAS);
-
-    // Muestro u oculto cada fila según el índice
-    filasTabla.forEach((fila, indice) => {
-      fila.style.display = indice < filasVisibles ? '' : 'none';
-    });
-  };
-
-  // Inicializo el select en 10 filas
-  filasSelect.value = String(MAX_FILAS);
-  aplicarFilasVisibles(MAX_FILAS);
-
-  // Cambio el número de filas visibles cuando el usuario selecciona otra opción
-  filasSelect.addEventListener('change', (event) => {
-    aplicarFilasVisibles(event.target.value);
+    renderTablaRenovaciones(data, filasVisibles);
   });
 }
 
@@ -111,10 +125,16 @@ function initRenovacionesFiltroMenu() {
 
 // Inicializa todas las funciones JS específicas de renovaciones.html
 function initRenovaciones() {
-  // Inicializa el control de filas de la tabla
-  initRenovacionesFilas();
-  // Inicializa el panel lateral de filtros
-  initRenovacionesFiltroMenu();
+  fetch(RENOVACIONES_JSON)
+    .then(res => res.json())
+    .then(data => {
+      initRenovacionesFilas(data);
+      initRenovacionesFiltroMenu();
+    });
 }
 
-;
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initRenovaciones);
+} else {
+  initRenovaciones();
+}
