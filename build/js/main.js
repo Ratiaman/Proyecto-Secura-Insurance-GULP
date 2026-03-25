@@ -10907,6 +10907,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+// Ruta al JSON 
+const RENOVACIONES_JSON = 'locale/clientes.json';
+
 // Ordena el array de datos por el campo indicado (ascendente simple)
 function ordenarRenovacionesPorCampo(data, campo) {
   return data.slice().sort((a, b) => {
@@ -10954,23 +10957,25 @@ function ordenarRenovacionesPorCampo(data, campo) {
   });
 }
 
-// Ruta al JSON 
-const RENOVACIONES_JSON = 'locale/clientes.json';
-
 // Renderiza las filas de la tabla de renovaciones según los datos y el número de filas a mostrar
 function renderTablaRenovaciones(data, filasVisibles) {
   const tbody = document.querySelector('.tabla-renovaciones__body');
   if (!tbody) return;
   tbody.innerHTML = '';
+  const statusClass = {
+    'pagada': 'badge-estado--pagada',
+    'vencido': 'badge-estado--vencido',
+    'pendiente': 'badge-estado--pendiente'
+  };
+  const statusIcon = {
+    'pagada': 'icon-check',
+    'vencido': 'icon-close',
+    'pendiente': 'icon-clock'
+  };
   data.slice(0, filasVisibles).forEach(item => {
-    const estadoClass =
-      item.estado === 'Pagada' ? 'badge-estado--pagada' :
-      item.estado === 'Vencido' ? 'badge-estado--vencido' :
-      'badge-estado--pendiente';
-    const iconClass =
-      item.estado === 'Pagada' ? 'icon-check' :
-      item.estado === 'Vencido' ? 'icon-close' :
-      'icon-clock';
+    const estadoKey = (item.estado || '').toLowerCase();
+    const estadoClass = statusClass[estadoKey] || statusClass['pendiente'];
+    const iconClass = statusIcon[estadoKey] || statusIcon['pendiente'];
     tbody.insertAdjacentHTML('beforeend', `
       <tr class="tabla-renovaciones__row">
         <td class="tabla-renovaciones__cell" data-label="No. de póliza">${item.poliza}</td>

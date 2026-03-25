@@ -115,7 +115,7 @@
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  width: rem(162px);
+  width: rem(190px); // Aumenta el ancho para evitar que el texto choque con el icono
   height: rem(44px);
   padding: rem(12px);
   gap: rem(8px);
