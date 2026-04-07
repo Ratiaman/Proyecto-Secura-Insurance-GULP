@@ -49,7 +49,7 @@ function ordenarRenovacionesPorCampo(data, campo) {
 }
 
 // Renderiza las filas de la tabla de renovaciones según los datos y el número de filas a mostrar
-function renderTablaRenovaciones(data, filasVisibles) {
+function renderTablaRenovaciones(data, filasVisibles, paginaActual = 1) {
   const tbody = document.querySelector('.tabla-renovaciones__body');
   if (!tbody) return;
   tbody.innerHTML = '';
@@ -63,7 +63,9 @@ function renderTablaRenovaciones(data, filasVisibles) {
     'vencido': 'icon-close',
     'pendiente': 'icon-clock'
   };
-  data.slice(0, filasVisibles).forEach(item => {
+  const start = (paginaActual - 1) * filasVisibles;
+  const end = start + filasVisibles;
+  data.slice(start, end).forEach(item => {
     const estadoKey = (item.estado || '').toLowerCase();
     const estadoClass = statusClass[estadoKey] || statusClass['pendiente'];
     const iconClass = statusIcon[estadoKey] || statusIcon['pendiente'];
@@ -86,34 +88,85 @@ function renderTablaRenovaciones(data, filasVisibles) {
 function initRenovacionesFilas(data) {
   const filasSelect = document.querySelector('.renovaciones-paginacion__filas-dropdown');
   const ordenSelect = document.querySelector('.renovaciones-options__orden-select');
+  const paginasSpan = document.querySelector('.renovaciones-paginacion__paginas');
+  const btnFirst = document.querySelector('.renovaciones-paginacion__boton--skip-left');
+  const btnPrev = document.querySelector('.renovaciones-paginacion__boton--left');
+  const btnNext = document.querySelector('.renovaciones-paginacion__boton--right');
+  const btnLast = document.querySelector('.renovaciones-paginacion__boton--skip-right');
   if (!filasSelect) return;
   const MIN_FILAS = 1;
   const MAX_FILAS = 10;
   let campoOrden = ordenSelect ? ordenSelect.value : null;
   let dataOrdenada = campoOrden ? ordenarRenovacionesPorCampo(data, campoOrden) : data;
+  let paginaActual = 1;
+
+  function getFilasVisibles() {
+    const valorNumerico = Number.parseInt(filasSelect.value, 10);
+    return Number.isNaN(valorNumerico)
+      ? MAX_FILAS
+      : Math.min(Math.max(valorNumerico, MIN_FILAS), MAX_FILAS);
+  }
+
+  function getTotalPaginas() {
+    return Math.ceil(dataOrdenada.length / getFilasVisibles());
+  }
+
+  function updateTablaYPaginacion() {
+    const filasVisibles = getFilasVisibles();
+    const totalPaginas = getTotalPaginas();
+    if (paginaActual > totalPaginas) paginaActual = totalPaginas;
+    if (paginaActual < 1) paginaActual = 1;
+    renderTablaRenovaciones(dataOrdenada, filasVisibles, paginaActual);
+    if (paginasSpan) {
+      if (filasVisibles === 1) {
+        const actual = Math.min((paginaActual - 1) * filasVisibles + 1, dataOrdenada.length);
+        paginasSpan.textContent = `${actual} de ${dataOrdenada.length}`;
+      } else {
+        paginasSpan.textContent = `${paginaActual} de ${totalPaginas} páginas`;
+      }
+    }
+  }
 
   // Inicializo el select en 10 filas
   filasSelect.value = String(MAX_FILAS);
-  renderTablaRenovaciones(dataOrdenada, MAX_FILAS);
+  updateTablaYPaginacion();
 
-  filasSelect.addEventListener('change', (event) => {
-    const valorNumerico = Number.parseInt(event.target.value, 10);
-    const filasVisibles = Number.isNaN(valorNumerico)
-      ? MAX_FILAS
-      : Math.min(Math.max(valorNumerico, MIN_FILAS), MAX_FILAS);
-    renderTablaRenovaciones(dataOrdenada, filasVisibles);
+  filasSelect.addEventListener('change', () => {
+    paginaActual = 1;
+    updateTablaYPaginacion();
   });
 
   if (ordenSelect) {
-    ordenSelect.addEventListener('change', (event) => {
+    ordenSelect.addEventListener('change', () => {
       campoOrden = ordenSelect.value;
       dataOrdenada = ordenarRenovacionesPorCampo(data, campoOrden);
-      // Mantener el número de filas seleccionadas
-      const valorNumerico = Number.parseInt(filasSelect.value, 10);
-      const filasVisibles = Number.isNaN(valorNumerico)
-        ? MAX_FILAS
-        : Math.min(Math.max(valorNumerico, MIN_FILAS), MAX_FILAS);
-      renderTablaRenovaciones(dataOrdenada, filasVisibles);
+      paginaActual = 1;
+      updateTablaYPaginacion();
+    });
+  }
+
+  if (btnFirst) {
+    btnFirst.addEventListener('click', () => {
+      paginaActual = 1;
+      updateTablaYPaginacion();
+    });
+  }
+  if (btnPrev) {
+    btnPrev.addEventListener('click', () => {
+      paginaActual = Math.max(1, paginaActual - 1);
+      updateTablaYPaginacion();
+    });
+  }
+  if (btnNext) {
+    btnNext.addEventListener('click', () => {
+      paginaActual = Math.min(getTotalPaginas(), paginaActual + 1);
+      updateTablaYPaginacion();
+    });
+  }
+  if (btnLast) {
+    btnLast.addEventListener('click', () => {
+      paginaActual = getTotalPaginas();
+      updateTablaYPaginacion();
     });
   }
 }
@@ -124,9 +177,37 @@ function initRenovacionesFiltroMenu() {
   const filterTriggerButtons = document.querySelectorAll('.renovaciones-options__filtros');
   const filterMenuPanel = document.querySelector('.filter-menu');
   const filterCloseButton = filterMenuPanel ? filterMenuPanel.querySelector('.filter-menu__header__icon') : null;
+  // Botón borrar filtros y formulario
+  const filterForm = filterMenuPanel ? filterMenuPanel.querySelector('.filter-menu__form') : null;
+  const btnBorrarFiltros = filterMenuPanel ? filterMenuPanel.querySelector('.filter-menu__bottom__boton-borrar') : null;
 
   // Si no hay panel o botón, no hago nada
   if (!filterMenuPanel || !filterTriggerButtons.length) return;
+
+  // Función para resetear el formulario de filtros a su estado inicial
+  function resetFiltrosForm() {
+    if (!filterForm) return;
+    // Reset selects a la primera opción
+    const selects = filterForm.querySelectorAll('select');
+    selects.forEach(sel => {
+      sel.selectedIndex = 0;
+      sel.dispatchEvent(new Event('change'));
+    });
+    // Reset inputs de texto
+    const inputs = filterForm.querySelectorAll('input[type="text"]');
+    inputs.forEach(inp => {
+      inp.value = '';
+      inp.dispatchEvent(new Event('input'));
+    });
+  }
+
+  // Evento para el botón borrar filtros
+  if (btnBorrarFiltros) {
+    btnBorrarFiltros.addEventListener('click', (event) => {
+      event.preventDefault();
+      resetFiltrosForm();
+    });
+  }
 
   let isTransitioning = false; // Controla si está animando
 
