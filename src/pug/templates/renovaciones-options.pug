@@ -1,15 +1,14 @@
 section.renovaciones-options
 	.renovaciones-options__container
 		.renovaciones-options__info
-			button.renovaciones-options__filtros(type="button" aria-label="Abrir filtros" aria-expanded="false" aria-controls="renovaciones-filter-menu")
-				i.icon-filter
-				span Filtros
+			.renovaciones-options__filters-row
+				button.renovaciones-options__filtros(type="button" aria-label="Abrir filtros" aria-expanded="false" aria-controls="renovaciones-filter-menu")
+					i.icon-filter
+					span Filtros
+				.renovaciones-options__filters-applied
+					// Las etiquetas se insertarán dinámicamente por JS
 
 			.renovaciones-options__meta
-				.renovaciones-options__tag
-					span.renovaciones-options__total 770
-					span.renovaciones-options__etiqueta Pólizas
-
 				.renovaciones-options__orden
 					span.renovaciones-options__orden-label Ordenar por:
 					select.renovaciones-options__orden-select(name="ordenar" aria-label="Ordenar por")

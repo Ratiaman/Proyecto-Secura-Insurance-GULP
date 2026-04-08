@@ -60,9 +60,13 @@
       <section class="renovaciones-options">
         <div class="renovaciones-options__container">
           <div class="renovaciones-options__info">
-            <button class="renovaciones-options__filtros" type="button" aria-label="Abrir filtros" aria-expanded="false" aria-controls="renovaciones-filter-menu"><i class="icon-filter"></i><span>Filtros</span></button>
+            <div class="renovaciones-options__filters-row">
+              <button class="renovaciones-options__filtros" type="button" aria-label="Abrir filtros" aria-expanded="false" aria-controls="renovaciones-filter-menu"><i class="icon-filter"></i><span>Filtros</span></button>
+              <div class="renovaciones-options__filters-applied">
+                <!-- Las etiquetas se insertarán dinámicamente por JS-->
+              </div>
+            </div>
             <div class="renovaciones-options__meta">
-              <div class="renovaciones-options__tag"><span class="renovaciones-options__total">770</span><span class="renovaciones-options__etiqueta">Pólizas</span></div>
               <div class="renovaciones-options__orden"><span class="renovaciones-options__orden-label">Ordenar por:</span>
                 <select class="renovaciones-options__orden-select" name="ordenar" aria-label="Ordenar por">
                   <option value="importe">Mayor importe</option>

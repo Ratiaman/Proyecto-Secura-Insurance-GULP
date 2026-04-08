@@ -1,7 +1,152 @@
+
 @use "../helpers/variables" as *;
 @use "../helpers/mixins" as *;
 @use "../helpers/icons-variables" as *;
 @use "../base/fonts";
+
+.renovaciones-options {
+  min-height: rem(112px);
+  height: rem(112px);
+  /* ...resto de reglas existentes... */
+}
+.renovaciones-options__filters-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: rem(12px);
+  width: 100%;
+}
+
+
+// Barra horizontal para botón y filtros
+
+.renovaciones-options__info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: rem(12px);
+  width: 100%;
+  margin-bottom: rem(12px);
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: rem(8px);
+    margin-bottom: 0;
+  }
+}
+
+.renovaciones-options__filtros {
+  /* sin padding extra a la izquierda */
+}
+
+.renovaciones-options__filters-applied {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: rem(12px);
+  height: rem(40px);
+  margin: 0;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: rem(8px);
+    height: auto;
+    margin-top: rem(12px);
+  }
+}
+
+.filter-selected {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  width: rem(154px);
+  height: rem(36px);
+  background: rgba(75, 152, 217, 1);
+  color: #fff;
+  border-radius: rem(99px);
+  padding: rem(4px) rem(8px) rem(4px) rem(16px);
+  font-size: rem(16px);
+  font-family: inherit;
+  font-weight: 400;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.filter-selected__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(24px);
+  height: rem(24px);
+  margin-left: rem(8px);
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  font-size: rem(18px);
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.filter-selected__close:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.filter-selected__close .icon-close {
+  color: #fff;
+}
+
+.filter-selected {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  width: 154px;
+  height: 36px;
+  background: rgba(75, 152, 217, 1);
+  color: #fff;
+  border-radius: 99px;
+  padding: 4px 16px;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 400;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+.filter-selected__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #fff !important;
+  font-size: 18px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.filter-selected__close:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.filter-selected__close .icon-close {
+  color: #fff !important;
+}
 
 .renovaciones-options {
   display: flex;
@@ -56,8 +201,9 @@
 
 .renovaciones-options__meta {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: rem(24px);
   padding-right: rem(24px);
 

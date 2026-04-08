@@ -53,7 +53,7 @@
 }
 .icon-close:before {
   content: "\e906";
-  color: $color-primary;
+  color: inherit;
 }
 .icon-file:before {
   content: icons-variables.$icon-file;

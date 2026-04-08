@@ -11081,28 +11081,85 @@ function initRenovacionesFilas(data) {
 }
 
 // Abre y cierra el panel lateral de filtros con animación
+// --- Filtros aplicados: etiquetas ---
+function initRenovacionesFiltrosAplicados() {
+  const filterMenuPanel = document.querySelector('.filter-menu');
+  const filterForm = filterMenuPanel ? filterMenuPanel.querySelector('.filter-menu__form') : null;
+  const btnAplicarFiltros = filterMenuPanel ? filterMenuPanel.querySelector('.filter-menu__bottom__boton-aplicar') : null;
+  const filtersAppliedContainer = document.querySelector('.renovaciones-options__filters-applied');
+  if (!filterForm || !btnAplicarFiltros || !filtersAppliedContainer) return;
+
+  function crearEtiquetaFiltro({ key, value }) {
+    if (!value || value === '' || value === 'Todas las pólizas' || value === 'Todos los estados') return null;
+    const div = document.createElement('div');
+    div.className = 'filter-selected';
+    div.dataset.filterKey = key;
+    div.title = value;
+    div.innerHTML = `<span class="filter-selected__label">${value}</span><button class="filter-selected__close" type="button" aria-label="Quitar filtro"><i class="icon-close"></i></button>`;
+    // Forzar icono blanco
+    const closeIcon = div.querySelector('.icon-close');
+    if (closeIcon) closeIcon.style.color = '#fff';
+    div.querySelector('.filter-selected__close').addEventListener('click', () => {
+      limpiarFiltro(key);
+      div.remove();
+      actualizarEtiquetas();
+    });
+    return div;
+  }
+
+  // Limpia el filtro correspondiente sin disparar eventos manuales
+  function limpiarFiltro(key) {
+    if (key === 'poliza') {
+      const select = filterForm.querySelector('.filter-menu__select-numero');
+      if (select) select.selectedIndex = 0;
+    } else if (key === 'riesgo') {
+      const input = filterForm.querySelector('.filter-menu__input-riesgo');
+      if (input) input.value = '';
+    } else if (key === 'fecha') {
+      const inputInicio = filterForm.querySelector('.filter-menu__input-fecha-inicio');
+      const inputFin = filterForm.querySelector('.filter-menu__input-fecha-fin');
+      if (inputInicio) inputInicio.value = '';
+      if (inputFin) inputFin.value = '';
+    }
+  }
+
+  // Vuelve a crear las etiquetas según el estado actual del formulario
+  function actualizarEtiquetas() {
+    filtersAppliedContainer.innerHTML = '';
+    const poliza = filterForm.querySelector('.filter-menu__select-numero')?.value;
+    const riesgo = filterForm.querySelector('.filter-menu__input-riesgo')?.value;
+    const fechaInicio = filterForm.querySelector('.filter-menu__input-fecha-inicio')?.value;
+    const fechaFin = filterForm.querySelector('.filter-menu__input-fecha-fin')?.value;
+    const etiquetas = [
+      crearEtiquetaFiltro({ key: 'poliza', value: poliza }),
+      crearEtiquetaFiltro({ key: 'riesgo', value: riesgo }),
+      crearEtiquetaFiltro({ key: 'fecha', value: (fechaInicio && fechaFin) ? `${fechaInicio} al ${fechaFin}` : (fechaInicio || fechaFin) })
+    ];
+    etiquetas.forEach(et => { if (et) filtersAppliedContainer.appendChild(et); });
+  }
+
+  btnAplicarFiltros.addEventListener('click', (event) => {
+    event.preventDefault();
+    actualizarEtiquetas();
+  });
+}
+
+// --- Menú lateral de filtros ---
 function initRenovacionesFiltroMenu() {
-  
   const filterTriggerButtons = document.querySelectorAll('.renovaciones-options__filtros');
   const filterMenuPanel = document.querySelector('.filter-menu');
   const filterCloseButton = filterMenuPanel ? filterMenuPanel.querySelector('.filter-menu__header__icon') : null;
-  // Botón borrar filtros y formulario
   const filterForm = filterMenuPanel ? filterMenuPanel.querySelector('.filter-menu__form') : null;
   const btnBorrarFiltros = filterMenuPanel ? filterMenuPanel.querySelector('.filter-menu__bottom__boton-borrar') : null;
-
-  // Si no hay panel o botón, no hago nada
   if (!filterMenuPanel || !filterTriggerButtons.length) return;
 
-  // Función para resetear el formulario de filtros a su estado inicial
   function resetFiltrosForm() {
     if (!filterForm) return;
-    // Reset selects a la primera opción
     const selects = filterForm.querySelectorAll('select');
     selects.forEach(sel => {
       sel.selectedIndex = 0;
       sel.dispatchEvent(new Event('change'));
     });
-    // Reset inputs de texto
     const inputs = filterForm.querySelectorAll('input[type="text"]');
     inputs.forEach(inp => {
       inp.value = '';
@@ -11110,7 +11167,6 @@ function initRenovacionesFiltroMenu() {
     });
   }
 
-  // Evento para el botón borrar filtros
   if (btnBorrarFiltros) {
     btnBorrarFiltros.addEventListener('click', (event) => {
       event.preventDefault();
@@ -11118,26 +11174,21 @@ function initRenovacionesFiltroMenu() {
     });
   }
 
-  let isTransitioning = false; // Controla si está animando
-
-  // Abre el panel de filtros
+  let isTransitioning = false;
   const openMenu = () => {
-    if (isTransitioning) return; // Evita doble animación
-    filterMenuPanel.classList.add('is-open'); // Activa la clase de animación
-    filterMenuPanel.setAttribute('aria-hidden', 'false'); 
+    if (isTransitioning) return;
+    filterMenuPanel.classList.add('is-open');
+    filterMenuPanel.setAttribute('aria-hidden', 'false');
     filterTriggerButtons.forEach(btn => btn.setAttribute('aria-expanded', 'true'));
-    document.body.classList.add('not-scroll'); // Evita scroll en el body
+    document.body.classList.add('not-scroll');
   };
-
-  // Cierra el panel de filtros
   const closeMenu = () => {
-    if (isTransitioning) return; 
-    isTransitioning = true; 
-    filterMenuPanel.classList.remove('is-open'); 
-    filterMenuPanel.setAttribute('aria-hidden', 'true'); 
+    if (isTransitioning) return;
+    isTransitioning = true;
+    filterMenuPanel.classList.remove('is-open');
+    filterMenuPanel.setAttribute('aria-hidden', 'true');
     filterTriggerButtons.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
-    document.body.classList.remove('not-scroll'); // Permite scroll de nuevo
-    // Espera a que termine la transición CSS para permitir otra acción
+    document.body.classList.remove('not-scroll');
     const onTransitionEnd = (e) => {
       if (e.propertyName === 'transform') {
         isTransitioning = false;
@@ -11146,8 +11197,6 @@ function initRenovacionesFiltroMenu() {
     };
     filterMenuPanel.addEventListener('transitionend', onTransitionEnd);
   };
-
-  // Click en los botones de filtros: abre o cierra el panel
   filterTriggerButtons.forEach(btn => {
     btn.addEventListener('click', (event) => {
       event.preventDefault();
@@ -11159,8 +11208,6 @@ function initRenovacionesFiltroMenu() {
       }
     });
   });
-
-  // Click en el botón de cerrar dentro del panel
   if (filterCloseButton) {
     filterCloseButton.addEventListener('click', (event) => {
       event.preventDefault();
@@ -11168,26 +11215,24 @@ function initRenovacionesFiltroMenu() {
       closeMenu();
     });
   }
-
-  // Cierra el panel si se hace click fuera de él
   document.addEventListener('click', (event) => {
     const clickedInsideMenu = filterMenuPanel.contains(event.target);
-    // Verifica si el click fue en alguno de los botones trigger
     const clickedTrigger = Array.from(filterTriggerButtons).some(btn => btn.contains(event.target));
     if (!clickedInsideMenu && !clickedTrigger && filterMenuPanel.classList.contains('is-open')) {
       closeMenu();
     }
   });
-
 }
 
 // Inicializa todas las funciones JS específicas de renovaciones.html
+
 function initRenovaciones() {
   fetch(RENOVACIONES_JSON)
     .then(res => res.json())
     .then(data => {
       initRenovacionesFilas(data);
       initRenovacionesFiltroMenu();
+      initRenovacionesFiltrosAplicados();
     });
 }
 
