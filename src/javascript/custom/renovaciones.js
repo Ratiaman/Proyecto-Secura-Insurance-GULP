@@ -180,6 +180,7 @@ function initRenovacionesFiltrosAplicados() {
   const filtersAppliedContainer = document.querySelector('.renovaciones-options__filters-applied');
   if (!filterForm || !btnAplicarFiltros || !filtersAppliedContainer) return;
 
+  //Aqui genero el div de los campos 
   function crearEtiquetaFiltro({ key, value }) {
     if (!value || value === '' || value === 'Todas las pólizas' || value === 'Todos los estados') return null;
     const div = document.createElement('div');
@@ -198,7 +199,7 @@ function initRenovacionesFiltrosAplicados() {
     return div;
   }
 
-  // Limpia el filtro correspondiente sin disparar eventos manuales
+  // Limpia el filtro
   function limpiarFiltro(key) {
     if (key === 'poliza') {
       const select = filterForm.querySelector('.filter-menu__select-numero');
@@ -211,6 +212,12 @@ function initRenovacionesFiltrosAplicados() {
       const inputFin = filterForm.querySelector('.filter-menu__input-fecha-fin');
       if (inputInicio) inputInicio.value = '';
       if (inputFin) inputFin.value = '';
+    } else if (key === 'importe') {
+      const inputImporte = filterForm.querySelector('.filter-menu__input-importe');
+      if (inputImporte) inputImporte.value = '';
+    } else if (key === 'estado') {
+      const selectEstado = filterForm.querySelector('.filter-menu__select-estado');
+      if (selectEstado) selectEstado.selectedIndex = 0;
     }
   }
 
@@ -221,10 +228,14 @@ function initRenovacionesFiltrosAplicados() {
     const riesgo = filterForm.querySelector('.filter-menu__input-riesgo')?.value;
     const fechaInicio = filterForm.querySelector('.filter-menu__input-fecha-inicio')?.value;
     const fechaFin = filterForm.querySelector('.filter-menu__input-fecha-fin')?.value;
+    const importe = filterForm.querySelector('.filter-menu__input-importe')?.value;
+    const estado = filterForm.querySelector('.filter-menu__select-estado')?.value;
     const etiquetas = [
       crearEtiquetaFiltro({ key: 'poliza', value: poliza }),
       crearEtiquetaFiltro({ key: 'riesgo', value: riesgo }),
-      crearEtiquetaFiltro({ key: 'fecha', value: (fechaInicio && fechaFin) ? `${fechaInicio} al ${fechaFin}` : (fechaInicio || fechaFin) })
+      crearEtiquetaFiltro({ key: 'fecha', value: (fechaInicio && fechaFin) ? `${fechaInicio} al ${fechaFin}` : (fechaInicio || fechaFin) }),
+      crearEtiquetaFiltro({ key: 'importe', value: importe }),
+      crearEtiquetaFiltro({ key: 'estado', value: estado })
     ];
     etiquetas.forEach(et => { if (et) filtersAppliedContainer.appendChild(et); });
   }
