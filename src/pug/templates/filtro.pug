@@ -8,12 +8,11 @@
         form.filter-menu__form
             .filter-menu__numero
                 .filter-menu__label-numero No. de póliza
-                select.filter-menu__select-numero(name="numero-poliza")
-                    option(value="Todas las pólizas") Todas las pólizas
-                    option(value="Opción 2") 3453553464
-                    option(value="Opción 3") 4564644564
-                    option(value="Opción 4") 5675675678
-                span.icon-arrow-dropdown.filter-menu__icon-numero-dropdown
+                input.filter-menu__input-riesgo(
+                    type="text"
+                    name="numero-poliza"
+                    placeholder="Introduce el número de póliza"
+                )
 
             .filter-menu__riesgo
                 .filter-menu__label-riesgo Nombre del riesgo

@@ -11082,14 +11082,15 @@ function initRenovacionesFilas(data) {
 
 // Abre y cierra el panel lateral de filtros con animación
 // --- Filtros aplicados: etiquetas ---
-function initRenovacionesFiltrosAplicados() {
+
+// --- Filtros aplicados: etiquetas y filtrado real ---
+function initRenovacionesFiltrosAplicados(dataOriginal, onFiltrar) {
   const filterMenuPanel = document.querySelector('.filter-menu');
   const filterForm = filterMenuPanel ? filterMenuPanel.querySelector('.filter-menu__form') : null;
   const btnAplicarFiltros = filterMenuPanel ? filterMenuPanel.querySelector('.filter-menu__bottom__boton-aplicar') : null;
   const filtersAppliedContainer = document.querySelector('.renovaciones-options__filters-applied');
   if (!filterForm || !btnAplicarFiltros || !filtersAppliedContainer) return;
 
-  //Aqui genero el div de los campos 
   function crearEtiquetaFiltro({ key, value }) {
     if (!value || value === '' || value === 'Todas las pólizas' || value === 'Todos los estados') return null;
     const div = document.createElement('div');
@@ -11097,24 +11098,22 @@ function initRenovacionesFiltrosAplicados() {
     div.dataset.filterKey = key;
     div.title = value;
     div.innerHTML = `<span class="filter-selected__label">${value}</span><button class="filter-selected__close" type="button" aria-label="Quitar filtro"><i class="icon-close"></i></button>`;
-    // Forzar icono blanco
     const closeIcon = div.querySelector('.icon-close');
     if (closeIcon) closeIcon.style.color = '#fff';
     div.querySelector('.filter-selected__close').addEventListener('click', () => {
       limpiarFiltro(key);
       div.remove();
-      actualizarEtiquetas();
+      actualizarEtiquetasYFiltrado();
     });
     return div;
   }
 
-  // Limpia el filtro
   function limpiarFiltro(key) {
     if (key === 'poliza') {
-      const select = filterForm.querySelector('.filter-menu__select-numero');
-      if (select) select.selectedIndex = 0;
+      const input = filterForm.querySelector('input[name="numero-poliza"]');
+      if (input) input.value = '';
     } else if (key === 'riesgo') {
-      const input = filterForm.querySelector('.filter-menu__input-riesgo');
+      const input = filterForm.querySelector('input[name="nombre-riesgo"]');
       if (input) input.value = '';
     } else if (key === 'fecha') {
       const inputInicio = filterForm.querySelector('.filter-menu__input-fecha-inicio');
@@ -11130,28 +11129,37 @@ function initRenovacionesFiltrosAplicados() {
     }
   }
 
-  // Vuelve a crear las etiquetas según el estado actual del formulario
-  function actualizarEtiquetas() {
+  function getFiltros() {
+    return {
+      poliza: filterForm.querySelector('input[name="numero-poliza"]')?.value || '',
+      riesgo: filterForm.querySelector('input[name="nombre-riesgo"]')?.value || '',
+      fechaInicio: filterForm.querySelector('.filter-menu__input-fecha-inicio')?.value || '',
+      fechaFin: filterForm.querySelector('.filter-menu__input-fecha-fin')?.value || '',
+      importe: filterForm.querySelector('.filter-menu__input-importe')?.value || '',
+      estado: filterForm.querySelector('.filter-menu__select-estado')?.value || ''
+    };
+  }
+
+  function actualizarEtiquetasYFiltrado() {
     filtersAppliedContainer.innerHTML = '';
-    const poliza = filterForm.querySelector('.filter-menu__select-numero')?.value;
-    const riesgo = filterForm.querySelector('.filter-menu__input-riesgo')?.value;
-    const fechaInicio = filterForm.querySelector('.filter-menu__input-fecha-inicio')?.value;
-    const fechaFin = filterForm.querySelector('.filter-menu__input-fecha-fin')?.value;
-    const importe = filterForm.querySelector('.filter-menu__input-importe')?.value;
-    const estado = filterForm.querySelector('.filter-menu__select-estado')?.value;
+    const filtros = getFiltros();
     const etiquetas = [
-      crearEtiquetaFiltro({ key: 'poliza', value: poliza }),
-      crearEtiquetaFiltro({ key: 'riesgo', value: riesgo }),
-      crearEtiquetaFiltro({ key: 'fecha', value: (fechaInicio && fechaFin) ? `${fechaInicio} al ${fechaFin}` : (fechaInicio || fechaFin) }),
-      crearEtiquetaFiltro({ key: 'importe', value: importe }),
-      crearEtiquetaFiltro({ key: 'estado', value: estado })
+      crearEtiquetaFiltro({ key: 'poliza', value: filtros.poliza }),
+      crearEtiquetaFiltro({ key: 'riesgo', value: filtros.riesgo }),
+      crearEtiquetaFiltro({ key: 'fecha', value: (filtros.fechaInicio && filtros.fechaFin) ? `${filtros.fechaInicio} al ${filtros.fechaFin}` : (filtros.fechaInicio || filtros.fechaFin) }),
+      crearEtiquetaFiltro({ key: 'importe', value: filtros.importe }),
+      crearEtiquetaFiltro({ key: 'estado', value: filtros.estado })
     ];
     etiquetas.forEach(et => { if (et) filtersAppliedContainer.appendChild(et); });
+    // --- Filtrado real ---
+    if (typeof onFiltrar === 'function') {
+      onFiltrar(filtros);
+    }
   }
 
   btnAplicarFiltros.addEventListener('click', (event) => {
     event.preventDefault();
-    actualizarEtiquetas();
+    actualizarEtiquetasYFiltrado();
   });
 }
 
@@ -11237,13 +11245,73 @@ function initRenovacionesFiltroMenu() {
 
 // Inicializa todas las funciones JS específicas de renovaciones.html
 
+
 function initRenovaciones() {
   fetch(RENOVACIONES_JSON)
     .then(res => res.json())
-    .then(data => {
-      initRenovacionesFilas(data);
+    .then(dataOriginal => {
+      let datosFiltrados = dataOriginal.slice();
+      let campoOrden = null;
+      let paginaActual = 1;
+
+      // Inicializa paginación y ordenación con datos filtrados
+      function renderFiltrado(filtros) {
+        datosFiltrados = dataOriginal.filter(item => {
+          let coincide = true;
+          // Poliza: coincide si contiene el texto escrito (mínimo 1 caracter)
+          if (filtros.poliza && filtros.poliza.trim() !== '') {
+            coincide = coincide && item.poliza && item.poliza.toLowerCase().includes(filtros.poliza.toLowerCase());
+          }
+          // Riesgo: coincide si contiene el texto (case-insensitive)
+          if (filtros.riesgo) {
+            coincide = coincide && item.riesgo && item.riesgo.toLowerCase().includes(filtros.riesgo.toLowerCase());
+          }
+          // Fechas: si hay inicio y/o fin, compara contrato o vencimiento
+          if (filtros.fechaInicio) {
+            const fechaItem = item.contrato || item.vencimiento;
+            if (fechaItem) {
+              coincide = coincide && fechaItem >= filtros.fechaInicio;
+            }
+          }
+          if (filtros.fechaFin) {
+            const fechaItem = item.contrato || item.vencimiento;
+            if (fechaItem) {
+              coincide = coincide && fechaItem <= filtros.fechaFin;
+            }
+          }
+          // Importe: solo los menores o iguales
+          if (filtros.importe) {
+            const parseImporte = (str) => {
+              if (typeof str !== 'string') str = String(str);
+              str = str.replace(/\s/g, '');
+              str = str.replace(/\.(?=\d{3}(\.|,|$))/g, '');
+              str = str.replace(/,/g, '.');
+              return parseFloat(str);
+            };
+            const importeItem = parseImporte(item.importe);
+            const importeFiltro = parseImporte(filtros.importe);
+            coincide = coincide && importeItem <= importeFiltro;
+          }
+          // Estado: pagada, pendiente, vencido (case-insensitive, permite variantes)
+          if (filtros.estado && filtros.estado !== 'Todos los estados') {
+            coincide = coincide && item.estado && item.estado.toLowerCase() === filtros.estado.toLowerCase();
+          }
+          return coincide;
+        });
+        // Ordenar según el selector si existe
+        const ordenSelect = document.querySelector('.renovaciones-options__orden-select');
+        campoOrden = ordenSelect ? ordenSelect.value : null;
+        let datosOrdenados = campoOrden ? ordenarRenovacionesPorCampo(datosFiltrados, campoOrden) : datosFiltrados;
+        // Reiniciar a la primera página
+        paginaActual = 1;
+        // Renderizar tabla y paginación
+        initRenovacionesFilas(datosOrdenados);
+      }
+
+      // Inicialización normal
+      initRenovacionesFilas(dataOriginal);
       initRenovacionesFiltroMenu();
-      initRenovacionesFiltrosAplicados();
+      initRenovacionesFiltrosAplicados(dataOriginal, renderFiltrado);
     });
 }
 
